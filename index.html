@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b6570">
-<title>NursePlan LT V9</title>
+<title>NursePlan LT V11</title>
 <style>
 :root{
   --bg:#f3f7f8; --card:#ffffff; --ink:#173238; --muted:#688087; --line:#dce7e9;
@@ -106,7 +106,7 @@ textarea{min-height:90px;resize:vertical}
 <div class="topbar">
   <div class="topbar-inner">
     <div class="brand"><div class="logo">NP</div><div class="brand-name">Nurse<span>Plan</span> LT</div></div>
-    <div class="demo-badge">V9 • DEMO</div>
+    <div class="demo-badge">V11 • DEMO</div>
   </div>
 </div>
 <div class="progress-mobile"><span id="mprogress"></span></div>
@@ -116,8 +116,8 @@ textarea{min-height:90px;resize:vertical}
     <div class="hero-grid">
       <div>
         <div class="kicker">Slaugos klinikinio mąstymo ir dokumentavimo vedlys</div>
-        <h1>Diagnozė → operacija → individualus slaugos planas</h1>
-        <p>Pasirinkite specialybę, TLK-10-AM diagnozės grupę ir realiai atliktą procedūrą. NursePlan LT pateikia struktūruotus vertinimo klausimus, galimas slaugos problemų kryptis, tikslus, veiksmus ir paciento mokymą.</p>
+        <h1>Diagnozė → procedūra / klinikinis kelias → individualus slaugos planas</h1>
+        <p>Pasirinkite specialybę, TLK-10-AM diagnozės grupę ir realią procedūrą arba klinikinį slaugos kelią. Prireikus pridėkite gretutines būkles. NursePlan LT pateikia struktūruotus vertinimo klausimus, galimas slaugos problemų kryptis, tikslus, veiksmus ir paciento mokymą.</p>
         <div class="hero-actions">
           <button class="btn btn-primary" onclick="startFlow()">Kurti planą</button>
           <button class="btn btn-secondary" onclick="showGeneralModules()">Bendrieji moduliai</button>
@@ -126,14 +126,14 @@ textarea{min-height:90px;resize:vertical}
         <div class="stats">
           <span class="stat" id="dxStat"></span>
           <span class="stat" id="procStat"></span>
-          <span class="stat">Chirurgija + urologija + neurochirurgija + ortopedija-traumatologija</span>
+          <span class="stat">5 specialybės • bendros gretutinės būklės</span>
           <span class="stat">Kopijavimas / PDF</span>
         </div>
       </div>
       <div class="hero-visual">
         <div class="flow-card">
           <div class="flow-node"><div class="flow-num">1</div><div><div class="flow-text">TLK-10-AM diagnozė</div><div class="flow-sub">pvz. K81 • cholecistitas</div></div></div>
-          <div class="flow-node"><div class="flow-num">2</div><div><div class="flow-text">Operacija / procedūra</div><div class="flow-sub">pvz. laparoskopinė cholecistektomija</div></div></div>
+          <div class="flow-node"><div class="flow-num">2</div><div><div class="flow-text">Procedūra / klinikinis kelias</div><div class="flow-sub">pvz. laparoskopinė cholecistektomija</div></div></div>
           <div class="flow-node"><div class="flow-num">3</div><div><div class="flow-text">Slaugos planas</div><div class="flow-sub">vertinimas • tikslai • veiksmai • mokymas</div></div></div>
         </div>
       </div>
@@ -145,7 +145,7 @@ textarea{min-height:90px;resize:vertical}
     <aside class="sidebar">
       <div class="step on" id="st1"><div class="n">1</div><span>Specialybė</span></div>
       <div class="step" id="st2"><div class="n">2</div><span>TLK diagnozė</span></div>
-      <div class="step" id="st3"><div class="n">3</div><span>Operacija</span></div>
+      <div class="step" id="st3"><div class="n">3</div><span>Procedūra / kelias</span></div>
       <div class="step" id="st4"><div class="n">4</div><span>Įvertinimas</span></div>
       <div class="step" id="st5"><div class="n">5</div><span>Problemos</span></div>
       <div class="step" id="st6"><div class="n">6</div><span>Planas</span></div>
@@ -157,7 +157,7 @@ textarea{min-height:90px;resize:vertical}
 
       <section id="screen1">
         <div class="section-title">Pasirinkite specialybę</div>
-        <p class="section-sub">Pirmajame MVP išsamiausiai vystomi trys klinikiniai paketai.</p>
+        <p class="section-sub">Pasirinkite vieną iš penkių klinikinių sričių. Terapijos kryptis V11 išplėsta į dažniausių stacionaro būklių branduolį.</p>
         <div class="grid" id="specialtyGrid"></div>
 
         <div class="section-title" style="font-size:17px;margin-top:22px">Greitas demonstravimas</div>
@@ -169,6 +169,10 @@ textarea{min-height:90px;resize:vertical}
           <div class="quick" onclick="quickStart('N20','URS')"><b>N20 → URS</b><span>Urologija</span></div>
           <div class="quick" onclick="quickStart('C71','Kraniotomija ir galvos smegenų naviko rezekcija')"><b>C71 → Kraniotomija</b><span>Neurochirurgija</span></div>
           <div class="quick" onclick="quickStart('S72','Proksimalinio šlaunikaulio osteosintezė / intramedulinė vinis')"><b>S72 → Šlaunikaulio lūžis</b><span>Ortopedija-traumatologija</span></div>
+          <div class="quick" onclick="quickStart('I50','Širdies nepakankamumo klinikinės slaugos kelias')"><b>I50 → Širdies nepakankamumas</b><span>Vidaus ligos / terapija</span></div>
+          <div class="quick" onclick="quickStart('D50','Anemijos klinikinės slaugos kelias')"><b>D50 → Anemija</b><span>Vidaus ligos / terapija</span></div>
+          <div class="quick" onclick="quickStart('I21','Ūminio miokardo infarkto klinikinės slaugos kelias')"><b>I21 → Ūminis MI</b><span>Vidaus ligos / terapija</span></div>
+          <div class="quick" onclick="quickStart('A40–A41','Sepsio klinikinės slaugos kelias')"><b>A40–A41 → Sepsis</b><span>Vidaus ligos / terapija</span></div>
         </div>
       </section>
 
@@ -185,7 +189,7 @@ textarea{min-height:90px;resize:vertical}
 
       <section id="screen3" class="hidden">
         <div class="section-title" id="procTitle"></div>
-        <p class="section-sub">Pasirinkite realiai atliktą ar planuojamą operaciją / procedūrą. Diagnozė pati operacijos nenustato.</p>
+        <p class="section-sub">Pasirinkite realiai atliktą ar planuojamą procedūrą arba klinikinį slaugos kelią. Diagnozė pati gydymo ar procedūros nenustato.</p>
         <div class="grid" id="procGrid"></div>
         <div class="btnrow"><button class="btn btn-secondary" onclick="go(2)">Atgal</button></div>
       </section>
@@ -195,10 +199,15 @@ textarea{min-height:90px;resize:vertical}
         <p class="section-sub">Pažymėkite aktualius vertinimo punktus. Tai padeda pagrįsti, kodėl pasirenkamos konkrečios slaugos problemos.</p>
         <div class="card" id="assessmentList"></div>
         <div class="card">
+          <div class="tag">GRETUTINĖS / PAPILDOMOS BŪKLĖS</div>
+          <div class="callout">Ta pati būklė gali būti svarbi skirtingose specialybėse. Pvz., anemiją galima pridėti ir urologiniam, chirurginiam ar traumatologiniam pacientui – ji nėra „pririšta“ prie vieno skyriaus.</div>
+          <div id="sharedConditionsList"></div>
+        </div>
+        <div class="card">
           <span class="field-label">Papildomas individualus vertinimas</span>
           <textarea id="customAssessment" placeholder="Pvz. pacientas orientuotas, vaikšto savarankiškai, skausmas didėja kosint..."></textarea>
         </div>
-        <div class="btnrow"><button class="btn btn-secondary" onclick="go(3)">Atgal</button><button class="btn btn-primary" onclick="go(5)">Toliau</button></div>
+        <div class="btnrow"><button class="btn btn-secondary" onclick="go(3)">Atgal</button><button class="btn btn-primary" onclick="continueFromAssessment()">Toliau</button></div>
       </section>
 
       <section id="screen5" class="hidden">
@@ -252,8 +261,8 @@ textarea{min-height:90px;resize:vertical}
       </section>
 
       <section id="generalModules" class="hidden">
-        <div class="section-title">Bendrieji chirurginės slaugos moduliai</div>
-        <p class="section-sub">Šiuos modulius vėliau galima jungti prie bet kurios specialybės ar operacijos.</p>
+        <div class="section-title">Bendrieji slaugos moduliai</div>
+        <p class="section-sub">Šiuos modulius galima jungti prie skirtingų specialybių, procedūrų ir gretutinių būklių.</p>
         <div class="module-grid">
           <div class="card"><div class="iconbox">Ž</div><div class="small-head">Pooperacinė žaizda</div><div class="meta">Žaizdos vertinimas, infekcijos rizika, tvarsčiai, paciento mokymas.</div></div>
           <div class="card"><div class="iconbox">D</div><div class="small-head">Drenai</div><div class="meta">Fiksacija, išskyrų pobūdis ir kiekis, infekcijos ir kraujavimo stebėjimas.</div></div>
@@ -268,6 +277,8 @@ textarea{min-height:90px;resize:vertical}
           <div class="card"><div class="iconbox">E</div><div class="small-head">EVD / likvoro drenažas</div><div class="meta">Sistemos padėtis pagal paskyrimą, likvoro pobūdis ir kiekis, įvedimo vieta, infekcijos ir nutekėjimo stebėjimas.</div></div>
           <div class="card"><div class="iconbox">NV</div><div class="small-head">Galūnės neurovaskulinė stebėsena</div><div class="meta">Spalva, temperatūra, kapiliarų prisipildymas, jutimai, judesiai, pulsas ir skausmo dinamika pagal klinikinę situaciją.</div></div>
           <div class="card"><div class="iconbox">G</div><div class="small-head">Gipsas / įtvaras / ortozė</div><div class="meta">Spaudimo vietos, odos būklė, tinimas, galūnės padėtis, saugus naudojimas ir paciento mokymas.</div></div>
+          <div class="card"><div class="iconbox">T</div><div class="small-head">Terapijos branduolys</div><div class="meta">Kardiologija, pulmonologija, nefrologija, endokrinologija, hematologija, gastroenterologija, sepsis, VTE ir skysčių / elektrolitų būklės.</div></div>
+          <div class="card"><div class="iconbox">+</div><div class="small-head">Gretutinės būklės</div><div class="meta">Anemija, diabetas, lėtinė inkstų liga, širdies nepakankamumas, LOPL, hipertenzija, prieširdžių virpėjimas, nutukimas, dehidratacija, elektrolitų sutrikimai ir antikoaguliacinis gydymas gali būti prijungiami prie bet kurios specialybės plano.</div></div>
           <div class="card"><div class="iconbox">SB</div><div class="small-head">SBAR perdavimas</div><div class="meta">Vėlesniame etape – automatinis struktūruotas paciento perdavimo juodraštis.</div></div>
         </div>
         <div class="btnrow"><button class="btn btn-primary" onclick="startFlow()">Kurti planą</button><button class="btn btn-secondary" onclick="goHome()">Į pradžią</button></div>
@@ -279,18 +290,18 @@ textarea{min-height:90px;resize:vertical}
           <div class="tag">PRODUKTO KRYPTIS</div>
           <ul class="about-list">
             <li>TLK-10-AM naudojamas diagnozės paieškai ir klinikiniam keliui pradėti.</li>
-            <li>Operacija / procedūra pasirenkama atskirai, nes vienas TLK kodas savaime nenustato gydymo.</li>
+            <li>Procedūra arba klinikinis slaugos kelias pasirenkamas atskirai, nes vienas TLK kodas savaime nenustato gydymo.</li>
             <li>Slaugos problemos pateikiamos kaip siūlomos kryptys, o ne kaip automatinė diagnozė.</li>
             <li>Nenaudojami paciento vardas, asmens kodas ar ligos istorijos numeris.</li>
             <li>Prieš realų klinikinį naudojimą reikalinga turinio ekspertizė, validacija, duomenų apsaugos ir medicinos priemonės reguliacinė analizė.</li>
-            <li>V9 išplėsta chirurgija, urologija, neurochirurgija ir ortopedija-traumatologija: lūžių, osteosintezės, endoprotezavimo, artroskopijos, išorinės fiksacijos ir galūnės neurovaskulinės stebėsenos keliai.</li>
+            <li>V11 vidaus ligų / terapijos kryptis išplėsta iki dažniausių stacionaro būklių branduolio: kardiologija, pulmonologija, hematologija, endokrinologija, nefrologija, gastroenterologija, infekcijos, venų tromboembolija, skysčių ir elektrolitų pusiausvyra. Gretutinės būklės veikia skersai specialybių.</li>
             <li>ACHI procedūrų skaitmeniniai kodai į demo sąmoningai nedėti, kol nėra integruotas oficialus aktualus klasifikatorius.</li>
           </ul>
         </div>
         <div class="btnrow"><button class="btn btn-primary" onclick="startFlow()">Kurti planą</button><button class="btn btn-secondary" onclick="goHome()">Į pradžią</button></div>
       </section>
 
-      <div class="footer">NursePlan LT V9 • išplėsta chirurgijos, urologijos, neurochirurgijos ir ortopedijos-traumatologijos demonstracinė versija • turinio struktūra skirta mokymui ir produkto testavimui. TLK grupės turi būti tikrinamos pagal aktualų oficialų Lietuvos TLK-10-AM / ACHI klasifikatorių prieš produkcinį naudojimą.</div>
+      <div class="footer">NursePlan LT V11 • chirurgija, urologija, neurochirurgija, ortopedija-traumatologija ir išplėstas vidaus ligų / terapijos branduolys • turinio struktūra skirta mokymui ir produkto testavimui. TLK grupės turi būti tikrinamos pagal aktualų oficialų Lietuvos TLK-10-AM / ACHI klasifikatorių prieš produkcinį naudojimą.</div>
     </div>
   </div>
 </main>
@@ -371,6 +382,30 @@ const diagnoses = [
   {sp:"Ortopedija-traumatologija", group:"Endoprotezavimas", code:"M17", name:"Gonartrozė [kelio sąnario artrozė]", procedures:["Totalinis kelio sąnario endoprotezavimas"]},
   {sp:"Ortopedija-traumatologija", group:"Implantų komplikacijos", code:"T84", name:"Ortopedinių implantų ir endoprotezų komplikacijų grupė", procedures:["Revizinis klubo / kelio endoprotezavimas","Ortopedinio implanto pašalinimas / revizija"]}
 
+,
+  // VIDAUS LIGOS / TERAPIJA
+  {sp:"Vidaus ligos / terapija", group:"Hematologija", code:"D50", name:"Geležies stokos anemija", procedures:["Anemijos klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Kardiologija", code:"I50", name:"Širdies nepakankamumas", procedures:["Širdies nepakankamumo klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Kardiologija", code:"I10", name:"Pirminė (esminė) hipertenzija", procedures:["Hipertenzijos klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Kardiologija", code:"I48", name:"Prieširdžių virpėjimas ir plazdėjimas", procedures:["Prieširdžių virpėjimo klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Pulmonologija", code:"J18", name:"Pneumonija, sukėlėjas nepatikslintas", procedures:["Pneumonijos klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Pulmonologija", code:"J44", name:"Lėtinė obstrukcinė plaučių liga (LOPL)", procedures:["LOPL paūmėjimo klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Pulmonologija", code:"J45", name:"Astma", procedures:["Astmos klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Endokrinologija", code:"E11", name:"2 tipo cukrinis diabetas", procedures:["Cukrinio diabeto klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Nefrologija", code:"N17", name:"Ūminis inkstų nepakankamumas", procedures:["Ūminio inkstų funkcijos sutrikimo klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Nefrologija", code:"N18", name:"Lėtinė inkstų liga / lėtinis inkstų nepakankamumas", procedures:["Lėtinės inkstų ligos klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Gastroenterologija", code:"K74", name:"Kepenų fibrozė ir cirozė", procedures:["Kepenų cirozės klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Skysčių ir elektrolitų pusiausvyra", code:"E86", name:"Kraujo tūrio sumažėjimas / dehidratacija", procedures:["Dehidratacijos klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Skysčių ir elektrolitų pusiausvyra", code:"E87", name:"Skysčių, elektrolitų bei rūgščių ir šarmų pusiausvyros sutrikimai", procedures:["Elektrolitų ir skysčių pusiausvyros klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Kardiologija", code:"I20", name:"Krūtinės angina", procedures:["Krūtinės anginos / išeminio krūtinės skausmo klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Kardiologija", code:"I21", name:"Ūminis miokardo infarktas", procedures:["Ūminio miokardo infarkto klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Kraujagyslių ligos", code:"I26", name:"Plaučių embolija", procedures:["Plaučių embolijos klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Kraujagyslių ligos", code:"I80", name:"Flebitas ir tromboflebitas", procedures:["Giliųjų venų trombozės / tromboflebito klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Infekcijos", code:"A40–A41", name:"Sepsis", procedures:["Sepsio klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Gastroenterologija", code:"K85", name:"Ūminis pankreatitas", procedures:["Ūminio pankreatito klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Gastroenterologija", code:"K92.2", name:"Kraujavimas iš skrandžio ir žarnyno, nepatikslintas", procedures:["Kraujavimo iš virškinimo trakto klinikinės slaugos kelias"]},
+  {sp:"Vidaus ligos / terapija", group:"Endokrinologija", code:"E16.2", name:"Hipoglikemija, nepatikslinta", procedures:["Hipoglikemijos klinikinės slaugos kelias"]}
+
 ];
 
 const problemLibrary = {
@@ -401,6 +436,9 @@ const problemLibrary = {
  calcium:{t:"Kalcio pusiausvyros pokyčio rizika po skydliaukės operacijos",g:"Galimi hipokalcemijos simptomai bus laiku atpažinti.",a:["Stebėti perioralinį ar galūnių dilgčiojimą, mėšlungį ar spazmus.","Stebėti laboratorinius rodiklius pagal paskyrimą.","Vykdyti paskirtą gydymą.","Apie simptomų atsiradimą nedelsiant informuoti gydytoją."],e:"Naujų hipokalcemijos simptomų nenustatyta / jie perduoti ir įvertinti."},
  glucose:{t:"Gliukozės kontrolės poreikis po kasos operacijos",g:"Gliukozės pokyčiai bus laiku pastebėti ir valdomi pagal paskyrimą.",a:["Stebėti gliukozę pagal paskyrimą.","Stebėti hipoglikemijos / hiperglikemijos simptomus.","Vykdyti paskirtą gydymą.","Dokumentuoti reikšmingus pokyčius."],e:"Gliukozės rodikliai stebimi, reikšmingi pokyčiai perduoti."}
 ,
+  chestpain:{t:"Krūtinės skausmo / miokardo išemijos simptomų stebėjimo poreikis",g:"Krūtinės skausmo ir susijusių simptomų dinamika bus įvertinta, o blogėjimas laiku eskaluotas.",a:["Įvertinti skausmo vietą, pobūdį, intensyvumą, trukmę ir plitimą.","Stebėti dusulį, prakaitavimą, pykinimą, silpnumą, kraujospūdį ir pulsą.","Vykdyti paskirtą EKG / monitoravimo ir gydymo planą.","Apie naują, stiprėjantį ar pasikartojantį krūtinės skausmą nedelsiant informuoti atsakingą specialistą."],e:"Krūtinės simptomų dinamika įvertinta, reikšmingi pokyčiai laiku perduoti."},
+  systemicinf:{t:"Sisteminės infekcijos / sepsio būklės stebėjimo poreikis",g:"Būklės blogėjimo požymiai bus anksti atpažinti ir nedelsiant eskaluoti.",a:["Stebėti temperatūrą, pulsą, kraujospūdį, kvėpavimo dažnį, SpO₂ ir sąmonės būklę pagal paciento riziką.","Stebėti diurezę, periferinę perfuziją ir bendros būklės dinamiką.","Vykdyti paskirtą tyrimų, skysčių, deguonies ir antimikrobinio gydymo planą pagal kompetenciją.","Apie naują hipotenziją, sąmonės pokytį, oligūriją, ryškų dusulį ar kitą ūmų blogėjimą nedelsiant informuoti atsakingą specialistą."],e:"Sisteminės infekcijos būklė stebima, blogėjimo požymiai atpažinti ir eskaluoti."},
+  hypoglycemia:{t:"Hipoglikemijos rizika / ūminio epizodo stebėjimo poreikis",g:"Hipoglikemija bus laiku atpažinta, koreguota pagal paskyrimą ir pakartotinai įvertinta.",a:["Įvertinti gliukozę pagal paskyrimą ir esant simptomams.","Stebėti prakaitavimą, drebulį, alkį, silpnumą, elgesio ar sąmonės pokyčius.","Vykdyti įstaigos patvirtintą hipoglikemijos korekcijos algoritmą / gydytojo paskyrimą.","Pakartotinai įvertinti gliukozę ir klinikinę būklę po intervencijos bei dokumentuoti epizodą."],e:"Gliukozė ir klinikinė būklė stabilizuota / epizodas eskaluotas pagal poreikį."},
  neuro:{t:"Neurologinės būklės pablogėjimo rizika",g:"Nauji neurologiniai pokyčiai bus atpažinti ir perduoti nedelsiant.",a:["Vertinti sąmonės būklę pagal įstaigos taikomą neurologinio vertinimo skalę.","Stebėti vyzdžių dydį ir reakciją, galūnių jėgą, kalbą ir naują asimetriją.","Lyginti neurologinę būklę su ankstesniu vertinimu ir dokumentuoti dinamiką.","Apie naują sąmonės, motorikos, kalbos ar vyzdžių pokytį nedelsiant informuoti atsakingą specialistą."],e:"Neurologinė būklė stabili / pokyčiai laiku atpažinti ir perduoti."},
  icp:{t:"Padidėjusio intrakranijinio slėgio rizikos stebėjimo poreikis",g:"Bus laiku atpažinti galimi intrakranijinio slėgio didėjimo požymiai ir vykdomas paskirtas planas.",a:["Stebėti sąmonės, vyzdžių, galvos skausmo, pykinimo / vėmimo ir gyvybinių rodiklių pokyčius.","Užtikrinti gydymo plane nurodytą kūno ir galvos padėtį bei vengti nereikalingo spaudimo kaklo srityje.","Vykdyti paskirtą neurologinę ir hemodinaminę stebėseną.","Apie ūmų neurologinės būklės blogėjimą nedelsiant informuoti atsakingą specialistą."],e:"Ūmaus neurologinio blogėjimo požymių nenustatyta / pokyčiai perduoti."},
  seizure:{t:"Traukulių rizika",g:"Bus taikomos saugos priemonės ir traukuliai, jei pasireikš, bus laiku atpažinti bei dokumentuoti.",a:["Stebėti traukulių požymius ir sąmonės pokyčius.","Užtikrinti saugią aplinką ir paruoštas pagalbos priemones pagal skyriaus tvarką.","Traukulio metu stebėti trukmę ir klinikinį vaizdą, nebandyti jėga sulaikyti paciento.","Vykdyti paskirtą gydymą ir dokumentuoti epizodą."],e:"Traukulių nebuvo / epizodas saugiai suvaldytas ir dokumentuotas."},
@@ -413,6 +451,13 @@ const problemLibrary = {
   pressure:{t:"Odos vientisumo ir spaudimo pažeidimo rizika",g:"Oda išliks nepažeista, neatsiras naujų spaudimo vietų.",a:["Vertinti odą ir spaudimo vietas, ypač po įtvarais, ortozėmis ir imobilizacijos priemonėmis.","Keisti padėtį ir taikyti spaudimą mažinančias priemones pagal paciento būklę.","Stebėti drėgmę, trintį ir medicininių priemonių spaudimą.","Dokumentuoti naujus odos pokyčius ir koreguoti priežiūrą."],e:"Naujų spaudimo sukeltų odos pažeidimų nėra."},
   selfcare:{t:"Sumažėjęs gebėjimas apsitarnauti",g:"Pacientas saugiai atliks maksimaliai galimą savipriežiūros dalį su reikiama pagalba.",a:["Įvertinti gebėjimą persikelti, apsirengti, naudotis tualetu ir higienos poreikius.","Suteikti tik tiek pagalbos, kiek būtina saugumui.","Derinti pagalbines priemones ir mokymą su reabilitacijos komanda.","Skatinti saugų savarankiškumą pagal leistiną krūvį."],e:"Pacientas saugiai atlieka sutartą savipriežiūros dalį."},
   delirium:{t:"Ūmaus sumišimo rizika",g:"Bus palaikoma orientacija ir anksti atpažįstami ūmūs pažintinės būklės pokyčiai.",a:["Stebėti orientaciją, elgesį ir staigius pažintinės būklės pokyčius.","Užtikrinti akinių, klausos aparatų ir kitų pagalbinių priemonių prieinamumą, jei aktualu.","Skatinti miego–budrumo režimą, mobilizaciją ir adekvatų skysčių vartojimą pagal planą.","Apie naują ūmų sumišimą informuoti gydytoją ir įvertinti galimas priežastis pagal kompetenciją."],e:"Ūmaus sumišimo požymių nėra / būklė atpažinta ir eskaluota."}
+
+,
+  fatigue:{t:"Nuovargis / sumažėjusi fizinio krūvio tolerancija",g:"Pacientas saugiai paskirstys aktyvumą pagal būklę, o nuovargio dinamika bus stebima.",a:["Įvertinti nuovargį, silpnumą ir fizinio krūvio toleranciją.","Stebėti galvos svaigimą, dusulį ar širdies plakimą aktyvumo metu.","Planuoti veiklą ir poilsį pagal paciento galimybes.","Mobilizuoti saugiai, atsižvelgiant į simptomus ir kritimo riziką."],e:"Pacientas toleruoja sutartą aktyvumo lygį, ryškus simptomų blogėjimas nenustatytas."},
+  glucose:{t:"Gliukozės kiekio kraujyje svyravimo rizika / stebėjimo poreikis",g:"Gliukozės pokyčiai bus laiku atpažinti ir bus vykdomas paskirtas gydymo planas.",a:["Matuoti gliukozę pagal gydymo planą ir įstaigos tvarką.","Stebėti hipoglikemijos ir hiperglikemijos simptomus.","Derinti maitinimą, fizinį aktyvumą ir paskirtą gydymą pagal planą.","Dokumentuoti reikšmingus pokyčius ir perduoti atsakingam specialistui."],e:"Gliukozės kontrolė stebima, reikšmingi svyravimai atpažinti ir perduoti."},
+  electrolyte:{t:"Elektrolitų pusiausvyros sutrikimo rizika / stebėjimo poreikis",g:"Klinikiniai elektrolitų pusiausvyros pokyčiai bus laiku atpažinti.",a:["Stebėti sąmonės, raumenų jėgos, ritmo ir kitus galimus klinikinius pokyčius pagal būklę.","Sekti paskirtus laboratorinius tyrimus ir jų dinamiką pagal kompetenciją.","Stebėti suvartojamų ir išskiriamų skysčių balansą, kai aktualu.","Vykdyti paskirtą korekciją ir dokumentuoti paciento reakciją."],e:"Reikšmingi pusiausvyros pokyčiai atpažinti, paskirtas planas vykdomas."},
+  cardiac:{t:"Širdies ritmo / hemodinamikos stebėjimo poreikis",g:"Reikšmingi ritmo ar hemodinamikos pokyčiai bus laiku pastebėti ir eskaluoti.",a:["Stebėti pulsą, kraujospūdį ir klinikinę būklę pagal riziką.","Vertinti palpitacijas, krūtinės diskomfortą, svaigimą, sinkopę ar dusulį.","Vykdyti paskirtą EKG / monitoravimo planą.","Apie naują ar blogėjančią būklę nedelsiant informuoti atsakingą specialistą."],e:"Hemodinaminė būklė stabili / reikšmingi pokyčiai laiku perduoti."},
+  edema:{t:"Edemos / skysčių perkrovos stebėjimo poreikis",g:"Skysčių kaupimosi dinamika bus sistemingai stebima.",a:["Stebėti periferines edemas ir jų dinamiką.","Sverti pacientą pagal paskirtą planą, kai aktualu.","Stebėti dusulį, ortopnėją ir kvėpavimo būklę.","Registruoti skysčių balansą, jei paskirta."],e:"Edemų ir skysčių būklės dinamika įvertinta ir dokumentuota."}
 
 };
 
@@ -522,6 +567,29 @@ const procedures = {
  "Revizinis klubo / kelio endoprotezavimas":{tag:"Ortopedija-traumatologija",problems:["pain","bleeding","infection","mobility","vte","wound","selfcare","knowledge"],assessment:["Skausmas.","Žaizda, tvarstis ir drenai, jei yra.","Kraujavimo ir infekcijos požymiai.","Operuotos galūnės neurovaskulinė būklė.","Leistinas apkrovimas ir mobilumo planas."],education:["Paaiškinti individualų apkrovimo ir judesių režimą.","Aptarti ilgesnio infekcijos stebėjimo svarbą pagal gydymo planą.","Paaiškinti, kada kreiptis dėl karščiavimo, žaizdos sekrecijos, stiprėjančio skausmo ar galūnės tinimo."]},
  "Ortopedinio implanto pašalinimas / revizija":{tag:"Ortopedija-traumatologija",problems:["pain","bleeding","wound","infection","mobility","knowledge"],assessment:["Skausmas.","Žaizda / tvarstis.","Kraujavimo ir infekcijos požymiai.","Galūnės neurovaskulinė būklė.","Leistinas aktyvumas ir apkrovimas."],education:["Paaiškinti žaizdos priežiūrą.","Aptarti leistiną fizinį aktyvumą ir apkrovimą.","Paaiškinti infekcijos, kraujavimo ir neurovaskulinius įspėjamuosius požymius."]}
 
+,
+ "Anemijos klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["fatigue","fall","knowledge"],assessment:["Silpnumas, nuovargis ir fizinio krūvio tolerancija.","Galvos svaigimas, sinkopės ar ortostatiniai simptomai.","Dusulys, širdies plakimas ir odos / gleivinių blyškumas pagal klinikinę būklę.","Gyvybiniai rodikliai.","Hemoglobino ir kitų paskirtų laboratorinių rodiklių dinamika pagal kompetenciją.","Galimi kraujavimo požymiai, jei tai aktualu klinikinei situacijai."],education:["Paaiškinti paskirto anemijos gydymo ir kontrolinių tyrimų svarbą.","Aptarti saugų aktyvumo didinimą ir poilsio planavimą.","Paaiškinti, kada kreiptis dėl ryškaus silpnumo, alpimo, progresuojančio dusulio ar kraujavimo požymių."]},
+ "Širdies nepakankamumo klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["respiratory","fluid","edema","fatigue","cardiac","knowledge"],assessment:["Dusulys, ortopnėja ir kvėpavimo dažnis.","SpO₂ pagal būklę.","Periferinės edemos ir jų dinamika.","Kūno masės dinamika, jei paskirta.","Skysčių balansas ir diurezė, kai aktualu.","Pulsas, kraujospūdis ir bendras fizinio krūvio toleravimas."],education:["Paaiškinti kasdienio simptomų, tinimo ir kūno masės stebėjimo principus, jei tai įtraukta į individualų planą.","Aptarti vaistų vartojimo ir paskirtų skysčių / mitybos rekomendacijų laikymąsi.","Paaiškinti, kada kreiptis dėl staiga stiprėjančio dusulio, greitai didėjančio tinimo ar ryškaus būklės blogėjimo."]},
+ "Hipertenzijos klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["cardiac","anxiety","knowledge"],assessment:["Kraujospūdis pagal nustatytą matavimo planą ir tinkamą techniką.","Galvos skausmas, svaigimas, regos pokyčiai ar krūtinės diskomfortas.","Pulsas.","Paskirtų antihipertenzinių vaistų vartojimas ir toleravimas.","Paciento žinios apie savikontrolę."],education:["Mokyti taisyklingos kraujospūdžio savikontrolės, jei ji rekomenduota.","Aptarti vaistų vartojimo reguliarumą ir gyvenimo būdo rekomendacijas pagal individualų planą.","Paaiškinti, kada dėl labai aukšto kraujospūdžio ir ūmių simptomų būtina kreiptis skubios pagalbos."]},
+ "Prieširdžių virpėjimo klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["cardiac","fatigue","fall","knowledge"],assessment:["Pulsas, jo dažnis ir reguliarumas.","Kraujospūdis.","Palpitacijos, dusulys, krūtinės diskomfortas, svaigimas ar sinkopė.","Neurologinių simptomų atsiradimas.","Paskirtas ritmo monitoravimas / EKG.","Kraujavimo požymiai, jei pacientui taikomas antikoaguliacinis gydymas."],education:["Paaiškinti paskirto gydymo ir kontrolės svarbą.","Aptarti kraujavimo požymių stebėjimą, jei vartojami antikoaguliantai.","Paaiškinti, kada kreiptis dėl naujo neurologinio deficito, sinkopės, stipraus krūtinės skausmo ar ryškaus dusulio."]},
+ "Pneumonijos klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["respiratory","infection","fluid","fatigue","nutrition","knowledge"],assessment:["Kvėpavimo dažnis, SpO₂ ir dusulys.","Temperatūra ir bendra būklė.","Kosulys, skreplių kiekis ir pobūdis.","Skausmas kvėpuojant ar kosint.","Skysčių vartojimas, diurezė ir dehidratacijos požymiai.","Mobilumo ir fizinio krūvio tolerancija."],education:["Paaiškinti paskirto gydymo ir pakankamo poilsio svarbą.","Aptarti saugų mobilizavimą ir kvėpavimo veiksmus pagal būklę.","Paaiškinti, kada kreiptis dėl progresuojančio dusulio, sąmonės pokyčių, cianozės ar ryškaus būklės blogėjimo."]},
+ "LOPL paūmėjimo klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["respiratory","fatigue","anxiety","nutrition","knowledge"],assessment:["Kvėpavimo dažnis, SpO₂ pagal paskirtą tikslą ir klinikinę būklę.","Dusulio intensyvumas ir kvėpavimo darbas.","Kosulys ir skreplių pobūdis.","Sąmonės būklė ir nuovargis.","Inhaliuojamųjų vaistų vartojimo technika.","Mitybos ir skysčių toleravimas."],education:["Mokyti taisyklingos inhaliatorių technikos ir patikrinti supratimą.","Aptarti paūmėjimo požymius ir individualų veiksmų planą.","Paaiškinti rūkymo nutraukimo ir tolesnės pulmonologinės priežiūros svarbą, jei aktualu."]},
+ "Astmos klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["respiratory","anxiety","knowledge"],assessment:["Dusulys, švokštimas ir kvėpavimo dažnis.","SpO₂ ir bendra klinikinė būklė.","Gebėjimas kalbėti, kvėpavimo darbas ir nuovargio požymiai.","Galimi paūmėjimą provokuojantys veiksniai.","Inhaliatorių / tarpinės naudojimo technika."],education:["Mokyti taisyklingos inhaliatoriaus technikos ir patikrinti supratimą.","Aptarti individualų astmos veiksmų planą, jei jis paskirtas.","Paaiškinti, kada dėl progresuojančio dusulio ar nepakankamo atsako į paskirtą gydymą būtina kreiptis skubios pagalbos."]},
+ "Cukrinio diabeto klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["glucose","infection","nutrition","knowledge"],assessment:["Gliukozės rodmenys pagal gydymo planą.","Hipoglikemijos ir hiperglikemijos simptomai.","Mitybos ir skysčių vartojimas.","Odos, pėdų ir žaizdų būklė, jei aktualu.","Paciento gebėjimas savarankiškai matuoti gliukozę ir vartoti paskirtą gydymą.","Gretutinės infekcijos ar ūmios ligos požymiai."],education:["Mokyti atpažinti hipoglikemijos ir hiperglikemijos požymius bei veikti pagal individualų planą.","Aptarti gliukozės savikontrolės ir paskirto gydymo laikymąsi.","Aptarti pėdų ir odos priežiūrą bei kada kreiptis dėl žaizdų ar infekcijos požymių."]},
+ "Ūminio inkstų funkcijos sutrikimo klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["fluid","electrolyte","urinary","fatigue","knowledge"],assessment:["Diurezė ir jos dinamika.","Skysčių balansas.","Edemos, dusulys ar kiti skysčių perkrovos požymiai.","Gyvybiniai rodikliai.","Paskirtų kreatinino, šlapalo ir elektrolitų rodiklių dinamika pagal kompetenciją.","Galimos nefrotoksinių vaistų / kontrasto aplinkybės perduodant informaciją gydymo komandai."],education:["Paaiškinti skysčių vartojimo rekomendacijas tik pagal individualų gydymo planą.","Aptarti paskirtų tyrimų ir vaistų peržiūros svarbą.","Paaiškinti, kada kreiptis dėl staiga sumažėjusio šlapimo kiekio, didėjančio tinimo ar dusulio."]},
+ "Lėtinės inkstų ligos klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["fluid","electrolyte","fatigue","nutrition","knowledge"],assessment:["Skysčių balansas, diurezė ir edemos.","Kraujospūdis.","Nuovargis ir fizinio krūvio tolerancija.","Paskirtų inkstų funkcijos ir elektrolitų rodiklių dinamika pagal kompetenciją.","Mitybos ir skysčių rekomendacijų laikymasis pagal individualų planą.","Dializės prieigos būklė, jei pacientui taikoma dializė ir tai patenka į slaugytojo kompetenciją."],education:["Paaiškinti individualių skysčių, mitybos ir vaistų rekomendacijų laikymosi svarbą.","Aptarti kraujospūdžio ir kūno masės savikontrolę, jei paskirta.","Paaiškinti, kada kreiptis dėl mažėjančios diurezės, didėjančio tinimo, dusulio ar ryškaus silpnumo."]},
+ "Kepenų cirozės klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["fluid","nutrition","bleeding","fall","delirium","knowledge"],assessment:["Sąmonė, orientacija ir elgesio pokyčiai.","Pilvo apimtis / ascito ir periferinių edemų dinamika pagal planą.","Kraujavimo požymiai.","Mitybos būklė ir apetitas.","Skysčių balansas ir diurezė, kai aktualu.","Odos ir gleivinių būklė, niežulys ar gelta."],education:["Aptarti paskirtų vaistų, mitybos ir skysčių rekomendacijų laikymąsi.","Paaiškinti, kada kreiptis dėl kraujavimo, sąmonės pokyčių, didėjančio pilvo apimties ar dusulio.","Aptarti alkoholio nevartojimą, jei tai aktualu individualiam gydymo planui."]},
+ "Dehidratacijos klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["fluid","fall","fatigue","electrolyte","knowledge"],assessment:["Troškulys, gleivinių ir odos būklė.","Kraujospūdis, pulsas ir ortostatiniai simptomai pagal būklę.","Skysčių suvartojimas ir diurezė.","Sąmonės būklė ir silpnumas.","Paskirtų elektrolitų ir inkstų funkcijos rodiklių dinamika pagal kompetenciją."],education:["Paaiškinti individualų skysčių vartojimo planą ir jo ribas.","Mokyti stebėti šlapimo kiekį, svaigimą ir kitus blogėjančios hidratacijos požymius.","Paaiškinti, kada kreiptis dėl negalėjimo gerti, pasikartojančio vėmimo, sinkopės ar ryškaus silpnumo."]},
+ "Elektrolitų ir skysčių pusiausvyros klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["electrolyte","fluid","cardiac","fall","knowledge"],assessment:["Sąmonės ir neurologinės būklės pokyčiai.","Raumenų silpnumas, mėšlungis ar parestezijos.","Pulsas, kraujospūdis ir ritmo pokyčiai pagal klinikinę būklę.","Skysčių balansas ir diurezė.","Paskirtų elektrolitų ir rūgščių-šarmų pusiausvyros rodiklių dinamika pagal kompetenciją."],education:["Paaiškinti, kad skysčių ar elektrolitų papildai vartojami tik pagal individualų paskyrimą.","Aptarti kontrolinių tyrimų svarbą.","Paaiškinti, kada kreiptis dėl naujo ryškaus silpnumo, sumišimo, palpitacijų ar sinkopės."]},
+ "Krūtinės anginos / išeminio krūtinės skausmo klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["chestpain","cardiac","anxiety","knowledge"],assessment:["Krūtinės skausmo vieta, intensyvumas, pobūdis, trukmė ir plitimas.","Dusulys, prakaitavimas, pykinimas, silpnumas ar svaigimas.","Pulsas, kraujospūdis ir SpO₂ pagal klinikinę būklę.","Paskirtas EKG / monitoravimas ir simptomų dinamika.","Ankstesni panašūs epizodai ir paskirto gydymo poveikis."],education:["Paaiškinti paskirto išeminės širdies ligos gydymo ir kontrolės svarbą.","Aptarti, kad naujas, stiprėjantis ar užsitęsęs krūtinės skausmas turi būti vertinamas skubiai.","Patikrinti, ar pacientas supranta individualų veiksmų planą ir vaistų vartojimą."]},
+ "Ūminio miokardo infarkto klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["chestpain","cardiac","anxiety","bleeding","fatigue","knowledge"],assessment:["Krūtinės skausmo ir kitų išemijos simptomų dinamika.","Pulsas, kraujospūdis, SpO₂ ir hemodinaminė būklė.","Širdies ritmo pokyčiai pagal paskirtą monitoravimą.","Dusulys, plaučių stazės ar periferinės perfuzijos pokyčiai.","Kraujavimo požymiai, jei taikomas antitrombozinis / intervencinis gydymas.","Punkcijos vietos būklė, jei atlikta intervencinė procedūra."],education:["Paaiškinti tolesnio gydymo, reabilitacijos ir vaistų vartojimo svarbą pagal gydymo komandos planą.","Aptarti fizinio aktyvumo didinimą pagal individualų planą.","Paaiškinti, kada dėl pasikartojančio krūtinės skausmo, dusulio ar sinkopės būtina kreiptis skubios pagalbos."]},
+ "Plaučių embolijos klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["respiratory","cardiac","anxiety","bleeding","vte","knowledge"],assessment:["Dusulio intensyvumas, kvėpavimo dažnis ir SpO₂.","Krūtinės skausmas, tachikardija, kraujospūdis ir sinkopės / presinkopės simptomai.","Sąmonės ir periferinės perfuzijos būklė.","Vienos kojos tinimas, skausmas ar kiti galimos GVT požymiai.","Kraujavimo požymiai taikant antikoaguliacinį gydymą."],education:["Paaiškinti antikoaguliacinio gydymo laikymosi ir kontrolės svarbą, jei jis paskirtas.","Aptarti kraujavimo požymius ir kada kreiptis pagalbos.","Paaiškinti, kada dėl naujo ar stiprėjančio dusulio, krūtinės skausmo ar sinkopės būtina kreiptis skubiai."]},
+ "Giliųjų venų trombozės / tromboflebito klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["vte","pain","mobility","bleeding","knowledge"],assessment:["Pažeistos galūnės skausmas, tinimas, spalva ir temperatūra.","Galūnių apimties ar tinimo dinamika pagal įstaigos tvarką.","Naujas dusulys, krūtinės skausmas, tachikardija ar sinkopė.","Mobilumo lygis ir gydymo komandos nustatyti aktyvumo apribojimai.","Kraujavimo požymiai, jei taikomas antikoaguliacinis gydymas."],education:["Paaiškinti paskirto antikoaguliacinio gydymo ir kontrolės svarbą.","Aptarti saugaus mobilumo ir kompresijos priemonių naudojimą tik pagal individualų planą.","Paaiškinti, kada dėl staigaus dusulio, krūtinės skausmo ar kraujavimo būtina kreiptis skubiai."]},
+ "Sepsio klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["systemicinf","fluid","cardiac","respiratory","delirium","knowledge"],assessment:["Temperatūra, pulsas, kraujospūdis, kvėpavimo dažnis, SpO₂ ir sąmonės būklė pagal klinikinę riziką.","Periferinės perfuzijos požymiai, odos temperatūra / spalva ir kapiliarų prisipildymas pagal būklę.","Diurezė ir skysčių balansas.","Galimas infekcijos židinys ir jo klinikiniai požymiai.","Paskirtų laboratorinių tyrimų ir gydymo dinamikos stebėjimas pagal kompetenciją."],education:["Pacientui ir artimiesiems paaiškinti, kad būklė gali keistis greitai ir apie naujus simptomus reikia pranešti nedelsiant.","Aptarti paskirto gydymo, skysčių ir kontrolinių tyrimų planą pagal paciento būklę.","Išrašant po infekcijos epizodo paaiškinti, kada dėl karščiavimo, dusulio, sumišimo ar ryškaus silpnumo kreiptis pagalbos."]},
+ "Ūminio pankreatito klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["pain","nausea","fluid","nutrition","glucose","knowledge"],assessment:["Pilvo skausmo intensyvumas, lokalizacija ir dinamika.","Pykinimas, vėmimas ir toleravimas skysčių / mitybos pagal planą.","Gyvybiniai rodikliai ir bendra būklė.","Skysčių balansas ir diurezė.","Pilvo pūtimas ir žarnyno funkcija.","Paskirtų gliukozės ir laboratorinių rodiklių dinamika pagal kompetenciją."],education:["Paaiškinti paskirtos mitybos ir skysčių režimo svarbą.","Aptarti alkoholio vengimą, jei tai aktualu individualiai priežasčiai ir gydymo planui.","Paaiškinti, kada dėl stiprėjančio skausmo, vėmimo, karščiavimo ar silpnumo kreiptis pagalbos."]},
+ "Kraujavimo iš virškinimo trakto klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["bleeding","fluid","fall","fatigue","anxiety","knowledge"],assessment:["Vėmimas krauju, melena ar kiti matomi kraujavimo požymiai.","Pulsas, kraujospūdis, ortostatiniai simptomai ir periferinės perfuzijos būklė.","Silpnumas, svaigimas, sinkopė ir sąmonės būklė.","Skysčių balansas ir diurezė.","Hemoglobino ir kitų paskirtų laboratorinių rodiklių dinamika pagal kompetenciją."],education:["Paaiškinti, kad pasikartojantis kraujavimas, juodos išmatos, kraujingas vėmimas, sinkopė ar ryškus silpnumas reikalauja skubaus įvertinimo.","Aptarti paskirtų vaistų ir kontrolės planą.","Prieš išrašymą patikrinti paciento supratimą apie individualias mitybos ir rizikos veiksnių rekomendacijas."]},
+ "Hipoglikemijos klinikinės slaugos kelias":{tag:"Vidaus ligos / terapija",problems:["hypoglycemia","glucose","fall","delirium","knowledge"],assessment:["Gliukozės rodmuo ir jo dinamika.","Prakaitavimas, drebulys, alkis, silpnumas, galvos svaigimas.","Elgesio, orientacijos ar sąmonės pokyčiai.","Paskutinio maisto, insulino / gliukozę mažinančių vaistų ir fizinio aktyvumo aplinkybės pagal paciento situaciją.","Pakartotinis klinikinės būklės įvertinimas po korekcijos."],education:["Mokyti atpažinti ankstyvus hipoglikemijos simptomus ir veikti pagal individualų planą.","Aptarti vaistų, mitybos ir gliukozės savikontrolės suderinimą.","Paaiškinti, kada dėl sąmonės sutrikimo ar pasikartojančios hipoglikemijos būtina skubi pagalba."]}
+
 
 };
 
@@ -529,15 +597,52 @@ const specialties = [
  {name:"Chirurgija",icon:"CH",desc:"Pilvo, kolorektalinė, anorektalinė, bariatrinė, hepatobiliarinė, krūties, endokrininė ir sudėtingų žaizdų chirurgija."},
  {name:"Urologija",icon:"UR",desc:"Onkourologija, akmenligė, prostata, šlaplės ir kapšelio chirurgija, šlapimo derivacijos, drenažai ir rekonstrukcinė urologija."},
  {name:"Neurochirurgija",icon:"NE",desc:"Neuroonkologija, hidrocefalija, kraujagyslinė neurochirurgija, neurotrauma ir stuburo chirurgija."},
- {name:"Ortopedija-traumatologija",icon:"OT",desc:"Galūnių ir dubens lūžiai, osteosintezė, endoprotezavimas, artroskopija, išorinė fiksacija ir neurovaskulinė stebėsena."}
+ {name:"Ortopedija-traumatologija",icon:"OT",desc:"Galūnių ir dubens lūžiai, osteosintezė, endoprotezavimas, artroskopija, išorinė fiksacija ir neurovaskulinė stebėsena."},
+ {name:"Vidaus ligos / terapija",icon:"VL",desc:"Kardiologija, pulmonologija, hematologija, endokrinologija, nefrologija, gastroenterologija, skysčių ir elektrolitų pusiausvyra."}
+];
+
+const sharedConditions = [
+ {id:"anemia",name:"Anemija",codes:"D50–D64",match:["D50","D51","D52","D53","D55","D56","D57","D58","D59","D60","D61","D62","D63","D64"],problems:["fatigue","fall"],assessment:["Nuovargis, silpnumas ir fizinio krūvio tolerancija.","Galvos svaigimas, dusulys krūvio metu, širdies plakimas.","Hb dinamika ir galimi kraujavimo požymiai pagal situaciją."],education:["Aptarti anemijos gydymo ir kontrolinių tyrimų planą pagal paskyrimą."]},
+ {id:"diabetes",name:"Cukrinis diabetas",codes:"E09–E14",match:["E09","E10","E11","E12","E13","E14"],problems:["glucose","infection"],assessment:["Gliukozės rodmenys ir svyravimai pagal gydymo planą.","Hipoglikemijos / hiperglikemijos simptomai.","Odos, pėdų ir žaizdų būklė, jei aktualu."],education:["Aptarti gliukozės kontrolę, hipoglikemijos / hiperglikemijos požymius ir individualų gydymo planą."]},
+ {id:"ckd",name:"Lėtinė inkstų liga",codes:"N18",match:["N18"],problems:["fluid","electrolyte","fatigue"],assessment:["Diurezė, skysčių balansas ir edemos.","Kraujospūdis ir fizinio krūvio tolerancija.","Paskirtų inkstų funkcijos / elektrolitų rodiklių dinamika."],education:["Aptarti individualias skysčių, mitybos ir vaistų rekomendacijas pagal gydymo planą."]},
+ {id:"hf",name:"Širdies nepakankamumas",codes:"I50",match:["I50"],problems:["respiratory","fluid","edema","fatigue"],assessment:["Dusulys, ortopnėja ir fizinio krūvio tolerancija.","Periferinės edemos, kūno masės ir skysčių balanso dinamika pagal planą."],education:["Aptarti širdies nepakankamumo simptomų stebėjimą ir individualų gydymo planą."]},
+ {id:"copd",name:"LOPL",codes:"J44",match:["J44"],problems:["respiratory","fatigue"],assessment:["Dusulys, kvėpavimo darbas ir SpO₂ pagal paskyrimą.","Kosulys, skrepliai ir inhaliatorių naudojimo technika."],education:["Aptarti inhaliatorių techniką ir paūmėjimo požymius pagal individualų planą."]},
+ {id:"hypertension",name:"Arterinė hipertenzija",codes:"I10",match:["I10"],problems:["cardiac","knowledge"],assessment:["Kraujospūdžio dinamika ir matavimo technika.","Galvos skausmas, svaigimas, regos pokyčiai ar krūtinės diskomfortas."],education:["Aptarti kraujospūdžio savikontrolę ir paskirto gydymo reguliarumą."]},
+ {id:"af",name:"Prieširdžių virpėjimas",codes:"I48",match:["I48"],problems:["cardiac","fall"],assessment:["Pulsas, jo dažnis / reguliarumas ir kraujospūdis.","Palpitacijos, dusulys, svaigimas ar sinkopė.","Kraujavimo požymiai, jei vartojami antikoaguliantai."],education:["Aptarti ritmo kontrolės ir antikoaguliacinio gydymo planą, jei paskirtas."]},
+ {id:"obesity",name:"Nutukimas",codes:"E66",match:["E66"],problems:["mobility","vte","nutrition","knowledge"],assessment:["Mobilumo ir fizinio krūvio tolerancija.","Odos raukšlių / spaudimo vietų būklė ir VTE rizikos veiksniai.","Mitybos planas ir savipriežiūros galimybės."],education:["Aptarti saugų mobilumą, VTE profilaktiką ir individualias mitybos rekomendacijas pagal gydymo planą."]},
+ {id:"dehydration",name:"Dehidratacija / hipovolemija",codes:"E86",match:["E86"],problems:["fluid","fall","electrolyte"],assessment:["Skysčių suvartojimas, diurezė ir gleivinių būklė.","Kraujospūdis, pulsas ir ortostatiniai simptomai.","Elektrolitų / inkstų funkcijos rodiklių dinamika pagal paskyrimą."],education:["Aptarti individualų skysčių vartojimo planą ir blogėjančios hidratacijos požymius."]},
+ {id:"electrolytes",name:"Elektrolitų pusiausvyros sutrikimas",codes:"E87",match:["E87"],problems:["electrolyte","cardiac","fall"],assessment:["Raumenų silpnumas, mėšlungis, parestezijos ar sąmonės pokyčiai.","Pulsas / ritmo pokyčiai ir paskirtų elektrolitų rodiklių dinamika."],education:["Paaiškinti, kad elektrolitų papildai ar ribojimai taikomi tik pagal individualų paskyrimą."]},
+ {id:"cirrhosis",name:"Kepenų cirozė",codes:"K74",match:["K74"],problems:["fluid","nutrition","bleeding","delirium"],assessment:["Ascitas / edemos ir skysčių balansas.","Sąmonės / orientacijos pokyčiai.","Kraujavimo požymiai ir mitybos būklė."],education:["Aptarti individualias vaistų, mitybos, skysčių ir būklės stebėjimo rekomendacijas."]},
+ {id:"vte",name:"Venų tromboembolinė liga",codes:"I26 / I80–I82",match:["I26","I80","I81","I82"],problems:["vte","respiratory","bleeding"],assessment:["Vienos galūnės tinimas / skausmas arba naujas dusulys / krūtinės skausmas.","Kraujavimo požymiai, jei taikomas antikoaguliacinis gydymas."],education:["Aptarti antikoaguliacinio gydymo laikymąsi, kraujavimo požymius ir skubios pagalbos simptomus."]},
+ {id:"anticoag",name:"Antikoaguliacinis gydymas",codes:"papildoma aplinkybė",match:[],problems:["bleeding","fall"],assessment:["Vartojamas antikoaguliantas ir paskutinė dozė pagal vaistų sąrašą.","Kraujavimo, hematomų, hematurijos, melenos ar kitų kraujavimo požymių stebėjimas.","Kritimo / traumos rizika."],education:["Paaiškinti kraujavimo požymius, vaistų vartojimo reguliarumą ir kada kreiptis skubios pagalbos."]},
+ {id:"malnutrition",name:"Nepakankamos mitybos rizika / nepakankama mityba",codes:"E40–E46 / klinikinė rizika",match:["E40","E41","E42","E43","E44","E45","E46"],problems:["nutrition","wound","fatigue"],assessment:["Apetitas, suvartojamo maisto kiekis ir svorio dinamika.","Rijimo / kramtymo sunkumai, pykinimas ar kitos maitinimą ribojančios priežastys.","Žaizdų gijimas ir funkcinė būklė."],education:["Aptarti individualų mitybos planą ir dietologo / gydymo komandos rekomendacijas, jei paskirta."]}
 ];
 
 let specialty=null, dx=null, procedureName=null, procedure=null, selectedProblems=[], customProblems=[], outputs={plan:"",note:"",edu:""}, currentOutput="plan";
 
 function el(id){return document.getElementById(id)}
+function getSelectedSharedConditions(){
+ return sharedConditions.filter(c=>el("sc_"+c.id)?.checked);
+}
+function getActiveProblemKeys(){
+ const keys=[...procedure.problems];
+ getSelectedSharedConditions().forEach(c=>c.problems.forEach(k=>keys.push(k)));
+ return [...new Set(keys)].filter(k=>problemLibrary[k]);
+}
+function getActiveEducation(){
+ const arr=[...procedure.education];
+ getSelectedSharedConditions().forEach(c=>c.education.forEach(x=>arr.push(x)));
+ return [...new Set(arr)];
+}
+function renderSharedConditions(){
+ const box=el("sharedConditionsList"); if(!box)return;
+ const visible=sharedConditions.filter(c=>!dx || !c.match.some(prefix=>(dx.code||"").startsWith(prefix)));
+ box.innerHTML=visible.length?visible.map(c=>`<div class="actionrow"><input type="checkbox" id="sc_${c.id}"><label for="sc_${c.id}"><b>${c.name}</b> <span class="meta">(${c.codes})</span><div class="meta" style="margin-top:3px">${(Array.isArray(c.assessment)?c.assessment:[c.assessment]).join(" • ")}</div></label></div>`).join(""):'<div class="meta">Papildomų bendrų būklių šiam keliui nerodoma.</div>';
+}
+function continueFromAssessment(){renderProblems();go(5)}
 function init(){
  el("dxStat").textContent=diagnoses.length+" TLK grupių";
- el("procStat").textContent=Object.keys(procedures).length+" procedūrų";
+ el("procStat").textContent=Object.keys(procedures).length+" procedūrų / kelių";
  el("specialtyGrid").innerHTML=specialties.map(s=>{
    const count=diagnoses.filter(d=>d.sp===s.name).length;
    return `<div class="card specialty-card click" onclick="selectSpecialty('${s.name}')">
@@ -581,11 +686,12 @@ function selectProcedure(p){
  if(!procedure){alert("Šio modulio turinys dar neparengtas.");return}
  el("assessTitle").textContent=p+" – ką įvertinti";
  el("assessmentList").innerHTML=procedure.assessment.map((a,i)=>`<div class="actionrow"><input type="checkbox" id="as_${i}"><label for="as_${i}">${a}</label></div>`).join("");
- renderProblems();go(4);
+ renderSharedConditions();renderProblems();go(4);
 }
 function renderProblems(){
  el("problemTitle").textContent=procedureName+" – slaugos problemų kryptys";
- let html=procedure.problems.map((key,i)=>{
+ const activeKeys=getActiveProblemKeys();
+ let html=activeKeys.map((key,i)=>{
    const p=problemLibrary[key];
    return `<div class="card problem-card"><div class="checkrow"><input type="checkbox" id="pb_${i}" data-base="${i}"><label for="pb_${i}">${p.t}<div class="meta" style="font-weight:500;margin-top:4px">${p.g}</div></label></div></div>`;
  }).join("");
@@ -599,9 +705,10 @@ function addCustomProblem(){
 }
 function prepareEditors(){
  selectedProblems=[];
+ const activeKeys=getActiveProblemKeys();
  el("problemList").querySelectorAll("input:checked").forEach(cb=>{
    if(cb.dataset.base!==undefined){
-     const key=procedure.problems[+cb.dataset.base],p=problemLibrary[key];
+     const key=activeKeys[+cb.dataset.base],p=problemLibrary[key];
      selectedProblems.push({title:p.t,goal:p.g,actions:[...p.a],evaluation:p.e});
    }else selectedProblems.push({title:customProblems[+cb.dataset.custom],goal:"",actions:[],evaluation:""});
  });
@@ -615,7 +722,8 @@ function prepareEditors(){
     <span class="field-label">+ Papildomi jūsų veiksmai (po vieną eilutėje)</span><textarea id="extra_${i}" placeholder="Įrašykite savo veiksmus..."></textarea>
     <span class="field-label">Įvertinimas / rezultatas</span><textarea id="eval_${i}">${p.evaluation}</textarea>
    </div>`).join("");
- el("educationList").innerHTML=procedure.education.map((e,i)=>`<div class="actionrow"><input type="checkbox" checked id="edu_${i}"><label for="edu_${i}">${e}</label></div>`).join("");
+ const activeEdu=getActiveEducation();
+ el("educationList").innerHTML=activeEdu.map((e,i)=>`<div class="actionrow"><input type="checkbox" checked id="edu_${i}"><label for="edu_${i}">${e}</label></div>`).join("");
  go(6);
 }
 function gather(){
@@ -626,20 +734,27 @@ function gather(){
    const ex=el("extra_"+i).value.trim();if(ex)ex.split(/\n+/).map(x=>x.trim()).filter(Boolean).forEach(x=>actions.push(x));
    return {title:p.title,goal:el("goal_"+i).value.trim(),actions,evaluation:el("eval_"+i).value.trim()};
  });
- const edu=procedure.education.filter((e,i)=>el("edu_"+i)?.checked);
+ const activeEdu=getActiveEducation();
+ const edu=activeEdu.filter((e,i)=>el("edu_"+i)?.checked);
  const ee=el("extraEducation").value.trim();if(ee)ee.split(/\n+/).map(x=>x.trim()).filter(Boolean).forEach(x=>edu.push(x));
- return {assessed,ca,facts,probs,edu};
+ const selectedShared=getSelectedSharedConditions();
+ const sharedNames=selectedShared.map(c=>c.name+" ("+c.codes+")");
+ const sharedAssessments=[...new Set(selectedShared.flatMap(c=>Array.isArray(c.assessment)?c.assessment:[c.assessment]))];
+ return {assessed,ca,facts,probs,edu,sharedNames,sharedAssessments};
 }
 function generateOutputs(){
  const g=gather();
- let plan=`NURSEPLAN LT – INDIVIDUALUS SLAUGOS PLANAS\n\nSpecialybė: ${specialty}\nTLK-10-AM: ${dx.code} – ${dx.name}\nOperacija / procedūra: ${procedureName}\n`;
+ let plan=`NURSEPLAN LT – INDIVIDUALUS SLAUGOS PLANAS\n\nSpecialybė: ${specialty}\nTLK-10-AM: ${dx.code} – ${dx.name}\nProcedūra / klinikinis kelias: ${procedureName}\n`;
+ if(g.sharedNames.length)plan+=`Gretutinės / papildomos būklės: ${g.sharedNames.join(", ")}\n`;
  if(g.facts)plan+=`Paciento faktai: ${g.facts}\n`;
  if(g.assessed.length||g.ca){plan+="\nĮVERTINTA:\n";g.assessed.forEach(x=>plan+=`• ${x}\n`);if(g.ca)plan+=`• ${g.ca}\n`}
+ if(g.sharedAssessments.length){plan+="\nGRETUTINĖMS / PAPILDOMOMS BŪKLĖMS AKTUALU ĮVERTINTI IR STEBĖTI:\n";g.sharedAssessments.forEach(x=>plan+=`• ${x}\n`)}
  g.probs.forEach((p,i)=>{plan+=`\n${i+1}. Slaugos problema / kryptis: ${p.title}\nTikslas: ${p.goal||"—"}\nSlaugos veiksmai:\n`; (p.actions.length?p.actions:["—"]).forEach(a=>plan+=`• ${a}\n`);plan+=`Įvertinimas: ${p.evaluation||"—"}\n`});
  if(g.edu.length){plan+="\nPACIENTO MOKYMAS:\n";g.edu.forEach(x=>plan+=`• ${x}\n`)}
  plan+="\nPastaba: galutinį planą individualizuoja slaugytoja pagal realią paciento būklę ir įstaigos patvirtintą tvarką.";
 
- let note=`${dx.code} – ${dx.name}. Operacija / procedūra: ${procedureName}. `;
+ let note=`${dx.code} – ${dx.name}. Procedūra / klinikinis kelias: ${procedureName}. `;
+ if(g.sharedNames.length)note+=`Gretutinės / papildomos būklės: ${g.sharedNames.join(", ")}. `;
  if(g.facts)note+=g.facts.replace(/\s+/g," ").trim()+". ";
  note+=`Pasirinktos slaugos problemų kryptys: ${g.probs.map(p=>p.title).join("; ")}. `;
  const actions=g.probs.flatMap(p=>p.actions);if(actions.length)note+=`Slaugos veiksmai / planas: ${actions.join(" ")} `;
@@ -679,7 +794,7 @@ function quickStart(code,proc){
  el("procTitle").textContent=dx.code+" – "+dx.name;
  el("assessTitle").textContent=proc+" – ką įvertinti";
  el("assessmentList").innerHTML=procedure.assessment.map((a,i)=>`<div class="actionrow"><input type="checkbox" id="as_${i}"><label for="as_${i}">${a}</label></div>`).join("");
- renderProblems();go(4);
+ renderSharedConditions();renderProblems();go(4);
 }
 function resetAll(){
  specialty=dx=procedureName=procedure=null;selectedProblems=[];customProblems=[];outputs={plan:"",note:"",edu:""};

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b5964">
-<title>NursePlan LT V19</title>
+<title>NursePlan LT V23</title>
 <style>
 :root{
   --bg:#f3f7f8; --card:#ffffff; --ink:#173238; --muted:#688087; --line:#dce7e9;
@@ -159,7 +159,7 @@ main{padding-top:22px}
 }
 
 
-/* ===== V19 OUTPUT BLOCK SELECTOR ===== */
+/* ===== V23 OUTPUT BLOCK SELECTOR ===== */
 .print-options{border-left:4px solid #3d8fa0;background:linear-gradient(180deg,#fff,#f8fcfd);margin-bottom:10px}
 .print-presets{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
 .print-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:7px}
@@ -230,7 +230,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
 }
 
 
-/* ===== V19 STANDALONE NURSING SHEETS ===== */
+/* ===== V23 STANDALONE NURSING SHEETS ===== */
 .sheet-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 12px}
 .standalone-sheet{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow2)}
 .sheet-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;border-bottom:2px solid #dcebed;padding-bottom:10px;margin-bottom:10px}
@@ -266,6 +266,43 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
  body.print-one-sheet textarea, body.print-one-sheet input[type=text]{border:1px solid #888!important}
 }
 
+
+/* ===== V23 NURSING DIAGNOSIS FORMULATION ===== */
+.diagnosis-formulation{
+  margin-top:12px;padding:13px 14px;border:1px solid #cfe3e5;border-left:4px solid #1493a1;
+  border-radius:14px;background:linear-gradient(135deg,#f4fafb,#fff)
+}
+.diagnosis-formulation .field-label{margin-top:0}
+.diagnosis-rule{
+  font-size:11px;line-height:1.5;color:#5d747a;background:#fff;border:1px dashed #c8dcdf;
+  border-radius:10px;padding:8px 10px;margin:7px 0 9px
+}
+.diagnosis-rule b{color:#27555d}
+.problem-direction{
+  font-size:11px;font-weight:900;color:#5b7379;text-transform:uppercase;letter-spacing:.45px;margin-bottom:4px
+}
+.formula-badge{
+  display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:950;
+  border-radius:999px;padding:5px 7px;background:#e7f5f5;color:#0b6873;margin-left:6px
+}
+
+
+/* ===== V23 OPTIONAL CUSTOM ENTRIES ===== */
+.custom-problem-tools{margin-top:10px}
+.custom-problem-row{
+  display:grid;grid-template-columns:1fr auto;gap:7px;align-items:center;
+  margin-top:8px;padding:9px;background:#fff;border:1px solid var(--line);border-radius:13px
+}
+.custom-problem-row input{min-width:0}
+.custom-problem-row .remove-custom{
+  width:38px;height:38px;border:1px solid #e4d7d7;background:#fff7f7;color:#8b4545;
+  border-radius:10px;font-weight:950;cursor:pointer
+}
+.custom-problem-hint{font-size:10.5px;color:var(--muted);margin-top:6px;line-height:1.4}
+@media(max-width:640px){
+ .custom-problem-row{grid-template-columns:1fr auto}
+}
+
 </style>
 </head>
 <body class="simple-mode">
@@ -277,7 +314,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
         <button id="simpleModeBtn" class="mode-btn on" onclick="setMode('simple')">Paprastas</button>
         <button id="advancedModeBtn" class="mode-btn" onclick="setMode('advanced')">Išplėstinis</button>
       </div>
-      <div class="demo-badge" id="versionBadge">V19 • PAPRASTAS REŽIMAS</div>
+      <div class="demo-badge" id="versionBadge">V23 • PAPRASTAS REŽIMAS</div>
     </div>
   </div>
 </div>
@@ -399,14 +436,9 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
         <div class="section-title" id="problemTitle"></div>
         <p class="section-sub simple-only">Pažymėkite problemas, kurios tinka šiam pacientui. Jei netinka – nepažymėkite.</p><p class="section-sub advanced-only">Pasirinkite tik tas problemų kryptis, kurios atitinka konkretaus paciento būklę. Tai nėra oficiali NANDA-I duomenų bazė.</p>
         <div id="problemList"></div>
-        <button class="btn btn-soft simple-only simple-add" onclick="toggleSimpleOptional('customProblemCard',this)">＋ Įrašyti savo problemą</button>
-        <div class="card simple-optional" id="customProblemCard">
-          <div class="tag">INDIVIDUALIZAVIMAS</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <input type="text" id="customProblem" style="flex:1;min-width:220px" placeholder="+ įrašyti savo slaugos problemą">
-            <button class="btn btn-soft" onclick="addCustomProblem()">Pridėti</button>
-            <button class="ai-btn" onclick="assistField('customProblem','problem')">✨ Pasiūlyti formuluotę</button>
-          </div>
+        <div class="custom-problem-tools">
+          <button type="button" class="btn btn-soft simple-add" onclick="addCustomProblemField()">＋ Pridėti savo slaugos problemą / diagnozę</button>
+          <div id="customProblemInputs"></div>
         </div>
         <div class="btnrow"><button class="btn btn-secondary" onclick="go(4)">Atgal</button><button class="btn btn-primary" onclick="prepareEditors()">Toliau</button></div>
       </section>
@@ -420,6 +452,14 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
           <div class="assist-wrap"><button class="ai-btn advanced-only" onclick="assistField('patientFacts','facts')">✨ Struktūruoti faktus</button></div>
         </div>
         <div id="editors"></div>
+
+        <button type="button" class="btn btn-soft simple-add" onclick="toggleSimpleOptional('importantInfoCard',this)">＋ Svarbi papildoma informacija (jei reikia)</button>
+        <div class="card simple-optional" id="importantInfoCard">
+          <div class="tag">SVARBI PAPILDOMA INFORMACIJA</div>
+          <div class="simple-note">Pildykite tik tada, kai buvo nestandartinis įvykis ar papildoma intervencija. Rašykite faktus ir naudokite jūsų įstaigoje patvirtintus terminus.</div>
+          <textarea id="importantInfo" placeholder="Pvz. pacientas buvo ryškiai neramus, mėtė daiktus; informuotas gydytojas, kviestas psichiatras; pagal specialisto paskyrimą taikytas medikamentinis gydymas / papildomos saugumo priemonės; būklė toliau stebėta."></textarea>
+        </div>
+
         <div class="card">
           <div class="tag">PACIENTO MOKYMAS</div>
           <div id="educationList"></div>
@@ -431,7 +471,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
         <div class="card simple-optional" id="patientResourcesCard">
           <div class="tag">PACIENTO ATMINTINĖS / LANKSTINUKAI</div>
           <div class="simple-note simple-only">Pasirinktinai: jei pacientui tinka konkreti atmintinė, galite ją peržiūrėti ar atsispausdinti. Jei nereikia – šį žingsnį tiesiog praleiskite.</div>
-          <div class="callout advanced-only">Atmintinės kuriamos iš patvirtinto bazinio turinio ir gali būti pritaikomos įstaigos kontaktams bei vietinei tvarkai. V19 prototipe panaudotas jūsų Canva pacientų mokymo turinys.</div>
+          <div class="callout advanced-only">Atmintinės kuriamos iš patvirtinto bazinio turinio ir gali būti pritaikomos įstaigos kontaktams bei vietinei tvarkai. V23 prototipe panaudotas jūsų Canva pacientų mokymo turinys.</div>
           <div id="patientResources"></div>
         </div>
         <div class="btnrow"><button class="btn btn-secondary" onclick="go(5)">Atgal</button><button class="btn btn-primary" onclick="generateOutputs()">Generuoti planą</button></div>
@@ -620,15 +660,19 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
         <div class="card">
           <div class="tag">PRODUKTO KRYPTIS</div>
           <ul class="about-list">
-            <li>V19 turi atskirai spausdinamus vieno puslapio slaugos lapus: poprocedūrinį vertinimą, stebėjimą po sedacijos / nejautros ir išvykimo kontrolinį lapą.</li>
+            <li>V23 problemų formuluotės automatiškai pririšamos prie pasirinktos procedūros. Nebereikia spausti „Patikslinti“ – iškart rodoma plane tinkama kontekstinė formuluotė.</li>
+            <li>V23 leidžia vienu „+“ pridėti tiek individualių slaugos problemų / diagnozių, kiek reikia, ir turi atskirą pasirenkamą lauką svarbiai papildomai informacijai apie nestandartinius įvykius ar papildomas intervencijas.</li>
+            <li>V23 taiko „paprasta pirmiausia“ principą: trumpa formuluotė naudojama iškart, o patikslinimas ir AI atsidaro tik jei jų reikia.</li>
+            <li>V23 atskiria trumpą slaugos problemos / diagnozės kryptį nuo individualizuotos formuluotės. Esamai problemai siūloma „problema + susijęs veiksnys + požymiai“, o rizikos diagnozei – rizika + rizikos veiksniai be „pasireiškianti“.</li>
+            <li>V23 turi atskirai spausdinamus vieno puslapio slaugos lapus: poprocedūrinį vertinimą, stebėjimą po sedacijos / nejautros ir išvykimo kontrolinį lapą.</li>
             <li>TLK-10-AM naudojamas diagnozės paieškai ir klinikiniam keliui pradėti.</li>
             <li>Procedūra arba klinikinis slaugos kelias pasirenkamas atskirai, nes vienas TLK kodas savaime nenustato gydymo.</li>
             <li>Slaugos problemos pateikiamos kaip siūlomos kryptys, o ne kaip automatinė diagnozė.</li>
             <li>Nenaudojami paciento vardas, asmens kodas ar ligos istorijos numeris.</li>
             <li>Prieš realų klinikinį naudojimą reikalinga turinio ekspertizė, validacija, duomenų apsaugos ir medicinos priemonės reguliacinė analizė.</li>
             <li>V15 išlaiko išplėstą vidaus ligų / terapijos kryptį iki dažniausių stacionaro būklių branduolio: kardiologija, pulmonologija, hematologija, endokrinologija, nefrologija, gastroenterologija, infekcijos, venų tromboembolija, skysčių ir elektrolitų pusiausvyra. Gretutinės būklės veikia skersai specialybių.</li>
-            <li>V19 dizainas vizualiai išryškina diagnozę, procedūrą, gretutines būkles, pasirinktas slaugos problemas, tikslus, veiksmus, vertinimą ir paciento mokymą.</li>
-            <li>V19 paprastame režime paciento atmintinės paliktos kaip pasirenkama funkcija – jos atsiveria tik paspaudus „Paciento atmintinės“.</li><li>V19 taiko „privacy-first“ principą: paciento identifikaciniai duomenys ir epizodų istorija viešame prototipe nesaugomi; sugeneruotas tekstas skirtas perkelti į įstaigos patvirtintą dokumentacijos formą.</li>
+            <li>V23 dizainas vizualiai išryškina diagnozę, procedūrą, gretutines būkles, pasirinktas slaugos problemas, tikslus, veiksmus, vertinimą ir paciento mokymą.</li>
+            <li>V23 paprastame režime paciento atmintinės paliktos kaip pasirenkama funkcija – jos atsiveria tik paspaudus „Paciento atmintinės“.</li><li>V23 taiko „privacy-first“ principą: paciento identifikaciniai duomenys ir epizodų istorija viešame prototipe nesaugomi; sugeneruotas tekstas skirtas perkelti į įstaigos patvirtintą dokumentacijos formą.</li>
             <li>V16 prideda universalų priešprocedūrinį / poprocedūrinį saugos sluoksnį, AI formulavimo pagalbos prototipą ir pacientų atmintines. AI prototipas nenaudoja realių pacientų duomenų ir nepriima klinikinio sprendimo už slaugytoją.</li>
             <li>ACHI procedūrų skaitmeniniai kodai į demo sąmoningai nedėti, kol nėra integruotas oficialus aktualus klasifikatorius.</li>
           </ul>
@@ -859,7 +903,7 @@ const procedures = {
  "Dalinė / totalinė penektomija":{tag:"Urologija",problems:["pain","bleeding","infection","urinary","bodyimage","sexual","anxiety","knowledge"],assessment:["Skausmas.","Operacinės žaizdos ir kraujavimo požymiai.","Šlapinimasis / kateterio funkcija, jei jis yra.","Temperatūra.","Emocinė būsena, kūno vaizdo ir seksualinės sveikatos klausimai.","Paciento gebėjimas prižiūrėti operacinę sritį."],education:["Mokyti žaizdos ir kateterio priežiūros, jei taikoma.","Paaiškinti šlapinimosi pokyčius pagal atliktos operacijos apimtį.","Suteikti informaciją apie emocinės ir seksualinės sveikatos pagalbos galimybes.","Paaiškinti, kada kreiptis dėl kraujavimo, karščiavimo ar šlapimo nutekėjimo sutrikimo."]},
  "RIRS / fleksibilioji ureteroskopija":{tag:"Urologija",problems:["pain","hematuria","urinary","infection","knowledge"],assessment:["Skausmo lokalizacija ir NRS.","Šlapimo spalva ir hematurija.","Diurezė.","JJ stento simptomai, jei jis paliktas.","Temperatūra ir bendra savijauta."],education:["Paaiškinti galimus trumpalaikius simptomus po procedūros.","Aptarti JJ stento simptomus ir kontrolės / pašalinimo planą, jei jis paliktas.","Paaiškinti, kada kreiptis dėl karščiavimo, anūrijos ar stiprėjančio skausmo."]},
  "HoLEP / lazerinė prostatos enukleacija":{tag:"Urologija",problems:["pain","hematuria","urinary","infection","catheter","knowledge"],assessment:["Šlapimo spalva ir krešuliai.","Kateterio ir plovimo sistemos funkcija, jei taikoma.","Diurezė.","Pūslės spazmai / tempimo pojūtis.","Gyvybiniai rodikliai.","Skausmas."],education:["Paaiškinti kateterio priežiūrą, jei pacientas išvyksta su kateteriu.","Aptarti galimą trumpalaikę hematuriją ir šlapinimosi pokyčius.","Paaiškinti, kada kreiptis dėl krešulių, ūmaus susilaikymo, karščiavimo ar ryškaus kraujavimo."]},
- "Paprastoji prostatektomija dėl GPH":{tag:"Urologija",problems:["pain","bleeding","hematuria","urinary","catheter","infection","mobility","vte","knowledge"],assessment:["Skausmas.","Gyvybiniai rodikliai.","Hematurija ir krešuliai.","Kateterio / plovimo sistemos praeinamumas.","Diurezė.","Žaizda ir drenai, jei taikoma.","Mobilumas."],education:["Paaiškinti kateterio priežiūrą ir planuojamą pašalinimą pagal paskyrimą.","Aptarti fizinio aktyvumo ribojimus ir šlapimo pokyčius po operacijos.","Paaiškinti, kada kreiptis dėl karščiavimo, gausaus kraujavimo ar šlapimo susilaikymo."]},
+ "Paprastoji prostatektomija dėl GPH":{tag:"Urologija",problems:["pain","bleeding","urinary","catheter","infection","mobility","vte","knowledge"],assessment:["Skausmas.","Gyvybiniai rodikliai.","Hematurija ir krešuliai.","Kateterio / plovimo sistemos praeinamumas.","Diurezė.","Žaizda ir drenai, jei taikoma.","Mobilumas."],education:["Paaiškinti kateterio priežiūrą ir planuojamą pašalinimą pagal paskyrimą.","Aptarti fizinio aktyvumo ribojimus ir šlapimo pokyčius po operacijos.","Paaiškinti, kada kreiptis dėl karščiavimo, gausaus kraujavimo ar šlapimo susilaikymo."]},
  "Pieloplastika":{tag:"Urologija",problems:["pain","urinary","fluid","infection","catheter","mobility","knowledge"],assessment:["Skausmas.","Diurezė ir šlapimo nutekėjimas.","JJ stento / nefrostomos funkcija, jei taikoma.","Žaizda ir drenai.","Temperatūra.","Skysčių balansas.","Mobilumas."],education:["Paaiškinti JJ stento ar nefrostomos priežiūrą, jei taikoma.","Aptarti kontrolės ir stento / dreno pašalinimo planą.","Paaiškinti, kada kreiptis dėl karščiavimo, stiprėjančio šono skausmo ar nutekėjimo sutrikimo."]},
  "Spermatocelės operacija":{tag:"Urologija",problems:["pain","bleeding","infection","knowledge"],assessment:["Skausmas.","Kapšelio patinimas ir hematoma.","Žaizda / tvarstis.","Temperatūra.","Mobilumas."],education:["Aptarti operacinės srities higieną ir priežiūrą.","Paaiškinti patinimo ir kraujavimo požymių stebėjimą.","Aptarti fizinio aktyvumo ribojimus pagal gydymo planą."]},
  "Cistolitotripsija / cistolitolapaksija":{tag:"Urologija",problems:["pain","hematuria","urinary","infection","knowledge"],assessment:["Skausmas ir deginimas šlapinantis.","Hematurija ir krešuliai.","Diurezė ir šlapimo nutekėjimas.","Kateterio funkcija, jei jis paliktas.","Temperatūra."],education:["Paaiškinti galimus trumpalaikius simptomus po procedūros.","Aptarti individualų skysčių vartojimą.","Paaiškinti, kada kreiptis dėl karščiavimo, gausaus kraujavimo ar šlapimo susilaikymo."]},
@@ -978,7 +1022,7 @@ function setMode(mode){
  document.body.classList.toggle("simple-mode",uiMode==="simple");
  el("simpleModeBtn")?.classList.toggle("on",uiMode==="simple");
  el("advancedModeBtn")?.classList.toggle("on",uiMode==="advanced");
- if(el("versionBadge")) el("versionBadge").textContent=uiMode==="simple"?"V19 • PAPRASTAS REŽIMAS":"V19 • IŠPLĖSTINIS REŽIMAS";
+ if(el("versionBadge")) el("versionBadge").textContent=uiMode==="simple"?"V23 • PAPRASTAS REŽIMAS":"V23 • IŠPLĖSTINIS REŽIMAS";
  if(uiMode==="simple") document.querySelectorAll('.simple-optional').forEach(x=>x.classList.remove('simple-open'));
 }
 function toggleSimpleOptional(id,btn){
@@ -1073,7 +1117,7 @@ function showGeneralModules(){for(let i=1;i<=7;i++)el("screen"+i).classList.add(
 function showAbout(){for(let i=1;i<=7;i++)el("screen"+i).classList.add("hidden");el("generalModules").classList.add("hidden");el("standaloneSheets").classList.add("hidden");el("aboutSection").classList.remove("hidden");setSteps(0);updatePath("Apie prototipą")}
 function goHome(){hideExtras();go(1);window.scrollTo({top:0,behavior:"smooth"})}
 function selectSpecialty(s){
- specialty=s;dx=null;procedureName=null;procedure=null;customProblems=[];
+ specialty=s;dx=null;procedureName=null;procedure=null;customProblems=[];if(el("customProblemInputs"))el("customProblemInputs").innerHTML="";customProblemFieldSeq=0;
  el("dxSearch").value="";
  el("dxTitle").textContent=s+" – TLK-10-AM diagnozė";
  const groups=[...new Set(diagnoses.filter(d=>d.sp===s).map(d=>d.group))];
@@ -1098,44 +1142,88 @@ function selectDx(i){
  go(3);
 }
 function selectProcedure(p){
- procedureName=p; procedure=procedures[p]; selectedProblems=[]; customProblems=[];
+ procedureName=p; procedure=procedures[p]; selectedProblems=[]; customProblems=[];if(el("customProblemInputs"))el("customProblemInputs").innerHTML="";customProblemFieldSeq=0;
  if(!procedure){alert("Šio modulio turinys dar neparengtas.");return}
  el("assessTitle").textContent=p+" – ką įvertinti";
  el("assessmentList").innerHTML=procedure.assessment.map((a,i)=>`<div class="actionrow assessment-row"><input type="checkbox" id="as_${i}"><label for="as_${i}">${a}</label></div>`).join("");
  renderPeriModules();renderSharedConditions();renderProblems();go(4);
 }
+
+
+function contextProblemLabel(key,p){
+ const base=(p?.t||"Slaugos problema").replace(/\.$/,"");
+ if(!isProcedurePath() || !procedureName) return base;
+
+ const proc=`${procedureName}`;
+
+ const map={
+   pain:`Ūmus skausmas po atliktos operacijos / procedūros (${proc}) dėl atliktos intervencijos ir audinių pažeidimo`,
+   bleeding:`Kraujavimo stebėjimas ankstyvuoju pooperaciniu laikotarpiu po atliktos intervencijos (${proc})`,
+   hematuria:`Kraujavimo iš šlapimo takų / hematurijos stebėjimas po atliktos intervencijos (${proc})`,
+   anxiety:`Nerimas dėl pasikeitusios sveikatos būklės ir hospitalizacijos`,
+   knowledge: specialty==="Chirurgija"
+      ? `Žinių trūkumas apie savarankišką pooperacinę priežiūrą po atliktos operacijos (${proc})`
+      : `Žinių trūkumas apie savarankišką priežiūrą ir rekomendacijas po atliktos procedūros (${proc})`,
+   preknowledge:`Žinių trūkumas apie pasiruošimą planuojamai procedūrai (${proc})`,
+   followup:`Žinių trūkumas apie tolimesnę priežiūrą ir kontrolę po atliktos procedūros (${proc})`,
+   nausea:`Pykinimas po procedūros / anestezijos (${proc})`,
+   mobility:`Sumažėjęs mobilumas po atliktos operacijos / procedūros dėl skausmo ir silpnumo`,
+   hypotension:`Silpnumas ir galimas kraujospūdžio sumažėjimas poanesteziniu laikotarpiu dėl anestetikų ir perioperacinių vaistų poveikio`,
+   catheter:`Kateterio / drenavimo sistemos priežiūros poreikis po atliktos procedūros (${proc})`,
+   urinary:`Šlapimo nutekėjimo sutrikimo / retencijos rizika po atliktos intervencijos (${proc})`,
+   infection:`Infekcijos rizika po atliktos invazinės intervencijos (${proc})`,
+   vte:`Venų tromboembolijos rizika po operacijos dėl sumažėjusio mobilumo ir kitų individualių rizikos veiksnių`,
+   wound:`Operacinės žaizdos priežiūros poreikis po atliktos operacijos (${proc})`,
+   drain:`Dreno priežiūros poreikis po atliktos operacijos (${proc})`,
+   stoma:`Stomos priežiūros ir savipriežiūros poreikis po atliktos operacijos (${proc})`,
+   anesthesia:`Būklės stebėjimo poreikis po nejautros / sedacijos dėl anestetikų ir perioperacinių vaistų poveikio`,
+   postopobs:`Ankstyvos pooperacinės / poprocedūrinės būklės stebėjimo poreikis po atliktos intervencijos (${proc})`
+ };
+ return map[key] || base;
+}
+
 function renderProblems(){
- el("problemTitle").textContent=procedureName+" – slaugos problemų kryptys";
+ el("problemTitle").textContent=procedureName+" – slaugos problemų / diagnozių kryptys";
  const activeKeys=getActiveProblemKeys();
  let html=activeKeys.map((key,i)=>{
-   const p=problemLibrary[key];
-   return `<div class="card problem-card"><div class="checkrow"><input type="checkbox" id="pb_${i}" data-base="${i}"><label for="pb_${i}">${p.t}<div class="meta" style="font-weight:500;margin-top:4px">${p.g}</div></label></div></div>`;
+   const p=problemLibrary[key], label=contextProblemLabel(key,p);
+   return `<div class="card problem-card"><div class="checkrow"><input type="checkbox" id="pb_${i}" data-base="${i}"><label for="pb_${i}">${label}<div class="meta" style="font-weight:500;margin-top:4px">${p.g}</div></label></div></div>`;
  }).join("");
- customProblems.forEach((x,i)=>{html+=`<div class="card problem-card"><div class="checkrow"><input type="checkbox" checked data-custom="${i}" id="cp_${i}"><label for="cp_${i}">${x}<div class="meta" style="font-weight:500;margin-top:4px">Jūsų pridėta individuali problema.</div></label></div></div>`});
  el("problemList").innerHTML=html;
 }
-function addCustomProblem(){
- const inp=el("customProblem"),v=inp.value.trim();if(!v)return;
- const selected=[...el("problemList").querySelectorAll("input[data-base]:checked")].map(x=>+x.dataset.base);
- customProblems.push(v);inp.value="";renderProblems();selected.forEach(i=>{const c=el("pb_"+i);if(c)c.checked=true});
+let customProblemFieldSeq=0;
+function addCustomProblemField(value=""){
+ const box=el("customProblemInputs"); if(!box)return;
+ const id="customProblem_"+(++customProblemFieldSeq);
+ const row=document.createElement("div");
+ row.className="custom-problem-row";
+ row.innerHTML=`<input type="text" id="${id}" class="custom-problem-input" placeholder="Įrašykite savo slaugos problemą / diagnozę" value="${escapeHtml(value)}"><button type="button" class="remove-custom" aria-label="Pašalinti" onclick="this.parentElement.remove()">×</button>`;
+ box.appendChild(row);
+ el(id)?.focus();
+}
+function getCustomProblemValues(){
+ return [...document.querySelectorAll("#customProblemInputs .custom-problem-input")]
+   .map(x=>x.value.trim()).filter(Boolean);
 }
 function prepareEditors(){
  selectedProblems=[];
  const activeKeys=getActiveProblemKeys();
- el("problemList").querySelectorAll("input:checked").forEach(cb=>{
-   if(cb.dataset.base!==undefined){
-     const key=activeKeys[+cb.dataset.base],p=problemLibrary[key];
-     selectedProblems.push({title:p.t,goal:p.g,actions:[...p.a],evaluation:p.e});
-   }else selectedProblems.push({title:customProblems[+cb.dataset.custom],goal:"",actions:[],evaluation:""});
+ el("problemList").querySelectorAll("input[data-base]:checked").forEach(cb=>{
+   const key=activeKeys[+cb.dataset.base],p=problemLibrary[key];
+   selectedProblems.push({key,title:contextProblemLabel(key,p),goal:p.g,actions:[...p.a],evaluation:p.e});
  });
- if(!selectedProblems.length){alert("Pasirinkite bent vieną slaugos problemos kryptį.");return}
+ customProblems=getCustomProblemValues();
+ customProblems.forEach(v=>selectedProblems.push({key:null,title:v,goal:"",actions:[],evaluation:""}));
+ if(!selectedProblems.length){alert("Pasirinkite bent vieną slaugos problemos / diagnozės kryptį arba įrašykite savo.");return}
  el("editors").innerHTML=selectedProblems.map((p,i)=>`
    <div class="card editor">
-    <div class="tag">PROBLEMA ${i+1}</div><h3>${p.title}</h3>
+    <div class="tag">PROBLEMA / DIAGNOZĖ ${i+1}</div>
+    <h3>${p.title}</h3>
     <span class="field-label">Tikslas</span><textarea id="goal_${i}">${p.goal}</textarea>
     <span class="field-label">Siūlomi slaugos veiksmai</span>
     ${p.actions.map((a,j)=>`<div class="actionrow plan-action"><input type="checkbox" checked id="act_${i}_${j}"><label for="act_${i}_${j}">${a}</label></div>`).join("") || '<div class="callout">Iš anksto numatytų veiksmų nėra – įrašykite savo individualius veiksmus.</div>'}
-    <span class="field-label advanced-only">+ Papildomi jūsų veiksmai (po vieną eilutėje)</span><textarea class="advanced-only" id="extra_${i}" placeholder="Įrašykite savo veiksmus..."></textarea>
+    <span class="field-label advanced-only">+ Papildomi jūsų veiksmai (po vieną eilutėje)</span>
+    <textarea class="advanced-only" id="extra_${i}" placeholder="Įrašykite savo veiksmus..."></textarea>
     <div class="assist-wrap"><button class="ai-btn advanced-only" onclick="assistField('extra_${i}','actions',${i})">✨ Padėti suformuluoti veiksmus</button></div>
     <span class="field-label">Įvertinimas / rezultatas</span><textarea id="eval_${i}">${p.evaluation}</textarea>
    </div>`).join("");
@@ -1147,10 +1235,11 @@ function prepareEditors(){
 function gather(){
  const assessed=[...el("assessmentList").querySelectorAll("input:checked")].map(cb=>procedure.assessment[+cb.id.split("_")[1]]);
  const ca=el("customAssessment").value.trim(), facts=el("patientFacts").value.trim();
+ const importantInfo=el("importantInfo")?.value.trim()||"";
  const probs=selectedProblems.map((p,i)=>{
    let actions=[];p.actions.forEach((a,j)=>{const cb=el(`act_${i}_${j}`);if(cb&&cb.checked)actions.push(a)});
    const ex=el("extra_"+i).value.trim();if(ex)ex.split(/\n+/).map(x=>x.trim()).filter(Boolean).forEach(x=>actions.push(x));
-   return {title:p.title,goal:el("goal_"+i).value.trim(),actions,evaluation:el("eval_"+i).value.trim()};
+   return {title:p.title,diagnosis:p.title,goal:el("goal_"+i).value.trim(),actions,evaluation:el("eval_"+i).value.trim()};
  });
  const activeEdu=getActiveEducation();
  const edu=activeEdu.filter((e,i)=>el("edu_"+i)?.checked);
@@ -1160,7 +1249,7 @@ function gather(){
  const sharedAssessments=[...new Set(selectedShared.flatMap(c=>Array.isArray(c.assessment)?c.assessment:[c.assessment]))];
  const periAssessments=getPeriAssessments();
  const periNames=getSelectedPeriModules().map(m=>m.name);
- return {assessed,ca,facts,probs,edu,sharedNames,sharedAssessments,periAssessments,periNames};
+ return {assessed,ca,facts,importantInfo,probs,edu,sharedNames,sharedAssessments,periAssessments,periNames};
 }
 function getPrintFlag(id,fallback=true){
  const c=el(id); return c ? !!c.checked : fallback;
@@ -1173,6 +1262,7 @@ function composePlanOutput(){
  if(getPrintFlag("printPeri",false) && planBlocks.peri) plan+=planBlocks.peri;
  if(getPrintFlag("printSharedAssessment",false) && planBlocks.sharedAssessment) plan+=planBlocks.sharedAssessment;
  plan+=planBlocks.problems;
+ if(planBlocks.importantInfo) plan+=planBlocks.importantInfo;
  if(getPrintFlag("printEducation",false) && planBlocks.education) plan+=planBlocks.education;
  plan+=planBlocks.footer;
  return plan;
@@ -1222,10 +1312,15 @@ function generateOutputs(){
 
  let problems="";
  g.probs.forEach((p,i)=>{
-   problems+=`\n${i+1}. Slaugos problema / kryptis: ${p.title}\nTikslas: ${p.goal||"—"}\nSlaugos veiksmai:\n`;
+   problems+=`\n${i+1}. Slaugos diagnozė / problema: ${p.diagnosis||p.title}\nTikslas: ${p.goal||"—"}\nSlaugos veiksmai:\n`;
    (p.actions.length?p.actions:["—"]).forEach(a=>problems+=`• ${a}\n`);
    problems+=`Įvertinimas: ${p.evaluation||"—"}\n`;
  });
+
+ let importantInfo="";
+ if(g.importantInfo){
+   importantInfo=`\nSVARBI PAPILDOMA INFORMACIJA:\n${g.importantInfo}\n`;
+ }
 
  let education="";
  if(g.edu.length){
@@ -1235,13 +1330,14 @@ function generateOutputs(){
 
  const footer="\nPastaba: galutinį planą individualizuoja slaugytoja pagal realią paciento būklę ir įstaigos patvirtintą tvarką.";
 
- planBlocks={header,shared,assessment,peri,sharedAssessment,problems,education,footer};
+ planBlocks={header,shared,assessment,peri,sharedAssessment,problems,importantInfo,education,footer};
 
  let note=`${dx.code} – ${dx.name}. Procedūra / klinikinis kelias: ${procedureName}. `;
  if(g.sharedNames.length)note+=`Gretutinės / papildomos būklės: ${g.sharedNames.join(", ")}. `;
  if(g.periNames.length)note+=`Periprocedūriniai moduliai: ${g.periNames.join(", ")}. `;
  if(g.facts)note+=g.facts.replace(/\s+/g," ").trim()+". ";
- note+=`Pasirinktos slaugos problemų kryptys: ${g.probs.map(p=>p.title).join("; ")}. `;
+ if(g.importantInfo)note+=`Svarbi papildoma informacija: ${g.importantInfo.replace(/\s+/g," ").trim()}. `;
+ note+=`Slaugos diagnozės / problemos: ${g.probs.map(p=>p.diagnosis||p.title).join("; ")}. `;
  const actions=g.probs.flatMap(p=>p.actions);if(actions.length)note+=`Slaugos veiksmai / planas: ${actions.join(" ")} `;
  const ev=g.probs.map(p=>p.evaluation).filter(Boolean);if(ev.length)note+=`Įvertinimas: ${ev.join(" ")} `;
  if(g.edu.length)note+=`Paciento mokymas: ${g.edu.join(" ")}`;
@@ -1267,6 +1363,7 @@ function buildAssistSuggestion(type,idx){
    return "Žinių apie procedūrą, priežiūrą po jos ir tolimesnį planą stoka.";
  }
  if(type==="facts") return `Kontekstas: ${ctx}. Užpildykite tik realius duomenis: procedūros / paros laikas: ___; sąmonė / orientacija: ___; AKS: ___; pulsas: ___; SpO₂: ___; skausmas NRS: ___; pykinimas: ___; svaigimas / silpnumas: ___; mobilumas: ___; specifinis procedūros radinys / prietaisas: ___.`;
+ if(type==="diagnosis"){const p=selectedProblems[idx];const base=p?.key?problemLibrary[p.key]:{t:p?.title||"Slaugos problema"};return `Siūloma trumpa ir praktiška formuluotė: ${expandedDiagnosisFor(p?.key,base)} Jei norite, pridėkite tik konkretų pacientui aktualų patikslinimą.`;}
  if(type==="actions"){
    const p=selectedProblems[idx];
    return `Problema: ${p?.title||"pasirinkta slaugos problema"}. Galima formuluotės struktūra: įvertinti aktualų simptomą / riziką ir jo dinamiką; taikyti paskirtas slaugos priemones; pakartotinai įvertinti poveikį; dokumentuoti reikšmingus pokyčius; prireikus perduoti informaciją atsakingam specialistui. Pritaikykite konkrečiam pacientui.`;
@@ -1315,7 +1412,7 @@ function formatOutput(text){
    if(!line.trim()) return '<div class="output-gap"></div>';
    if(/^[A-ZĄČĘĖĮŠŲŪŽ0-9 /–-]{5,}:?$/.test(line.trim()) || line.startsWith("NURSEPLAN LT")) return `<div class="output-heading">${e}</div>`;
    if(/^(Specialybė|TLK-10-AM|Procedūra \/ klinikinis kelias|Gretutinės \/ papildomos būklės|Paciento faktai):/.test(line)) return `<div class="output-meta-line">${e}</div>`;
-   if(/^\d+\. Slaugos problema \/ kryptis:/.test(line)) return `<div class="output-problem">${e}</div>`;
+   if(/^\d+\. Slaugos (diagnozė \/ problema|problema \/ kryptis):/.test(line)) return `<div class="output-problem">${e}</div>`;
    if(/^(Tikslas|Įvertinimas):/.test(line)) return `<div class="output-keyline">${e}</div>`;
    if(line.startsWith("• ")) return `<div class="output-bullet"><span>•</span><div>${escapeHtml(line.slice(2))}</div></div>`;
    if(line.startsWith("Pastaba:")) return `<div class="output-note">${e}</div>`;
@@ -1354,10 +1451,13 @@ function quickStart(code,proc){
 function resetAll(){
  specialty=dx=procedureName=procedure=null;selectedProblems=[];customProblems=[];outputs={plan:"",note:"",edu:""};planBlocks=null;
  el("dxSearch").value="";el("customAssessment").value="";el("patientFacts").value="";el("extraEducation").value="";
+ if(el("importantInfo"))el("importantInfo").value="";
+ if(el("customProblemInputs"))el("customProblemInputs").innerHTML="";
+ customProblemFieldSeq=0;
  go(1);
 }
 
-// V19: viešoje versijoje pacientų epizodai ir klinikiniai įrašai naršyklėje nesaugomi.
+// V23: viešoje versijoje pacientų epizodai ir klinikiniai įrašai naršyklėje nesaugomi.
 try{localStorage.removeItem("nurseplan_v16_demo_episodes");sessionStorage.removeItem("nurseplan_v16_current_episode");}catch(e){}
 init();
 </script>

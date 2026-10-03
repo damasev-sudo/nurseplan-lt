@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b5964">
-<title>NursePlan LT V24</title>
+<title>NursePlan LT V33</title>
 <style>
 :root{
   --bg:#f3f7f8; --card:#ffffff; --ink:#173238; --muted:#688087; --line:#dce7e9;
@@ -159,7 +159,7 @@ main{padding-top:22px}
 }
 
 
-/* ===== V24 OUTPUT BLOCK SELECTOR ===== */
+/* ===== V33 OUTPUT BLOCK SELECTOR ===== */
 .print-options{border-left:4px solid #3d8fa0;background:linear-gradient(180deg,#fff,#f8fcfd);margin-bottom:10px}
 .print-presets{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
 .print-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:7px}
@@ -230,7 +230,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
 }
 
 
-/* ===== V24 STANDALONE NURSING SHEETS ===== */
+/* ===== V33 STANDALONE NURSING SHEETS ===== */
 .sheet-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 12px}
 .standalone-sheet{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow2)}
 .sheet-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;border-bottom:2px solid #dcebed;padding-bottom:10px;margin-bottom:10px}
@@ -267,7 +267,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
 }
 
 
-/* ===== V24 NURSING DIAGNOSIS FORMULATION ===== */
+/* ===== V33 NURSING DIAGNOSIS FORMULATION ===== */
 .diagnosis-formulation{
   margin-top:12px;padding:13px 14px;border:1px solid #cfe3e5;border-left:4px solid #1493a1;
   border-radius:14px;background:linear-gradient(135deg,#f4fafb,#fff)
@@ -287,7 +287,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
 }
 
 
-/* ===== V24 OPTIONAL CUSTOM ENTRIES ===== */
+/* ===== V33 OPTIONAL CUSTOM ENTRIES ===== */
 .custom-problem-tools{margin-top:10px}
 .custom-problem-row{
   display:grid;grid-template-columns:1fr auto;gap:7px;align-items:center;
@@ -303,6 +303,124 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
  .custom-problem-row{grid-template-columns:1fr auto}
 }
 
+
+/* ===== V33 CORE PLAN + DATES + SEPARATE MONITORING ===== */
+input[type=date]{
+  width:100%;border:1px solid var(--line);border-radius:11px;background:#fff;
+  padding:10px 11px;color:var(--ink);outline:none
+}
+input[type=date]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(11,101,112,.08)}
+.date-grid{display:grid;grid-template-columns:minmax(190px,280px);gap:8px;margin:8px 0 12px}
+.date-field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.45px;font-weight:900;color:#476269;margin-bottom:6px}
+.evaluation-box{border-top:1px solid var(--line);margin-top:13px;padding-top:12px}
+.eval-date-row{display:grid;grid-template-columns:minmax(190px,280px) auto;gap:8px;align-items:end;margin-bottom:7px}
+.repeat-evaluation{margin-top:10px;padding:10px;border:1px dashed #b9d5d8;border-radius:12px;background:#fbfdfd}
+.repeat-evaluation-head{display:grid;grid-template-columns:minmax(180px,260px) auto;gap:8px;align-items:end;margin-bottom:7px}
+.monitoring-tools-card{border-left:4px solid #628c94;background:linear-gradient(180deg,#fff,#f8fbfb)}
+.support-tool-row{background:#fbfdfd}
+.support-tool-row:has(input:checked){background:#edf8f8;border-color:#c8e4e6}
+.core-hint{background:#f2f8f8;border:1px solid #d4e6e8;border-radius:12px;padding:10px 12px;margin-bottom:11px;font-size:12px;line-height:1.45;color:#48666d}
+@media(max-width:640px){
+  .date-grid,.eval-date-row,.repeat-evaluation-head{grid-template-columns:1fr}
+}
+
+
+/* ===== V33 DYNAMIC EVALUATION / ESCALATION ===== */
+.eval-status{
+  width:100%;border:1px solid var(--line);border-radius:11px;background:#fff;
+  padding:10px 11px;color:var(--ink);outline:none
+}
+.eval-status:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(11,101,112,.08)}
+.eval-status-wrap{margin:8px 0 10px}
+.eval-followup{
+  margin-top:10px;padding:12px;border:1px solid #e2cf9d;border-radius:13px;
+  background:#fffaf0
+}
+.eval-followup.hidden{display:none}
+.eval-followup-title{font-weight:900;font-size:13px;margin-bottom:4px;color:#654f1f}
+.eval-followup-note{font-size:11px;line-height:1.45;color:#786640;margin-bottom:8px}
+.escalation-row{
+  display:flex;gap:9px;align-items:flex-start;padding:8px 9px;background:#fff;
+  border:1px solid #eadfc2;border-radius:10px;margin:6px 0
+}
+.escalation-row input{width:18px;height:18px;margin-top:2px;accent-color:var(--pri);flex:0 0 auto}
+.escalation-row label{font-size:12.5px;line-height:1.4}
+.plan-revision{
+  margin-top:10px;padding-top:9px;border-top:1px dashed #ddc88e
+}
+.plan-revision label{font-size:12px;font-weight:800;line-height:1.4}
+.plan-revision input[type=checkbox]{width:18px;height:18px;accent-color:var(--pri);vertical-align:-3px;margin-right:5px}
+.revision-field{margin-top:8px}
+.repeat-status-wrap{margin:7px 0}
+.status-chip{
+  display:inline-block;font-size:10px;font-weight:900;border-radius:999px;
+  padding:4px 7px;background:#eef4f5;color:#48666d;margin-left:4px
+}
+
+
+/* ===== V33 DATE+TIME + OVERALL OUTCOME ===== */
+input[type=datetime-local]{
+  width:100%;border:1px solid var(--line);border-radius:11px;background:#fff;
+  padding:10px 11px;color:var(--ink);outline:none
+}
+input[type=datetime-local]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(11,101,112,.08)}
+.overall-outcome-card{margin-top:14px;border-left:4px solid #7e8f96;background:linear-gradient(180deg,#fff,#f9fbfb)}
+.overall-outcome-card.alert{border-left-color:#9a5b5b;background:linear-gradient(180deg,#fff,#fff8f8)}
+.outcome-grid{display:grid;grid-template-columns:minmax(220px,1fr) minmax(190px,280px);gap:10px}
+.outcome-warning{margin-top:9px;padding:10px 11px;border:1px solid #ead3d3;border-radius:11px;background:#fff7f7;font-size:11.5px;line-height:1.45;color:#714b4b}
+@media(max-width:700px){.outcome-grid{grid-template-columns:1fr}}
+
+
+/* ===== V33 SIMPLE BINARY EVALUATION ===== */
+.binary-eval{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 10px
+}
+.binary-btn{
+  border:1px solid var(--line);background:#fff;color:var(--ink);
+  border-radius:12px;padding:11px 12px;font-weight:900;cursor:pointer
+}
+.binary-btn.selected{background:var(--pri);color:#fff;border-color:var(--pri)}
+.binary-btn.negative.selected{background:#8b4a4a;border-color:#8b4a4a}
+.repeat-block-title{font-size:13px;font-weight:900;margin:8px 0 4px}
+.auto-repeat-wrap{margin-top:11px}
+@media(max-width:540px){.binary-eval{grid-template-columns:1fr 1fr}}
+
+/* ===== V33 SIMPLE PLAN FLOW ===== */
+.eval-positive-preview{
+  margin-top:7px;padding:9px 11px;border:1px solid #cfe5d8;border-radius:10px;
+  background:#f5fbf7;color:#3f6750;font-size:12px;line-height:1.45
+}
+.finish-plan-wrap{margin-top:14px}
+.finish-plan-trigger{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:13px;
+  padding:12px 14px;font-weight:900;cursor:pointer
+}
+.finish-plan-panel{
+  margin-top:9px;padding:13px;border:1px solid #d9e5e7;border-radius:14px;background:#fbfdfd
+}
+.finish-grid{display:grid;grid-template-columns:minmax(220px,1fr) minmax(190px,280px);gap:10px}
+.finish-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+@media(max-width:700px){.finish-grid{grid-template-columns:1fr}}
+
+/* ===== V33 OWN NURSING ACTIONS ===== */
+.own-action-tools{margin:9px 0 4px}
+.own-action-row{
+  display:grid;grid-template-columns:1fr auto;gap:7px;align-items:center;
+  margin-top:7px;padding:8px;background:#fbfdfd;border:1px solid var(--line);border-radius:11px
+}
+.own-action-row input[type=text]{
+  width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;
+  padding:10px 11px;color:var(--ink);outline:none
+}
+.own-action-row input[type=text]:focus{
+  border-color:#8abec2;box-shadow:0 0 0 3px rgba(11,101,112,.08)
+}
+.remove-own-action{
+  width:38px;height:38px;border:1px solid #e3d9d9;background:#fff7f7;color:#8b4a4a;
+  border-radius:10px;font-weight:950;cursor:pointer
+}
+.own-action-hint{font-size:10.5px;color:var(--muted);margin-top:5px;line-height:1.35}
 </style>
 </head>
 <body class="simple-mode">
@@ -314,7 +432,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
         <button id="simpleModeBtn" class="mode-btn on" onclick="setMode('simple')">Paprastas</button>
         <button id="advancedModeBtn" class="mode-btn" onclick="setMode('advanced')">Išplėstinis</button>
       </div>
-      <div class="demo-badge" id="versionBadge">V24 • PAPRASTAS REŽIMAS</div>
+      <div class="demo-badge" id="versionBadge">V33 • PAPRASTAS REŽIMAS</div>
     </div>
   </div>
 </div>
@@ -417,6 +535,13 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
           <div class="callout advanced-only">Bendras saugos sluoksnis invazinėms procedūroms. Pažymėkite tik tai, kas realiai taikoma konkrečiam pacientui; nejautros / sedacijos blokas nėra automatinis.</div><div class="simple-note simple-only">✓ Dažniausi prieš- ir poprocedūriniai punktai įjungti. Jei buvo nejautra / sedacija, pažymėkite ir tą eilutę.</div>
           <div id="periModuleList"></div>
         </div>
+        <button class="btn btn-soft simple-only simple-add" onclick="toggleSimpleOptional('supportToolsCard',this)">＋ Stebėjimai / skalės / priežiūros moduliai</button>
+        <div class="card simple-optional monitoring-tools-card" id="supportToolsCard">
+          <div class="tag">PAPILDOMA STEBĖSENA / SKALĖS</div>
+          <div class="core-hint">Šis blokas nėra slaugos diagnozių sąrašas. Čia pasirinktinai jungiami stebėjimai, skalės ir prietaisų / žaizdos priežiūros moduliai.</div>
+          <div id="supportToolsList"></div>
+        </div>
+
         <button class="btn btn-soft simple-only simple-add" onclick="toggleSimpleOptional('sharedConditionsCard',this)">＋ Pridėti gretutinę būklę</button>
         <div class="card simple-optional" id="sharedConditionsCard">
           <div class="tag">GRETUTINĖS / PAPILDOMOS BŪKLĖS</div>
@@ -434,7 +559,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
 
       <section id="screen5" class="hidden">
         <div class="section-title" id="problemTitle"></div>
-        <p class="section-sub simple-only">Pažymėkite problemas, kurios tinka šiam pacientui. Jei netinka – nepažymėkite.</p><p class="section-sub advanced-only">Pasirinkite tik tas problemų kryptis, kurios atitinka konkretaus paciento būklę. Tai nėra oficiali NANDA-I duomenų bazė.</p>
+        <p class="section-sub simple-only">Pažymėkite tik realias slaugos problemas / diagnozes. Stebėjimai, skalės ir priežiūros moduliai palikti atskirame bloke.</p><p class="section-sub advanced-only">Pagrindinis planas: slaugos diagnozė / problema → tikslas → veiksmai → vertinimas. Stebėjimo priemonės ir skalės nėra pateikiamos kaip diagnozės. Tai nėra oficiali NANDA-I duomenų bazė.</p>
         <div id="problemList"></div>
         <div class="custom-problem-tools">
           <button type="button" class="btn btn-soft simple-add" onclick="addCustomProblemField()">＋ Pridėti savo slaugos problemą / diagnozę</button>
@@ -460,6 +585,47 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
           <textarea id="importantInfo" placeholder="Pvz. pacientas buvo ryškiai neramus, mėtė daiktus; informuotas gydytojas, kviestas psichiatras; pagal specialisto paskyrimą taikytas medikamentinis gydymas / papildomos saugumo priemonės; būklė toliau stebėta."></textarea>
         </div>
 
+        <div class="finish-plan-wrap">
+          <button type="button" class="finish-plan-trigger" id="finishPlanTrigger" onclick="toggleFinishPlan()">
+            <span>Užbaigti slaugos planą</span><span>＋</span>
+          </button>
+          <div class="finish-plan-panel hidden" id="finishPlanPanel">
+            <div class="tag">PLANO UŽBAIGIMAS</div>
+            <div class="core-hint">Jei šio lango nepildote, planas laikomas tęsiamu. Užbaigimą rinkitės tik baigiantis šiam slaugos epizodui.</div>
+            <div class="finish-grid">
+              <div>
+                <label class="field-label">Plano užbaigimo priežastis</label>
+                <select id="overallOutcome" class="eval-status" onchange="updateOverallOutcomeState()">
+                  <option value="">Pasirinkite…</option>
+                  <option value="home">Išrašytas į namus</option>
+                  <option value="ward">Perkeltas į kitą skyrių</option>
+                  <option value="facility">Perkeltas į kitą gydymo įstaigą</option>
+                  <option value="rehab">Išvyko reabilitacijai</option>
+                  <option value="self">Pasišalino / išvyko savo noru</option>
+                  <option value="death">Slaugos planas užbaigtas dėl paciento mirties</option>
+                  <option value="other">Kita</option>
+                </select>
+              </div>
+              <div class="date-field">
+                <label>Data ir laikas</label>
+                <input type="datetime-local" id="overallOutcomeDate">
+              </div>
+            </div>
+            <div id="overallOutcomeOtherWrap" class="hidden">
+              <label class="field-label">Kita priežastis</label>
+              <input type="text" id="overallOutcomeOther" placeholder="Įrašykite plano užbaigimo priežastį">
+            </div>
+            <label class="field-label">Papildoma pastaba (jei reikia)</label>
+            <textarea id="overallOutcomeNote" placeholder="Trumpa perdavimo / išvykimo pastaba..."></textarea>
+            <div id="deathOutcomeNote" class="outcome-warning hidden">
+              Mirties atveju NursePlan nefiksuoja mirties priežasties ir nepakeičia gydytojo dokumentacijos. Pažymimas tik slaugos plano užbaigimo faktas.
+            </div>
+            <div class="finish-actions">
+              <button type="button" class="btn btn-secondary" onclick="cancelFinishPlan()">Tęsti planą</button>
+            </div>
+          </div>
+        </div>
+
         <div class="card">
           <div class="tag">PACIENTO MOKYMAS</div>
           <div id="educationList"></div>
@@ -471,7 +637,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
         <div class="card simple-optional" id="patientResourcesCard">
           <div class="tag">PACIENTO ATMINTINĖS / LANKSTINUKAI</div>
           <div class="simple-note simple-only">Pasirinktinai: jei pacientui tinka konkreti atmintinė, galite ją peržiūrėti ar atsispausdinti. Jei nereikia – šį žingsnį tiesiog praleiskite.</div>
-          <div class="callout advanced-only">Atmintinės kuriamos iš patvirtinto bazinio turinio ir gali būti pritaikomos įstaigos kontaktams bei vietinei tvarkai. V24 prototipe panaudotas jūsų Canva pacientų mokymo turinys.</div>
+          <div class="callout advanced-only">Atmintinės kuriamos iš patvirtinto bazinio turinio ir gali būti pritaikomos įstaigos kontaktams bei vietinei tvarkai. V33 prototipe panaudotas jūsų Canva pacientų mokymo turinys.</div>
           <div id="patientResources"></div>
         </div>
         <div class="btnrow"><button class="btn btn-secondary" onclick="go(5)">Atgal</button><button class="btn btn-primary" onclick="generateOutputs()">Generuoti planą</button></div>
@@ -503,6 +669,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
             <label><input type="checkbox" id="printAssessment" onchange="refreshPlanOutput()"> Paciento įvertinimo punktai</label>
             <label><input type="checkbox" id="printPeri" onchange="refreshPlanOutput()"> Peri- / poprocedūrinės stebėsenos blokas</label>
             <label><input type="checkbox" id="printSharedAssessment" onchange="refreshPlanOutput()"> Gretutinių būklių stebėsenos blokas</label>
+            <label><input type="checkbox" id="printSupport" onchange="refreshPlanOutput()"> Papildomi stebėjimai / skalės / priežiūros moduliai</label>
             <label><input type="checkbox" id="printEducation" onchange="refreshPlanOutput()"> Paciento mokymas / išėjimo informacija</label>
           </div>
         </div>
@@ -534,7 +701,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
           <div class="card"><div class="iconbox">NV</div><div class="small-head">Galūnės neurovaskulinė stebėsena</div><div class="meta">Spalva, temperatūra, kapiliarų prisipildymas, jutimai, judesiai, pulsas ir skausmo dinamika pagal klinikinę situaciją.</div></div>
           <div class="card"><div class="iconbox">G</div><div class="small-head">Gipsas / įtvaras / ortozė</div><div class="meta">Spaudimo vietos, odos būklė, tinimas, galūnės padėtis, saugus naudojimas ir paciento mokymas.</div></div>
           <div class="card"><div class="iconbox">PP</div><div class="small-head">Peri- / poprocedūrinė slauga</div><div class="meta">Nerimas ir pasiruošimas prieš procedūrą, po nejautros / sedacijos stebėjimas, kraujavimas, mobilizacija, išrašymo kriterijai ir tolimesnis planas.</div></div>
-          <div class="card"><div class="iconbox">AI</div><div class="small-head">AI formulavimo pagalba</div><div class="meta">V14 demonstracinė funkcija padeda struktūruoti tuščius laukus; galutinį tekstą visada patvirtina ir redaguoja slaugytoja.</div></div>
+          <div class="card"><div class="iconbox">AI</div><div class="small-head">AI formulavimo pagalba</div><div class="meta">V33 demonstracinė funkcija padeda struktūruoti tuščius laukus; galutinį tekstą visada patvirtina ir redaguoja slaugytoja.</div></div>
           <div class="card"><div class="iconbox">PM</div><div class="small-head">Paciento mokymo biblioteka</div><div class="meta">Atmintinės apie nefrostomą, cistostomą ir vėliau kitus prietaisus / procedūras, pritaikomos konkrečiai įstaigai.</div></div>
           <div class="card"><div class="iconbox">T</div><div class="small-head">Terapijos branduolys</div><div class="meta">Kardiologija, pulmonologija, nefrologija, endokrinologija, hematologija, gastroenterologija, sepsis, VTE ir skysčių / elektrolitų būklės.</div></div>
           <div class="card"><div class="iconbox">+</div><div class="small-head">Gretutinės būklės</div><div class="meta">Anemija, diabetas, lėtinė inkstų liga, širdies nepakankamumas, LOPL, hipertenzija, prieširdžių virpėjimas, nutukimas, dehidratacija, elektrolitų sutrikimai ir antikoaguliacinis gydymas gali būti prijungiami prie bet kurios specialybės plano.</div></div>
@@ -660,20 +827,29 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
         <div class="card">
           <div class="tag">PRODUKTO KRYPTIS</div>
           <ul class="about-list">
-            <li>V24 visų penkių specialybių problemų formuluotės pririštos prie pasirinktos operacijos, procedūros arba terapinės diagnozės; bendriniai vieno žodžio pavadinimai neberodomi, kai klinikinis kontekstas jau žinomas.</li>
-            <li>V24 problemų formuluotės automatiškai pririšamos prie pasirinktos procedūros. Nebereikia spausti „Patikslinti“ – iškart rodoma plane tinkama kontekstinė formuluotė.</li>
-            <li>V24 leidžia vienu „+“ pridėti tiek individualių slaugos problemų / diagnozių, kiek reikia, ir turi atskirą pasirenkamą lauką svarbiai papildomai informacijai apie nestandartinius įvykius ar papildomas intervencijas.</li>
-            <li>V24 taiko „paprasta pirmiausia“ principą: trumpa formuluotė naudojama iškart, o patikslinimas ir AI atsidaro tik jei jų reikia.</li>
-            <li>V24 atskiria trumpą slaugos problemos / diagnozės kryptį nuo individualizuotos formuluotės. Esamai problemai siūloma „problema + susijęs veiksnys + požymiai“, o rizikos diagnozei – rizika + rizikos veiksniai be „pasireiškianti“.</li>
-            <li>V24 turi atskirai spausdinamus vieno puslapio slaugos lapus: poprocedūrinį vertinimą, stebėjimą po sedacijos / nejautros ir išvykimo kontrolinį lapą.</li>
+            <li>V33 pridėjus savo slaugos veiksmą, mygtukas lieka po sąrašu ir pasikeičia į „Pridėti dar vieną veiksmą“, todėl galima pridėti tiek individualių veiksmų, kiek reikia.</li>
+            <li>V33 prie kiekvienos slaugos diagnozės / problemos galima vienu „+“ pridėti vieną ar kelis savo individualius slaugos veiksmus; papildomai jų pažymėti nereikia – jie automatiškai patenka į galutinį planą.</li>
+            <li>V33 „Pasiektas“ automatiškai paverčiamas konkrečiu klinikiniu rezultatu, planas pagal nutylėjimą tęsiamas, o jo užbaigimas atsidaro tik pasirinkus „Užbaigti slaugos planą“. Slaugos veiksmai pateikiami kaip vykdoma priežiūra, o ne kaip komandos slaugytojai.</li>
+            <li>V33 vertinimas supaprastintas iki dviejų pasirinkimų: „Pasiektas“ arba „Nepasiektas“. Tik pasirinkus „Nepasiektas“ atsiveria papildomi veiksmai, plano korekcija ir pakartotinis vertinimas.</li>
+            <li>V33 prie diagnozės formulavimo, vertinimų ir bendros slaugos plano / epizodo baigties fiksuojama data bei laikas. Bendra baigtis gali būti ir nepalanki: blogėjimas, eskalacija, perkėlimas ar plano užbaigimas dėl paciento mirties.</li>
+            <li>V33 vertinimas nebėra automatiškai „teigiamas“: pasirenkama, ar tikslas pasiektas, iš dalies pasiektas, nepasiektas ar būklė blogėja. Jei reikia, atsiveria papildomi veiksmai / paskirtos intervencijos, plano korekcija ir pakartotinis vertinimas.</li>
+            <li>V33 pagrindinis slaugos planas aiškiai atskirtas nuo stebėjimo priemonių: diagnozė / problema → formulavimo data → tikslas → veiksmai → vertinimas su data. Papildomi stebėjimai, skalės ir priežiūros moduliai pasirenkami atskirai.</li>
+            <li>V33 procedūrinėse specialybėse slaugos problemų priežastis formuluojama pagal slaugytojo vertinamą veiksnį (pvz., audinių pažeidimą, anestezijos poveikį, sumažėjusį mobilumą), o ne pagal medicininės procedūros pavadinimą.</li>
+            <li>V33 medicininė diagnozė ir procedūra paliekamos klinikiniame kontekste, o slaugos problemos formuluojamos kaip paciento reakcija, rizika ar priežiūros poreikis – liga nebenaudojama kaip automatinė slaugos problemos priežastis.</li>
+            <li>V33 visų penkių specialybių problemų formuluotės pririštos prie pasirinktos operacijos, procedūros arba terapinės diagnozės; bendriniai vieno žodžio pavadinimai neberodomi, kai klinikinis kontekstas jau žinomas.</li>
+            <li>V33 problemų formuluotės automatiškai pririšamos prie pasirinktos procedūros. Nebereikia spausti „Patikslinti“ – iškart rodoma plane tinkama kontekstinė formuluotė.</li>
+            <li>V33 leidžia vienu „+“ pridėti tiek individualių slaugos problemų / diagnozių, kiek reikia, ir turi atskirą pasirenkamą lauką svarbiai papildomai informacijai apie nestandartinius įvykius ar papildomas intervencijas.</li>
+            <li>V33 taiko „paprasta pirmiausia“ principą: trumpa formuluotė naudojama iškart, o patikslinimas ir AI atsidaro tik jei jų reikia.</li>
+            <li>V33 atskiria trumpą slaugos problemos / diagnozės kryptį nuo individualizuotos formuluotės. Esamai problemai siūloma „problema + susijęs veiksnys + požymiai“, o rizikos diagnozei – rizika + rizikos veiksniai be „pasireiškianti“.</li>
+            <li>V33 turi atskirai spausdinamus vieno puslapio slaugos lapus: poprocedūrinį vertinimą, stebėjimą po sedacijos / nejautros ir išvykimo kontrolinį lapą.</li>
             <li>TLK-10-AM naudojamas diagnozės paieškai ir klinikiniam keliui pradėti.</li>
             <li>Procedūra arba klinikinis slaugos kelias pasirenkamas atskirai, nes vienas TLK kodas savaime nenustato gydymo.</li>
             <li>Slaugos problemos pateikiamos kaip siūlomos kryptys, o ne kaip automatinė diagnozė.</li>
             <li>Nenaudojami paciento vardas, asmens kodas ar ligos istorijos numeris.</li>
             <li>Prieš realų klinikinį naudojimą reikalinga turinio ekspertizė, validacija, duomenų apsaugos ir medicinos priemonės reguliacinė analizė.</li>
             <li>V15 išlaiko išplėstą vidaus ligų / terapijos kryptį iki dažniausių stacionaro būklių branduolio: kardiologija, pulmonologija, hematologija, endokrinologija, nefrologija, gastroenterologija, infekcijos, venų tromboembolija, skysčių ir elektrolitų pusiausvyra. Gretutinės būklės veikia skersai specialybių.</li>
-            <li>V24 dizainas vizualiai išryškina diagnozę, procedūrą, gretutines būkles, pasirinktas slaugos problemas, tikslus, veiksmus, vertinimą ir paciento mokymą.</li>
-            <li>V24 paprastame režime paciento atmintinės paliktos kaip pasirenkama funkcija – jos atsiveria tik paspaudus „Paciento atmintinės“.</li><li>V24 taiko „privacy-first“ principą: paciento identifikaciniai duomenys ir epizodų istorija viešame prototipe nesaugomi; sugeneruotas tekstas skirtas perkelti į įstaigos patvirtintą dokumentacijos formą.</li>
+            <li>V33 dizainas vizualiai išryškina diagnozę, procedūrą, gretutines būkles, pasirinktas slaugos problemas, tikslus, veiksmus, vertinimą ir paciento mokymą.</li>
+            <li>V33 paprastame režime paciento atmintinės paliktos kaip pasirenkama funkcija – jos atsiveria tik paspaudus „Paciento atmintinės“.</li><li>V33 taiko „privacy-first“ principą: paciento identifikaciniai duomenys ir epizodų istorija viešame prototipe nesaugomi; sugeneruotas tekstas skirtas perkelti į įstaigos patvirtintą dokumentacijos formą.</li>
             <li>V16 prideda universalų priešprocedūrinį / poprocedūrinį saugos sluoksnį, AI formulavimo pagalbos prototipą ir pacientų atmintines. AI prototipas nenaudoja realių pacientų duomenų ir nepriima klinikinio sprendimo už slaugytoją.</li>
             <li>ACHI procedūrų skaitmeniniai kodai į demo sąmoningai nedėti, kol nėra integruotas oficialus aktualus klasifikatorius.</li>
           </ul>
@@ -681,7 +857,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
         <div class="btnrow"><button class="btn btn-primary" onclick="startFlow()">Kurti planą</button><button class="btn btn-secondary" onclick="goHome()">Į pradžią</button></div>
       </section>
 
-      <div class="footer">NursePlan LT V24 • chirurgija, urologija, neurochirurgija, ortopedija-traumatologija ir vidaus ligų / terapijos branduolys • turinio struktūra skirta mokymui ir produkto testavimui. TLK grupės turi būti tikrinamos pagal aktualų oficialų Lietuvos TLK-10-AM / ACHI klasifikatorių prieš produkcinį naudojimą.</div>
+      <div class="footer">NursePlan LT V33 • chirurgija, urologija, neurochirurgija, ortopedija-traumatologija ir vidaus ligų / terapijos branduolys • turinio struktūra skirta mokymui ir produkto testavimui. TLK grupės turi būti tikrinamos pagal aktualų oficialų Lietuvos TLK-10-AM / ACHI klasifikatorių prieš produkcinį naudojimą.</div>
     </div>
   </div>
 </main>
@@ -1023,7 +1199,7 @@ function setMode(mode){
  document.body.classList.toggle("simple-mode",uiMode==="simple");
  el("simpleModeBtn")?.classList.toggle("on",uiMode==="simple");
  el("advancedModeBtn")?.classList.toggle("on",uiMode==="advanced");
- if(el("versionBadge")) el("versionBadge").textContent=uiMode==="simple"?"V24 • PAPRASTAS REŽIMAS":"V24 • IŠPLĖSTINIS REŽIMAS";
+ if(el("versionBadge")) el("versionBadge").textContent=uiMode==="simple"?"V33 • PAPRASTAS REŽIMAS":"V33 • IŠPLĖSTINIS REŽIMAS";
  if(uiMode==="simple") document.querySelectorAll('.simple-optional').forEach(x=>x.classList.remove('simple-open'));
 }
 function toggleSimpleOptional(id,btn){
@@ -1050,11 +1226,69 @@ function getPeriAssessments(){return [...new Set(getSelectedPeriModules().flatMa
 function getSelectedSharedConditions(){
  return sharedConditions.filter(c=>el("sc_"+c.id)?.checked);
 }
-function getActiveProblemKeys(){
+
+/* V33: aiškiai atskiriame diagnozes nuo stebėjimo / priežiūros įrankių. */
+const supportOnlyKeys=new Set([
+ "wound","drain","catheter","hematuria","stoma","periskin",
+ "preknowledge","postopobs","anesthesia","followup","cardiac","edema",
+ "systemicinf","neurovascular","csf","calcium"
+]);
+
+function getAllActiveProblemKeys(){
  const keys=[...procedure.problems,...getPeriProblemKeys()];
  getSelectedSharedConditions().forEach(c=>c.problems.forEach(k=>keys.push(k)));
  return [...new Set(keys)].filter(k=>problemLibrary[k]);
 }
+function getActiveProblemKeys(){
+ return getAllActiveProblemKeys().filter(k=>!supportOnlyKeys.has(k));
+}
+
+function supportToolLabel(key){
+ const map={
+  wound:"Operacinės žaizdos vertinimas ir priežiūra",
+  drain:"Dreno fiksacijos, įvedimo vietos ir išskyrų stebėjimas",
+  catheter:"Kateterio / drenavimo sistemos praeinamumo ir priežiūros stebėjimas",
+  hematuria:"Šlapimo spalvos, krešulių ir šlapimo nutekėjimo stebėjimas",
+  stoma:"Stomos būklės ir savipriežiūros vertinimas",
+  periskin:"Peristominės odos būklės vertinimas",
+  preknowledge:"Pasiruošimo procedūrai informacija / kontrolinis patikrinimas",
+  postopobs:"Ankstyvas poprocedūrinis būklės stebėjimas",
+  anesthesia:"Stebėjimas po nejautros / sedacijos",
+  followup:"Išrašymo ir tolimesnės priežiūros informacija",
+  cardiac:"AKS, pulso / ritmo ir hemodinamikos stebėjimas",
+  edema:"Edemų ir skysčių kaupimosi stebėjimas",
+  systemicinf:"Bendros infekcinės būklės stebėjimas",
+  neurovascular:"Galūnės neurovaskulinė stebėsena",
+  csf:"Likvoro drenažo / nutekėjimo stebėjimas",
+  calcium:"Hipokalcemijos simptomų stebėjimas"
+ };
+ return map[key]||problemLibrary[key]?.t||key;
+}
+function getScaleSuggestions(){
+ const keys=new Set(getAllActiveProblemKeys());
+ const arr=[];
+ if(keys.has("pain"))arr.push("Skausmo intensyvumo vertinimo skalė (pvz., NRS arba įstaigos naudojama skalė)");
+ if(keys.has("fall"))arr.push("Kritimo rizikos vertinimo skalė pagal įstaigos patvirtintą metodiką");
+ if(keys.has("pressure"))arr.push("Spaudimo pažeidimo / pragulų rizikos vertinimo skalė pagal įstaigos patvirtintą metodiką");
+ if(keys.has("fluid")||keys.has("urinary")||keys.has("electrolyte"))arr.push("Skysčių balanso ir diurezės stebėjimas");
+ if(keys.has("neuro")||keys.has("delirium")||keys.has("seizure")||keys.has("aspiration")||keys.has("icp"))arr.push("Sąmonės ir neurologinės būklės struktūruotas vertinimas pagal įstaigos tvarką");
+ return arr;
+}
+function renderSupportTools(){
+ const box=el("supportToolsList"); if(!box)return;
+ const supportKeys=getAllActiveProblemKeys().filter(k=>supportOnlyKeys.has(k));
+ const items=[
+   ...supportKeys.map(k=>({id:"key_"+k,label:supportToolLabel(k)})),
+   ...getScaleSuggestions().map((label,i)=>({id:"scale_"+i,label}))
+ ];
+ const unique=[]; const seen=new Set();
+ items.forEach(x=>{if(!seen.has(x.label)){seen.add(x.label);unique.push(x)}});
+ box.innerHTML=unique.length?unique.map((x,i)=>`<div class="actionrow support-tool-row"><input type="checkbox" id="support_${i}" data-support-label="${escapeHtml(x.label)}"><label for="support_${i}">${x.label}</label></div>`).join(""):'<div class="meta">Šiam keliui papildomų stebėjimo ar skalės modulių nesiūloma.</div>';
+}
+function getSelectedSupportTools(){
+ return [...document.querySelectorAll("#supportToolsList input:checked")].map(x=>x.dataset.supportLabel).filter(Boolean);
+}
+
 function getActiveEducation(){
  const arr=[...procedure.education,...getPeriEducation()];
  getSelectedSharedConditions().forEach(c=>c.education.forEach(x=>arr.push(x)));
@@ -1065,7 +1299,7 @@ function renderSharedConditions(){
  const visible=sharedConditions.filter(c=>!dx || !c.match.some(prefix=>(dx.code||"").startsWith(prefix)));
  box.innerHTML=visible.length?visible.map(c=>`<div class="actionrow condition-row"><input type="checkbox" id="sc_${c.id}"><label for="sc_${c.id}"><b>${c.name}</b> <span class="meta">(${c.codes})</span><div class="meta" style="margin-top:3px">${(Array.isArray(c.assessment)?c.assessment:[c.assessment]).join(" • ")}</div></label></div>`).join(""):'<div class="meta">Papildomų bendrų būklių šiam keliui nerodoma.</div>';
 }
-function continueFromAssessment(){renderProblems();go(5)}
+function continueFromAssessment(){renderSupportTools();renderProblems();go(5)}
 
 function showStandaloneSheets(){
  hideExtras();
@@ -1147,245 +1381,268 @@ function selectProcedure(p){
  if(!procedure){alert("Šio modulio turinys dar neparengtas.");return}
  el("assessTitle").textContent=p+" – ką įvertinti";
  el("assessmentList").innerHTML=procedure.assessment.map((a,i)=>`<div class="actionrow assessment-row"><input type="checkbox" id="as_${i}"><label for="as_${i}">${a}</label></div>`).join("");
- renderPeriModules();renderSharedConditions();renderProblems();go(4);
+ renderPeriModules();renderSharedConditions();renderSupportTools();renderProblems();go(4);
 }
+
 
 
 
 function therapyProblemLabel(key,p){
  const code=dx?.code||"";
- const byCode={
+
+ const specific={
   "D50":{
-   fatigue:"Nuovargis ir sumažėjusi fizinio krūvio tolerancija dėl geležies stokos anemijos",
-   fall:"Kritimo rizika dėl silpnumo ir galvos svaigimo, susijusių su anemija",
-   knowledge:"Žinių trūkumas apie anemijos gydymą, savistabą ir kontrolinius tyrimus"
+   fatigue:"Nuovargis ir sumažėjusi fizinio krūvio tolerancija",
+   fall:"Kritimo rizika dėl silpnumo ir svaigimo",
+   knowledge:"Žinių trūkumas apie gydymą, savistabą ir kontrolinius tyrimus"
   },
   "I50":{
-   respiratory:"Dusulys ir sumažėjusi fizinio krūvio tolerancija dėl širdies nepakankamumo",
-   fluid:"Skysčių pertekliaus rizika dėl širdies nepakankamumo",
-   edema:"Periferinių edemų ir skysčių kaupimosi stebėjimo poreikis dėl širdies nepakankamumo",
-   fatigue:"Nuovargis dėl sumažėjusios fizinio krūvio tolerancijos sergant širdies nepakankamumu",
-   cardiac:"Širdies ritmo ir hemodinamikos stebėjimo poreikis dėl širdies nepakankamumo",
-   knowledge:"Žinių trūkumas apie savistabą, skysčių režimą ir gydymą sergant širdies nepakankamumu"
+   respiratory:"Kvėpavimo funkcijos sutrikimas / dusulys",
+   fluid:"Skysčių pertekliaus rizika",
+   edema:"Periferinių edemų ir skysčių kaupimosi stebėjimo poreikis",
+   fatigue:"Nuovargis ir sumažėjusi fizinio krūvio tolerancija",
+   cardiac:"Hemodinamikos pokyčių stebėjimo poreikis",
+   knowledge:"Žinių trūkumas apie savistabą, skysčių režimą ir vaistų vartojimą"
   },
   "I10":{
-   cardiac:"Kraujospūdžio ir hemodinamikos stebėjimo poreikis dėl arterinės hipertenzijos",
-   anxiety:"Nerimas dėl padidėjusio kraujospūdžio ir pasikeitusios sveikatos būklės",
-   knowledge:"Žinių trūkumas apie kraujospūdžio savikontrolę ir paskirto gydymo laikymąsi"
+   cardiac:"Kraujospūdžio ir hemodinamikos pokyčių stebėjimo poreikis",
+   anxiety:"Nerimas dėl pasikeitusios sveikatos būklės",
+   knowledge:"Žinių trūkumas apie kraujospūdžio savikontrolę ir gydymo režimą"
   },
   "I48":{
-   cardiac:"Širdies ritmo ir hemodinamikos stebėjimo poreikis dėl prieširdžių virpėjimo",
-   fatigue:"Nuovargis ir sumažėjusi fizinio krūvio tolerancija dėl prieširdžių virpėjimo",
-   fall:"Kritimo rizika dėl svaigimo ar silpnumo, susijusių su prieširdžių virpėjimu",
-   knowledge:"Žinių trūkumas apie pulso stebėjimą, gydymą ir antikoaguliantų vartojimo saugumą"
+   cardiac:"Širdies ritmo ir hemodinamikos pokyčių stebėjimo poreikis",
+   fatigue:"Nuovargis ir sumažėjusi fizinio krūvio tolerancija",
+   fall:"Kritimo rizika dėl silpnumo ar svaigimo",
+   knowledge:"Žinių trūkumas apie pulso savistabą ir vaistų vartojimo saugumą"
   },
   "J18":{
-   respiratory:"Dusulys ir kvėpavimo funkcijos sutrikimas dėl pneumonijos",
-   infection:"Karščiavimo ir infekcinės būklės stebėjimo poreikis dėl pneumonijos",
-   fluid:"Skysčių balanso sutrikimo rizika dėl karščiavimo ir sumažėjusio skysčių vartojimo sergant pneumonija",
-   fatigue:"Silpnumas ir nuovargis dėl pneumonijos",
-   nutrition:"Sumažėjusio apetito ir mitybos toleravimo poreikis sergant pneumonija",
-   knowledge:"Žinių trūkumas apie gydymą, kvėpavimo savistabą ir būklės blogėjimo požymius sergant pneumonija"
+   respiratory:"Kvėpavimo funkcijos sutrikimas / dusulys",
+   infection:"Karščiavimo ir infekcinės būklės stebėjimo poreikis",
+   fluid:"Skysčių balanso sutrikimo rizika",
+   fatigue:"Silpnumas ir nuovargis",
+   nutrition:"Sumažėjęs apetitas / sutrikęs mitybos toleravimas",
+   knowledge:"Žinių trūkumas apie savistabą, gydymą ir būklės blogėjimo požymius"
   },
   "J44":{
-   respiratory:"Dusulys ir kvėpavimo funkcijos sutrikimas dėl LOPL paūmėjimo",
-   fatigue:"Nuovargis ir sumažėjusi fizinio krūvio tolerancija dėl LOPL paūmėjimo",
-   anxiety:"Nerimas dėl dusulio ir pasikeitusios kvėpavimo būklės",
-   nutrition:"Mitybos toleravimo ir energijos poreikio užtikrinimo sunkumai dėl LOPL paūmėjimo",
-   knowledge:"Žinių trūkumas apie inhaliatorių naudojimą, savistabą ir LOPL paūmėjimo požymius"
+   respiratory:"Kvėpavimo funkcijos sutrikimas / dusulys",
+   fatigue:"Nuovargis ir sumažėjusi fizinio krūvio tolerancija",
+   anxiety:"Nerimas dėl dusulio ir pasikeitusios sveikatos būklės",
+   nutrition:"Mitybos toleravimo ir energijos poreikio užtikrinimo sunkumai",
+   knowledge:"Žinių trūkumas apie inhaliatorių naudojimą, savistabą ir paūmėjimo požymius"
   },
   "J45":{
-   respiratory:"Dusulys ir kvėpavimo funkcijos sutrikimas dėl astmos",
-   anxiety:"Nerimas dėl dusulio ir galimo astmos paūmėjimo",
-   knowledge:"Žinių trūkumas apie inhaliatorių naudojimą ir astmos paūmėjimo požymių atpažinimą"
+   respiratory:"Kvėpavimo funkcijos sutrikimas / dusulys",
+   anxiety:"Nerimas dėl dusulio ir galimo būklės pablogėjimo",
+   knowledge:"Žinių trūkumas apie inhaliatorių naudojimą ir būklės blogėjimo požymius"
   },
   "E11":{
-   glucose:"Gliukozės kiekio kraujyje svyravimo rizika dėl 2 tipo cukrinio diabeto",
-   infection:"Infekcijos rizika dėl cukrinio diabeto ir galimo lėtesnio audinių gijimo",
-   nutrition:"Mitybos režimo koregavimo poreikis dėl cukrinio diabeto",
-   knowledge:"Žinių trūkumas apie gliukozės savikontrolę, mitybą ir paskirtą diabeto gydymą"
+   glucose:"Gliukozės kiekio kraujyje svyravimo rizika",
+   infection:"Infekcijos ir lėtesnio audinių gijimo rizika",
+   nutrition:"Mitybos režimo laikymosi sunkumai",
+   knowledge:"Žinių trūkumas apie gliukozės savikontrolę, mitybą ir gydymo režimą"
   },
   "N17":{
-   fluid:"Skysčių balanso sutrikimo rizika dėl ūminio inkstų funkcijos sutrikimo",
-   electrolyte:"Elektrolitų pusiausvyros sutrikimo rizika dėl ūminio inkstų funkcijos sutrikimo",
-   urinary:"Diurezės sumažėjimo ir šlapimo išskyrimo pokyčių stebėjimo poreikis dėl ūminio inkstų funkcijos sutrikimo",
-   fatigue:"Silpnumas ir nuovargis dėl ūminio inkstų funkcijos sutrikimo",
-   knowledge:"Žinių trūkumas apie skysčių režimą, savistabą ir tolimesnį inkstų funkcijos stebėjimą"
+   fluid:"Skysčių balanso sutrikimo rizika",
+   electrolyte:"Elektrolitų pusiausvyros sutrikimo rizika",
+   urinary:"Sumažėjusios diurezės ir šlapimo išskyrimo pokyčių stebėjimo poreikis",
+   fatigue:"Silpnumas ir nuovargis",
+   knowledge:"Žinių trūkumas apie skysčių režimą, savistabą ir kontrolinius tyrimus"
   },
   "N18":{
-   fluid:"Skysčių kaupimosi ir balanso sutrikimo rizika dėl lėtinės inkstų ligos",
-   electrolyte:"Elektrolitų pusiausvyros sutrikimo rizika dėl lėtinės inkstų ligos",
-   fatigue:"Nuovargis ir sumažėjusi fizinio krūvio tolerancija dėl lėtinės inkstų ligos",
-   nutrition:"Mitybos režimo laikymosi poreikis dėl lėtinės inkstų ligos",
-   knowledge:"Žinių trūkumas apie skysčių, mitybos, vaistų ir kontrolinių tyrimų planą sergant lėtine inkstų liga"
+   fluid:"Skysčių kaupimosi ir balanso sutrikimo rizika",
+   electrolyte:"Elektrolitų pusiausvyros sutrikimo rizika",
+   fatigue:"Nuovargis ir sumažėjusi fizinio krūvio tolerancija",
+   nutrition:"Mitybos režimo laikymosi sunkumai",
+   knowledge:"Žinių trūkumas apie skysčių, mitybos, vaistų ir kontrolinių tyrimų planą"
   },
   "K74":{
-   fluid:"Ascito, edemų ir skysčių balanso stebėjimo poreikis dėl kepenų cirozės",
-   nutrition:"Mitybos būklės ir toleravimo stebėjimo poreikis dėl kepenų cirozės",
-   bleeding:"Kraujavimo rizika ir kraujavimo požymių stebėjimo poreikis dėl kepenų funkcijos sutrikimo sergant ciroze",
-   fall:"Kritimo rizika dėl silpnumo ar sąmonės / orientacijos pokyčių sergant kepenų ciroze",
-   delirium:"Sąmonės ir orientacijos pokyčių stebėjimo poreikis dėl kepenų encefalopatijos rizikos",
-   knowledge:"Žinių trūkumas apie savistabą, mitybą, skysčius ir gydymą sergant kepenų ciroze"
+   fluid:"Ascito, edemų ir skysčių balanso stebėjimo poreikis",
+   nutrition:"Mitybos būklės ir toleravimo stebėjimo poreikis",
+   bleeding:"Kraujavimo rizika ir kraujavimo požymių stebėjimo poreikis",
+   fall:"Kritimo rizika dėl silpnumo ar orientacijos pokyčių",
+   delirium:"Sąmonės ir orientacijos pokyčių rizika",
+   knowledge:"Žinių trūkumas apie savistabą, mitybą, skysčius ir gydymo režimą"
   },
   "E86":{
-   fluid:"Skysčių deficitas ir skysčių balanso sutrikimas dėl dehidratacijos",
-   fall:"Kritimo rizika dėl silpnumo, svaigimo ir ortostatinių simptomų esant dehidratacijai",
-   fatigue:"Silpnumas ir nuovargis dėl dehidratacijos",
-   electrolyte:"Elektrolitų pusiausvyros sutrikimo rizika dėl dehidratacijos",
-   knowledge:"Žinių trūkumas apie pakankamą skysčių vartojimą ir dehidratacijos požymių atpažinimą"
+   fluid:"Skysčių deficitas / nepakankamas skysčių balansas",
+   fall:"Kritimo rizika dėl silpnumo, svaigimo ar ortostatinių simptomų",
+   fatigue:"Silpnumas ir nuovargis",
+   electrolyte:"Elektrolitų pusiausvyros sutrikimo rizika",
+   knowledge:"Žinių trūkumas apie skysčių vartojimą ir dehidratacijos požymių atpažinimą"
   },
   "E87":{
-   electrolyte:"Elektrolitų pusiausvyros sutrikimo stebėjimo poreikis dėl nustatyto elektrolitų disbalanso",
-   fluid:"Skysčių balanso stebėjimo poreikis dėl skysčių ir elektrolitų pusiausvyros sutrikimo",
-   cardiac:"Širdies ritmo pokyčių stebėjimo poreikis dėl elektrolitų disbalanso",
-   fall:"Kritimo rizika dėl silpnumo, svaigimo ar neuromuskulinių simptomų esant elektrolitų disbalansui",
-   knowledge:"Žinių trūkumas apie paskirtą skysčių / elektrolitų korekciją ir savistabą"
+   electrolyte:"Elektrolitų pusiausvyros sutrikimo stebėjimo poreikis",
+   fluid:"Skysčių balanso stebėjimo poreikis",
+   cardiac:"Širdies ritmo pokyčių stebėjimo poreikis",
+   fall:"Kritimo rizika dėl silpnumo, svaigimo ar neuromuskulinių simptomų",
+   knowledge:"Žinių trūkumas apie paskirtą korekciją ir savistabą"
   },
   "I20":{
-   chestpain:"Krūtinės skausmas dėl miokardo išemijos / krūtinės anginos",
-   cardiac:"Širdies ritmo ir hemodinamikos stebėjimo poreikis dėl krūtinės anginos",
-   anxiety:"Nerimas dėl krūtinės skausmo ir galimos būklės blogėjimo",
-   knowledge:"Žinių trūkumas apie krūtinės skausmo savistabą, paskirtus vaistus ir kada kreiptis skubios pagalbos"
+   chestpain:"Ūmus krūtinės skausmas",
+   cardiac:"Hemodinamikos ir širdies ritmo pokyčių stebėjimo poreikis",
+   anxiety:"Nerimas dėl krūtinės skausmo ir galimo būklės blogėjimo",
+   knowledge:"Žinių trūkumas apie simptomų savistabą, vaistus ir kada kreiptis skubios pagalbos"
   },
   "I21":{
-   chestpain:"Krūtinės skausmas dėl ūminio miokardo infarkto",
-   cardiac:"Širdies ritmo ir hemodinamikos stebėjimo poreikis dėl ūminio miokardo infarkto",
-   anxiety:"Nerimas dėl ūminio miokardo infarkto ir pasikeitusios sveikatos būklės",
-   bleeding:"Kraujavimo stebėjimo poreikis taikant antitrombozinį ar invazinį gydymą dėl ūminio miokardo infarkto",
-   fatigue:"Silpnumas ir sumažėjusi fizinio krūvio tolerancija po ūminio miokardo infarkto",
-   knowledge:"Žinių trūkumas apie savistabą, vaistus, fizinį aktyvumą ir tolimesnę priežiūrą po miokardo infarkto"
+   chestpain:"Ūmus krūtinės skausmas",
+   cardiac:"Hemodinamikos ir širdies ritmo pokyčių stebėjimo poreikis",
+   anxiety:"Nerimas dėl staiga pasikeitusios sveikatos būklės",
+   bleeding:"Kraujavimo rizika dėl antitrombozinio ar invazinio gydymo",
+   fatigue:"Silpnumas ir sumažėjusi fizinio krūvio tolerancija",
+   knowledge:"Žinių trūkumas apie savistabą, vaistus, fizinį aktyvumą ir tolimesnę priežiūrą"
   },
   "I26":{
-   respiratory:"Dusulys ir kvėpavimo funkcijos sutrikimas dėl plaučių embolijos",
-   cardiac:"Hemodinamikos ir širdies ritmo stebėjimo poreikis dėl plaučių embolijos",
-   anxiety:"Nerimas dėl staigaus dusulio ir pasikeitusios sveikatos būklės",
-   bleeding:"Kraujavimo stebėjimo poreikis dėl taikomo antikoaguliacinio gydymo",
-   vte:"Venų tromboembolijos būklės ir naujų simptomų stebėjimo poreikis dėl plaučių embolijos",
-   knowledge:"Žinių trūkumas apie antikoaguliantų vartojimą, kraujavimo požymius ir kada kreiptis skubios pagalbos"
+   respiratory:"Kvėpavimo funkcijos sutrikimas / dusulys",
+   cardiac:"Hemodinamikos ir širdies ritmo pokyčių stebėjimo poreikis",
+   anxiety:"Nerimas dėl staiga pasikeitusios sveikatos būklės",
+   bleeding:"Kraujavimo rizika dėl antikoaguliacinio gydymo",
+   vte:"Naujų tromboembolijos simptomų stebėjimo poreikis",
+   knowledge:"Žinių trūkumas apie antikoaguliantų vartojimą ir kraujavimo požymius"
   },
   "I80":{
-   vte:"Pažeistos galūnės tinimo, skausmo ir veninės kraujotakos pokyčių stebėjimo poreikis dėl giliųjų venų trombozės / tromboflebito",
-   pain:"Galūnės skausmas dėl giliųjų venų trombozės / tromboflebito",
-   mobility:"Mobilumo ribojimas / koregavimas dėl giliųjų venų trombozės / tromboflebito ir skausmo",
-   bleeding:"Kraujavimo stebėjimo poreikis dėl taikomo antikoaguliacinio gydymo",
-   knowledge:"Žinių trūkumas apie antikoaguliantų vartojimą, mobilumą ir plaučių embolijos įspėjamuosius simptomus"
+   vte:"Galūnės tinimo, skausmo ir veninės kraujotakos pokyčių stebėjimo poreikis",
+   pain:"Ūmus galūnės skausmas",
+   mobility:"Sumažėjęs mobilumas dėl skausmo ir tinimo",
+   bleeding:"Kraujavimo rizika dėl antikoaguliacinio gydymo",
+   knowledge:"Žinių trūkumas apie antikoaguliantų vartojimą, mobilumą ir įspėjamuosius simptomus"
   },
   "A40–A41":{
-   systemicinf:"Sisteminės infekcijos ir sepsio būklės stebėjimo poreikis dėl sepsio",
-   fluid:"Skysčių balanso ir audinių perfuzijos sutrikimo rizika dėl sepsio",
-   cardiac:"Hemodinamikos stebėjimo poreikis dėl sepsio",
-   respiratory:"Kvėpavimo funkcijos sutrikimo rizika dėl sepsio",
-   delirium:"Ūmaus sumišimo ir sąmonės pokyčių rizika dėl sepsio",
-   knowledge:"Žinių trūkumas apie būklės stebėjimą ir tolimesnį gydymo planą po sepsio"
+   systemicinf:"Sisteminės infekcinės būklės stebėjimo poreikis",
+   fluid:"Audinių perfuzijos ir skysčių balanso sutrikimo rizika",
+   cardiac:"Hemodinamikos nestabilumo rizika",
+   respiratory:"Kvėpavimo funkcijos sutrikimo rizika",
+   delirium:"Ūmaus sumišimo ir sąmonės pokyčių rizika",
+   knowledge:"Žinių trūkumas apie būklės stebėjimą ir tolimesnį gydymo planą"
   },
   "K85":{
-   pain:"Ūmus pilvo skausmas dėl ūminio pankreatito",
-   nausea:"Pykinimas ir vėmimas dėl ūminio pankreatito",
-   fluid:"Skysčių balanso sutrikimo rizika dėl ūminio pankreatito ir galimo vėmimo",
-   nutrition:"Mitybos toleravimo sutrikimas / poreikis dėl ūminio pankreatito",
-   glucose:"Gliukozės kiekio kraujyje svyravimo stebėjimo poreikis dėl ūminio pankreatito",
-   knowledge:"Žinių trūkumas apie mitybą, gydymą ir būklės blogėjimo požymius po ūminio pankreatito"
+   pain:"Ūmus pilvo skausmas",
+   nausea:"Pykinimas ir vėmimas",
+   fluid:"Skysčių balanso sutrikimo rizika",
+   nutrition:"Sutrikęs mitybos toleravimas",
+   glucose:"Gliukozės kiekio kraujyje svyravimo rizika",
+   knowledge:"Žinių trūkumas apie mitybą, gydymą ir būklės blogėjimo požymius"
   },
   "K92.2":{
-   bleeding:"Kraujavimo iš virškinimo trakto stebėjimo poreikis dėl esamo ar įtariamo kraujavimo",
-   fluid:"Hipovolemijos ir skysčių deficito rizika dėl kraujavimo iš virškinimo trakto",
-   fall:"Kritimo rizika dėl silpnumo, svaigimo ar ortostatinių simptomų netenkant kraujo",
+   bleeding:"Kraujavimo iš virškinimo trakto stebėjimo poreikis",
+   fluid:"Hipovolemijos ir skysčių deficito rizika",
+   fall:"Kritimo rizika dėl silpnumo, svaigimo ar ortostatinių simptomų",
    fatigue:"Silpnumas ir nuovargis dėl kraujo netekimo",
    anxiety:"Nerimas dėl kraujavimo ir pasikeitusios sveikatos būklės",
-   knowledge:"Žinių trūkumas apie pakartotinio kraujavimo požymius, vaistus ir tolimesnį gydymo planą"
+   knowledge:"Žinių trūkumas apie pakartotinio kraujavimo požymius, vaistus ir tolimesnę priežiūrą"
   },
   "E16.2":{
-   hypoglycemia:"Ūminės hipoglikemijos būklės stebėjimas dėl sumažėjusio gliukozės kiekio kraujyje",
-   glucose:"Pakartotinis gliukozės kiekio kraujyje stebėjimas po hipoglikemijos korekcijos",
-   fall:"Kritimo rizika dėl silpnumo, svaigimo ar sąmonės pokyčių hipoglikemijos metu",
-   delirium:"Sąmonės ir elgesio pokyčių stebėjimo poreikis dėl hipoglikemijos",
-   knowledge:"Žinių trūkumas apie hipoglikemijos simptomų atpažinimą, korekciją ir prevenciją"
+   hypoglycemia:"Hipoglikemijos būklė / pasikartojimo rizika",
+   glucose:"Gliukozės kiekio kraujyje svyravimo stebėjimo poreikis",
+   fall:"Kritimo rizika dėl silpnumo, svaigimo ar sąmonės pokyčių",
+   delirium:"Sąmonės ir elgesio pokyčių stebėjimo poreikis",
+   knowledge:"Žinių trūkumas apie hipoglikemijos atpažinimą, korekciją ir prevenciją"
   }
  };
- if(byCode[code]?.[key]) return byCode[code][key];
 
- const base=(p?.t||"Slaugos problema").replace(/\.$/,"");
- if(key==="knowledge") return `Žinių trūkumas apie savistabą, gydymą ir priežiūrą esant būklei – ${dx?.name||procedureName}`;
- if(key==="anxiety") return `Nerimas dėl pasikeitusios sveikatos būklės ir hospitalizacijos`;
- return `${base} dėl / esant būklei – ${dx?.name||procedureName}`;
+ if(specific[code]?.[key]) return specific[code][key];
+
+ const generic={
+   pain:"Ūmus skausmas",
+   chestpain:"Ūmus krūtinės skausmas",
+   respiratory:"Kvėpavimo funkcijos sutrikimas / dusulys",
+   fluid:"Skysčių balanso sutrikimo rizika",
+   edema:"Edemų ir skysčių kaupimosi stebėjimo poreikis",
+   fatigue:"Nuovargis ir sumažėjusi fizinio krūvio tolerancija",
+   cardiac:"Hemodinamikos ir širdies ritmo pokyčių stebėjimo poreikis",
+   anxiety:"Nerimas dėl pasikeitusios sveikatos būklės ir hospitalizacijos",
+   knowledge:"Žinių trūkumas apie savistabą, gydymą ir priežiūrą",
+   infection:"Infekcinės būklės stebėjimo poreikis",
+   glucose:"Gliukozės kiekio kraujyje svyravimo rizika",
+   electrolyte:"Elektrolitų pusiausvyros sutrikimo rizika",
+   urinary:"Šlapimo išskyrimo pokyčių stebėjimo poreikis",
+   nutrition:"Mitybos toleravimo / režimo sunkumai",
+   bleeding:"Kraujavimo rizika / stebėjimo poreikis",
+   fall:"Kritimo rizika",
+   delirium:"Sąmonės ir orientacijos pokyčių rizika",
+   systemicinf:"Sisteminės infekcinės būklės stebėjimo poreikis",
+   hypoglycemia:"Hipoglikemijos būklė / pasikartojimo rizika",
+   vte:"Veninės kraujotakos ir tromboembolijos simptomų stebėjimo poreikis",
+   mobility:"Sumažėjęs mobilumas"
+ };
+ return generic[key] || (p?.t||"Slaugos problema").replace(/\.$/,"");
 }
 
-function procedureProblemLabel(key,p){
- const base=(p?.t||"Slaugos problema").replace(/\.$/,"");
- const proc=procedureName||"pasirinktos intervencijos";
- const after=`po atliktos intervencijos – ${proc}`;
 
+function procedureProblemLabel(key,p){
  const common={
-   pain:`Ūmus skausmas ${after} dėl audinių pažeidimo`,
-   bleeding:`Kraujavimo stebėjimas ankstyvuoju laikotarpiu ${after}`,
-   hematuria:`Kraujavimo iš šlapimo takų / hematurijos stebėjimas ${after}`,
-   anxiety:`Nerimas dėl pasikeitusios sveikatos būklės ir hospitalizacijos`,
-   knowledge:`Žinių trūkumas apie savarankišką priežiūrą ir rekomendacijas ${after}`,
-   preknowledge:`Žinių trūkumas apie pasiruošimą planuojamai intervencijai – ${proc}`,
-   followup:`Žinių trūkumas apie tolimesnę priežiūrą ir kontrolę ${after}`,
-   nausea:`Pykinimas ir vėmimas ${after}, galimai susiję su anestezija ar perioperaciniais vaistais`,
-   mobility:`Sumažėjęs mobilumas ${after} dėl skausmo ir silpnumo`,
-   hypotension:`Silpnumas ir galimas kraujospūdžio sumažėjimas poanesteziniu laikotarpiu dėl anestetikų ir perioperacinių vaistų poveikio`,
-   catheter:`Kateterio / drenavimo sistemos priežiūros poreikis ${after}`,
-   urinary:`Šlapimo nutekėjimo sutrikimo / retencijos rizika ${after}`,
-   infection:`Infekcijos rizika ${after}`,
-   vte:`Venų tromboembolijos rizika ${after} dėl sumažėjusio mobilumo ir kitų individualių rizikos veiksnių`,
-   wound:`Operacinės žaizdos priežiūros poreikis ${after}`,
-   drain:`Dreno priežiūros poreikis ${after}`,
-   stoma:`Stomos priežiūros ir savipriežiūros poreikis ${after}`,
-   anesthesia:`Būklės stebėjimo poreikis po nejautros / sedacijos dėl anestetikų ir perioperacinių vaistų poveikio`,
-   postopobs:`Ankstyvos būklės stebėjimo poreikis ${after}`,
-   respiratory:`Kvėpavimo komplikacijų rizika ${after} dėl anestezijos, skausmo ar sumažėjusio mobilumo`,
-   bowel:`Žarnyno veiklos sutrikimo rizika ${after}`,
-   fluid:`Skysčių balanso sutrikimo rizika ${after}`,
-   nutrition:`Mitybos ir skysčių toleravimo sutrikimo rizika ${after}`,
-   periskin:`Peristominės odos pažeidimo rizika ${after}`,
-   continence:`Šlapimo kontrolės / kontinencijos sutrikimo valdymo poreikis ${after}`,
-   sexual:`Seksualinės sveikatos ir lytinės funkcijos pokyčių aptarimo poreikis ${after}`,
-   bodyimage:`Kūno vaizdo ir emocinio prisitaikymo sunkumai ${after}`,
-   lymphedema:`Limfedemos rizika ${after} dėl limfos nutekėjimo pokyčių`,
-   airway:`Kvėpavimo takų praeinamumo sutrikimo rizika ${after} dėl kaklo srities patinimo ar kraujavimo`,
-   calcium:`Hipokalcemijos simptomų stebėjimo poreikis ${after}`,
-   neuro:`Neurologinės būklės pablogėjimo rizika ${after}`,
-   icp:`Padidėjusio intrakranijinio slėgio požymių stebėjimo poreikis ${after}`,
-   seizure:`Traukulių rizika ${after} dėl neurologinės būklės`,
-   aspiration:`Aspiracijos rizika ${after} dėl galimo rijimo sutrikimo`,
-   csf:`Likvoro drenažo / nutekėjimo komplikacijų stebėjimo poreikis ${after}`,
-   fall:`Kritimo rizika ${after} dėl silpnumo, svaigimo ar funkcijos sutrikimo`,
-   neurovascular:`Operuotos / pažeistos galūnės neurovaskulinės būklės stebėjimas ${after}`,
-   compartment:`Kompartmento sindromo rizika ${after} dėl galūnės traumos, tinimo ar spaudimo`,
-   pressure:`Odos vientisumo ir spaudimo pažeidimo rizika ${after} dėl imobilizacijos ar medicininių priemonių spaudimo`,
-   selfcare:`Savipriežiūros sunkumai ${after} dėl sumažėjusio mobilumo ar funkcijos`,
-   delirium:`Ūmaus sumišimo rizika ${after} dėl ūmios būklės, hospitalizacijos ar anestezijos`,
-   glucose:`Gliukozės kiekio kraujyje svyravimo stebėjimo poreikis ${after}`,
-   electrolyte:`Elektrolitų pusiausvyros sutrikimo rizika ${after}`,
-   cardiac:`Širdies ritmo ir hemodinamikos stebėjimo poreikis ${after}`,
-   edema:`Edemos / skysčių kaupimosi stebėjimo poreikis ${after}`,
-   systemicinf:`Sisteminės infekcinės būklės stebėjimo poreikis ${after}`,
-   hypoglycemia:`Hipoglikemijos rizika / ūminio epizodo stebėjimo poreikis ${after}`,
-   chestpain:`Krūtinės skausmo ir hemodinamikos pokyčių stebėjimo poreikis ${after}`,
-   fatigue:`Nuovargis ir sumažėjusi fizinio krūvio tolerancija ${after}`
+   pain:"Ūmus skausmas, susijęs su audinių pažeidimu",
+   bleeding:"Kraujavimo rizika, susijusi su chirurginiu audinių pažeidimu",
+   hematuria:"Kraujavimo iš šlapimo takų stebėjimo poreikis, susijęs su gleivinės ar audinių pažeidimu",
+   anxiety:"Nerimas, susijęs su planuojama procedūra, hospitalizacija ar pasikeitusia sveikatos būkle",
+   knowledge:"Žinių trūkumas apie savarankišką priežiūrą po procedūros",
+   preknowledge:"Žinių trūkumas apie pasiruošimą procedūrai",
+   followup:"Žinių trūkumas apie tolimesnę priežiūrą ir kontrolę",
+   nausea:"Pykinimas ir vėmimas, susiję su anestetikų ar perioperacinių vaistų poveikiu",
+   mobility:"Sumažėjęs mobilumas, susijęs su skausmu, silpnumu ar funkciniu apribojimu",
+   hypotension:"Silpnumas ir hipotenzijos rizika, susiję su anestetikų ar perioperacinių vaistų poveikiu",
+   catheter:"Kateterio / drenavimo sistemos priežiūros poreikis",
+   urinary:"Šlapimo susilaikymo ar nutekėjimo sutrikimo rizika, susijusi su anestezijos poveikiu, skausmu ar intervencija į šlapimo takus",
+   infection:"Infekcijos rizika, susijusi su odos ar gleivinių vientisumo pažeidimu ir invazine intervencija",
+   vte:"Venų tromboembolijos rizika, susijusi su sumažėjusiu mobilumu ir kitais individualiais rizikos veiksniais",
+   wound:"Operacinės žaizdos priežiūros poreikis, susijęs su odos ir audinių vientisumo pažeidimu",
+   drain:"Dreno priežiūros poreikis, susijęs su pooperaciniu drenavimu",
+   stoma:"Stomos priežiūros ir savipriežiūros poreikis",
+   anesthesia:"Būklės stebėjimo poreikis po nejautros / sedacijos, susijęs su anestetikų poveikiu",
+   postopobs:"Ankstyvos pooperacinės / poprocedūrinės būklės stebėjimo poreikis",
+   respiratory:"Kvėpavimo komplikacijų rizika, susijusi su anestezijos poveikiu, skausmu ar sumažėjusiu mobilumu",
+   bowel:"Žarnyno veiklos sutrikimo rizika, susijusi su anestezijos poveikiu, sumažėjusiu mobilumu ar analgetikų vartojimu",
+   fluid:"Skysčių balanso sutrikimo rizika, susijusi su perioperaciniu skysčių netekimu ar ribotu vartojimu",
+   nutrition:"Mitybos ir skysčių toleravimo sutrikimo rizika, susijusi su pykinimu, skausmu ar pooperaciniu režimu",
+   periskin:"Peristominės odos pažeidimo rizika, susijusi su sekreto poveikiu ar prietaisų naudojimu",
+   continence:"Šlapimo kontrolės / kontinencijos sutrikimo valdymo poreikis",
+   sexual:"Seksualinės sveikatos ir lytinės funkcijos pokyčių aptarimo poreikis",
+   bodyimage:"Kūno vaizdo ir emocinio prisitaikymo sunkumai, susiję su kūno funkcijų ar išvaizdos pokyčiais",
+   lymphedema:"Limfedemos rizika, susijusi su limfos nutekėjimo pokyčiais",
+   airway:"Kvėpavimo takų praeinamumo sutrikimo rizika, susijusi su kaklo srities tinimu ar kraujavimu",
+   calcium:"Hipokalcemijos simptomų stebėjimo poreikis, susijęs su kalcio apykaitos pokyčių rizika",
+   neuro:"Neurologinės būklės pablogėjimo rizika, susijusi su neurologinės funkcijos pokyčiais",
+   icp:"Padidėjusio intrakranijinio slėgio požymių stebėjimo poreikis",
+   seizure:"Traukulių rizika, susijusi su neurologinės funkcijos pokyčiais",
+   aspiration:"Aspiracijos rizika, susijusi su rijimo ar sąmonės sutrikimu",
+   csf:"Likvoro drenažo / nutekėjimo komplikacijų stebėjimo poreikis",
+   fall:"Kritimo rizika, susijusi su silpnumu, svaigimu ar funkciniu apribojimu",
+   neurovascular:"Galūnės neurovaskulinės būklės stebėjimo poreikis, susijęs su tinimu, trauma ar imobilizacija",
+   compartment:"Kompartmento sindromo rizika, susijusi su didėjančiu audinių spaudimu dėl tinimo ar traumos",
+   pressure:"Odos vientisumo ir spaudimo pažeidimo rizika, susijusi su imobilizacija ar medicinos priemonių spaudimu",
+   selfcare:"Savipriežiūros sunkumai, susiję su sumažėjusiu mobilumu ar funkciniu apribojimu",
+   delirium:"Ūmaus sumišimo rizika, susijusi su ūmia būkle, hospitalizacija ar anestezijos poveikiu",
+   glucose:"Gliukozės kiekio kraujyje svyravimo rizika, susijusi su perioperaciniu stresu, mitybos pokyčiais ar gydymu",
+   electrolyte:"Elektrolitų pusiausvyros sutrikimo rizika, susijusi su skysčių netekimu ar pakitusiu jų vartojimu",
+   cardiac:"Hemodinamikos ir širdies ritmo pokyčių stebėjimo poreikis, susijęs su perioperaciniu stresu, skysčių pokyčiais ar vaistų poveikiu",
+   edema:"Edemos / skysčių kaupimosi stebėjimo poreikis",
+   systemicinf:"Sisteminės infekcinės būklės stebėjimo poreikis",
+   hypoglycemia:"Hipoglikemijos rizika, susijusi su pakitusiu maisto vartojimu ar gliukozę mažinančiu gydymu",
+   chestpain:"Krūtinės skausmo ir hemodinamikos pokyčių stebėjimo poreikis",
+   fatigue:"Nuovargis ir sumažėjusi fizinio krūvio tolerancija, susiję su pooperaciniu silpnumu"
  };
 
- // Specialybės akcentai
  if(specialty==="Urologija"){
-   if(key==="knowledge") return `Žinių trūkumas apie savarankišką priežiūrą, šlapinimosi / kateterio ypatumus ir rekomendacijas ${after}`;
-   if(key==="bleeding") return `Kraujavimo stebėjimas ankstyvuoju pooperaciniu / poprocedūriniu laikotarpiu ${after}`;
-   if(key==="hematuria") return `Hematurijos, krešulių ir šlapimo nutekėjimo pokyčių stebėjimas ${after}`;
+   if(key==="knowledge") return "Žinių trūkumas apie savarankišką priežiūrą, šlapinimąsi ir kateterio priežiūrą";
+   if(key==="bleeding") return "Kraujavimo rizika, susijusi su chirurginiu ar instrumentiniu audinių pažeidimu";
+   if(key==="hematuria") return "Kraujavimo iš šlapimo takų stebėjimo poreikis, susijęs su gleivinės ar audinių pažeidimu";
  }
  if(specialty==="Neurochirurgija"){
-   if(key==="fall") return `Kritimo rizika ${after} dėl neurologinio ar motorinio sutrikimo`;
-   if(key==="knowledge") return `Žinių trūkumas apie saugų režimą, neurologinių simptomų savistabą ir priežiūrą ${after}`;
+   if(key==="fall") return "Kritimo rizika, susijusi su neurologiniu ar motoriniu sutrikimu";
+   if(key==="knowledge") return "Žinių trūkumas apie saugų režimą ir neurologinių simptomų savistabą";
+   if(key==="bleeding") return "Kraujavimo rizika, susijusi su chirurginiu audinių pažeidimu";
  }
  if(specialty==="Ortopedija-traumatologija"){
-   if(key==="fall") return `Kritimo rizika ${after} dėl skausmo, sumažėjusio mobilumo ir funkcinio apribojimo`;
-   if(key==="mobility") return `Sumažėjęs mobilumas ${after} dėl skausmo ir funkcinio apribojimo`;
-   if(key==="knowledge") return `Žinių trūkumas apie saugų mobilumą, leistiną krūvį ir priežiūrą ${after}`;
+   if(key==="fall") return "Kritimo rizika, susijusi su sumažėjusiu mobilumu ir funkciniu apribojimu";
+   if(key==="mobility") return "Sumažėjęs mobilumas, susijęs su skausmu ir funkciniu apribojimu";
+   if(key==="knowledge") return "Žinių trūkumas apie saugų mobilumą, leistiną krūvį ir priežiūrą";
+   if(key==="bleeding") return "Kraujavimo rizika, susijusi su chirurginiu audinių pažeidimu";
  }
  if(specialty==="Chirurgija"){
-   if(key==="knowledge") return `Žinių trūkumas apie savarankišką pooperacinę žaizdos ir bendrąją priežiūrą ${after}`;
+   if(key==="knowledge") return "Žinių trūkumas apie pooperacinę žaizdos ir savarankišką priežiūrą";
+   if(key==="bleeding") return "Kraujavimo rizika, susijusi su chirurginiu audinių pažeidimu";
+   if(key==="pain") return "Ūmus skausmas, susijęs su chirurginiu audinių pažeidimu";
  }
- return common[key] || base;
+ return common[key] || (p?.t||"Slaugos problema").replace(/\.$/,"");
 }
 
 function contextProblemLabel(key,p){
@@ -1394,7 +1651,7 @@ function contextProblemLabel(key,p){
 }
 
 function renderProblems(){
- el("problemTitle").textContent=procedureName+" – slaugos problemų / diagnozių kryptys";
+ el("problemTitle").textContent=procedureName+" – slaugos diagnozės / problemos";
  const activeKeys=getActiveProblemKeys();
  let html=activeKeys.map((key,i)=>{
    const p=problemLibrary[key], label=contextProblemLabel(key,p);
@@ -1416,6 +1673,332 @@ function getCustomProblemValues(){
  return [...document.querySelectorAll("#customProblemInputs .custom-problem-input")]
    .map(x=>x.value.trim()).filter(Boolean);
 }
+
+function nowLocal(){
+ const d=new Date();
+ const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");
+ const hh=String(d.getHours()).padStart(2,"0"),mm=String(d.getMinutes()).padStart(2,"0");
+ return `${y}-${m}-${day}T${hh}:${mm}`;
+}
+function todayLocal(){return nowLocal().slice(0,10)}
+function formatDateLT(v){
+ if(!v)return "—";
+ const s=String(v);
+ if(s.includes("T")){
+   const [d,t]=s.split("T"),p=d.split("-");
+   return p.length===3?`${p[2]}.${p[1]}.${p[0]} ${t.slice(0,5)}`:s;
+ }
+ const p=s.split("-");
+ return p.length===3?`${p[2]}.${p[1]}.${p[0]}`:s;
+}
+
+function overallOutcomeLabel(v){
+ const map={
+  home:"Išrašytas į namus",
+  ward:"Perkeltas į kitą skyrių",
+  facility:"Perkeltas į kitą gydymo įstaigą",
+  rehab:"Išvyko reabilitacijai",
+  self:"Pasišalino / išvyko savo noru",
+  death:"Slaugos planas užbaigtas dėl paciento mirties",
+  other:"Kita"
+ };
+ return map[v]||"";
+}
+function toggleFinishPlan(){
+ const panel=el("finishPlanPanel"); if(!panel)return;
+ panel.classList.toggle("hidden");
+ if(!panel.classList.contains("hidden") && el("overallOutcomeDate") && !el("overallOutcomeDate").value){
+   el("overallOutcomeDate").value=nowLocal();
+ }
+}
+function cancelFinishPlan(){
+ if(el("overallOutcome"))el("overallOutcome").value="";
+ if(el("overallOutcomeDate"))el("overallOutcomeDate").value="";
+ if(el("overallOutcomeNote"))el("overallOutcomeNote").value="";
+ if(el("overallOutcomeOther"))el("overallOutcomeOther").value="";
+ if(el("overallOutcomeOtherWrap"))el("overallOutcomeOtherWrap").classList.add("hidden");
+ if(el("deathOutcomeNote"))el("deathOutcomeNote").classList.add("hidden");
+ if(el("finishPlanPanel"))el("finishPlanPanel").classList.add("hidden");
+}
+function updateOverallOutcomeState(){
+ const v=el("overallOutcome")?.value||"";
+ if(el("deathOutcomeNote"))el("deathOutcomeNote").classList.toggle("hidden",v!=="death");
+ if(el("overallOutcomeOtherWrap"))el("overallOutcomeOtherWrap").classList.toggle("hidden",v!=="other");
+ if(el("overallOutcomeDate")&&!el("overallOutcomeDate").value)el("overallOutcomeDate").value=nowLocal();
+}
+
+
+function evalStatusLabel(v){
+ const map={
+  achieved:"Tikslas pasiektas",
+  notachieved:"Tikslas nepasiektas"
+ };
+ return map[v]||"—";
+}
+function needsAdditionalInterventions(status){
+ return status==="notachieved";
+}
+function setEvalStatus(problemIndex,status){
+ const hidden=el(`evalStatus_${problemIndex}`);
+ if(hidden)hidden.value=status;
+ const group=el(`evalBinary_${problemIndex}`);
+ if(group){
+   group.querySelectorAll(".binary-btn").forEach(b=>b.classList.toggle("selected",b.dataset.status===status));
+ }
+ const box=el(`evalFollowup_${problemIndex}`);
+ if(box)box.classList.toggle("hidden",status!=="notachieved");
+ const preview=el(`evalPositivePreview_${problemIndex}`);
+ if(preview){
+   preview.classList.toggle("hidden",status!=="achieved");
+   if(status==="achieved")preview.textContent=selectedProblems[problemIndex]?.evaluation||"Tikslas pasiektas.";
+ }
+
+ if(status==="notachieved"){
+   const repeatBox=el(`repeatEval_${problemIndex}`);
+   if(repeatBox && repeatBox.children.length===0) addRepeatEvaluation(problemIndex);
+ }else{
+   const repeatBox=el(`repeatEval_${problemIndex}`);
+   if(repeatBox)repeatBox.innerHTML="";
+ }
+}
+function setRepeatEvalStatus(btn,status){
+ const row=btn.closest(".repeat-evaluation");
+ if(!row)return;
+ const hidden=row.querySelector(".repeat-eval-status");
+ if(hidden)hidden.value=status;
+ row.querySelectorAll(".binary-btn").forEach(b=>b.classList.toggle("selected",b.dataset.status===status));
+ const follow=row.querySelector(".repeat-followup");
+ if(follow)follow.classList.toggle("hidden",status!=="notachieved");
+ const addBtn=row.querySelector(".add-another-repeat");
+ if(addBtn)addBtn.classList.toggle("hidden",status!=="notachieved");
+}
+
+function escalationSuggestions(key){
+ const common=[
+  "Informuoti atsakingą gydytoją / kitą atsakingą specialistą apie būklės pokytį.",
+  "Sustiprinti paciento būklės stebėjimą pagal klinikinę situaciją ir įstaigos tvarką.",
+  "Vykdyti papildomus tyrimus ir gydymo intervencijas pagal paskyrimą.",
+  "Dokumentuoti būklės pokytį, atliktus veiksmus ir paciento reakciją."
+ ];
+ const specific={
+  bleeding:[
+   "Dažniau vertinti gyvybinius rodiklius, kraujavimo požymius ir išskyrų / drenų pobūdį.",
+   "Atlikti paskirtus laboratorinius tyrimus ir sekti jų rezultatus.",
+   "Vykdyti paskirtą infuzinę terapiją.",
+   "Vykdyti paskirtą kraujo komponentų transfuziją ir stebėti paciento reakciją pagal įstaigos tvarką."
+  ],
+  hematuria:[
+   "Dažniau vertinti šlapimo spalvą, krešulius, diurezę ir drenavimo sistemos praeinamumą.",
+   "Informuoti apie gausėjantį kraujavimą, krešulius ar mažėjančią diurezę.",
+   "Vykdyti paskirtas papildomas intervencijas ir laboratorinius tyrimus."
+  ],
+  respiratory:[
+   "Pakartotinai įvertinti kvėpavimo dažnį, SpO₂, kvėpavimo darbą ir sąmonės būklę.",
+   "Padėti pacientui užimti kvėpavimą lengvinančią padėtį, jei nėra kontraindikacijų.",
+   "Vykdyti paskirtą deguonies terapiją ir kitas kvėpavimo palaikymo priemones.",
+   "Informuoti gydytoją apie didėjantį deguonies poreikį ar blogėjančią kvėpavimo būklę."
+  ],
+  pain:[
+   "Pakartotinai įvertinti skausmo intensyvumą, pobūdį ir lokalizaciją.",
+   "Vykdyti paskirtą papildomą analgeziją ir nefarmakologines skausmo mažinimo priemones.",
+   "Informuoti gydytoją, jei skausmas stiprėja, keičiasi jo pobūdis ar paskirtos priemonės neveiksmingos."
+  ],
+  fluid:[
+   "Dažniau vertinti skysčių balansą, diurezę, gyvybinius rodiklius ir perfuzijos požymius.",
+   "Vykdyti paskirtą infuzinę / skysčių korekcijos terapiją.",
+   "Atlikti paskirtus laboratorinius tyrimus ir sekti elektrolitų bei inkstų funkcijos rodiklius."
+  ],
+  hypoglycemia:[
+   "Pakartotinai matuoti gliukozės kiekį pagal būklę ir įstaigos protokolą.",
+   "Vykdyti hipoglikemijos korekciją pagal patvirtintą protokolą / gydytojo paskyrimą.",
+   "Vertinti sąmonės būklę ir hipoglikemijos simptomų dinamiką."
+  ],
+  glucose:[
+   "Pakartotinai vertinti gliukozės kiekį pagal paskyrimą ir būklę.",
+   "Vykdyti paskirtą gliukozės korekcijos planą.",
+   "Stebėti simptomus ir dokumentuoti atsaką į taikytas priemones."
+  ],
+  infection:[
+   "Dažniau vertinti temperatūrą, gyvybinius rodiklius ir vietinius / sisteminius infekcijos požymius.",
+   "Atlikti paskirtus laboratorinius / mikrobiologinius tyrimus.",
+   "Vykdyti paskirtą antimikrobinį ir simptominį gydymą, stebėti jo poveikį."
+  ],
+  systemicinf:[
+   "Nedelsiant informuoti gydytoją apie hemodinamikos, sąmonės, kvėpavimo ar perfuzijos blogėjimą.",
+   "Dažninti gyvybinių rodiklių ir perfuzijos stebėjimą.",
+   "Vykdyti paskirtą infuzinį, antimikrobinį ir kitą gydymą.",
+   "Atlikti paskirtus laboratorinius ir mikrobiologinius tyrimus."
+  ],
+  cardiac:[
+   "Pakartotinai vertinti AKS, pulsą / ritmą, sąmonę ir perfuzijos požymius.",
+   "Informuoti gydytoją apie naują ritmo sutrikimą, hipotenziją ar kitą hemodinamikos blogėjimą.",
+   "Vykdyti paskirtas papildomas diagnostines ir gydymo intervencijas."
+  ],
+  urinary:[
+   "Pakartotinai vertinti diurezę, pūslės prisipildymo požymius ir drenavimo sistemos praeinamumą.",
+   "Patikrinti sistemos padėtį, neužlinkimą ir fiksaciją.",
+   "Informuoti gydytoją apie ryškų diurezės sumažėjimą, retenciją ar kitą būklės blogėjimą."
+  ],
+  neuro:[
+   "Dažninti neurologinės būklės ir sąmonės vertinimą pagal įstaigos protokolą.",
+   "Informuoti gydytoją apie naują ar progresuojantį neurologinį deficitą.",
+   "Vykdyti paskirtas papildomas diagnostines ir gydymo intervencijas."
+  ],
+  delirium:[
+   "Pakartotinai vertinti sąmonę, orientaciją, elgesį ir saugumo riziką.",
+   "Užtikrinti saugią aplinką ir sumažinti nereikalingus dirgiklius.",
+   "Informuoti gydytoją / kitą atsakingą specialistą apie ūmų elgesio ar sąmonės pokytį."
+  ]
+ };
+ return [...(specific[key]||[]),...common].filter((x,i,a)=>a.indexOf(x)===i);
+}
+function renderEscalationChoices(problemIndex,key,scope="initial",repeatIndex=null){
+ const prefix=scope==="initial"?`esc_${problemIndex}`:`resc_${problemIndex}_${repeatIndex}`;
+ return escalationSuggestions(key).map((s,j)=>`
+   <div class="escalation-row">
+    <input type="checkbox" id="${prefix}_${j}" data-escalation="${escapeHtml(careActionText(s))}">
+    <label for="${prefix}_${j}">${careActionText(s)}</label>
+   </div>`).join("");
+}
+
+function toggleRevisionField(problemIndex){
+ const cb=el(`planRevision_${problemIndex}`);
+ const field=el(`revisionField_${problemIndex}`);
+ if(field)field.classList.toggle("hidden",!cb?.checked);
+}
+
+
+function addRepeatEvaluation(problemIndex){
+ const box=el(`repeatEval_${problemIndex}`); if(!box)return;
+ const n=box.children.length;
+ const key=selectedProblems[problemIndex]?.key||"";
+ const row=document.createElement("div");
+ row.className="repeat-evaluation";
+ row.dataset.repeatIndex=n;
+ row.innerHTML=`
+   <div class="repeat-block-title">Pakartotinis vertinimas</div>
+   <div class="repeat-evaluation-head">
+     <div class="date-field"><label>Data ir laikas</label><input type="datetime-local" class="repeat-eval-date" value="${nowLocal()}"></div>
+   </div>
+   <input type="hidden" class="repeat-eval-status" value="">
+   <div class="binary-eval">
+     <button type="button" class="binary-btn" data-status="achieved" onclick="setRepeatEvalStatus(this,'achieved')">✓ Pasiektas</button>
+     <button type="button" class="binary-btn negative" data-status="notachieved" onclick="setRepeatEvalStatus(this,'notachieved')">✕ Nepasiektas</button>
+   </div>
+   <div class="repeat-followup eval-followup hidden">
+     <div class="eval-followup-title">Tikslas vis dar nepasiektas</div>
+     <div class="eval-followup-note">Pažymėkite tik realiai atliktus papildomus veiksmus / intervencijas.</div>
+     <textarea class="repeat-eval-text" placeholder="Trumpai aprašykite, kas pasikeitė..."></textarea>
+     <div class="repeat-escalation-list">${renderEscalationChoices(problemIndex,key,"repeat",n)}</div>
+     <textarea class="repeat-extra-actions" placeholder="Kiti papildomi veiksmai / intervencijos..."></textarea>
+     <button type="button" class="btn btn-soft add-another-repeat hidden" style="margin-top:8px" onclick="addRepeatEvaluation(${problemIndex})">＋ Dar vienas pakartotinis vertinimas</button>
+   </div>`;
+ box.appendChild(row);
+}
+
+
+
+function careActionText(a){
+ const exact={
+  "Įvertinti skausmą pagal NRS.":"Skausmo intensyvumas vertinamas pagal NRS.",
+  "Stebėti skausmo lokalizaciją, pobūdį ir dinamiką.":"Stebima skausmo lokalizacija, pobūdis ir dinamika.",
+  "Vykdyti paskirtas skausmo mažinimo priemones.":"Taikomos paskirtos skausmo mažinimo priemonės.",
+  "Pakartotinai įvertinti poveikį po intervencijos.":"Po intervencijos pakartotinai vertinamas taikytų priemonių poveikis.",
+  "Stebėti temperatūrą ir bendrą būklę.":"Matuojama temperatūra ir stebima bendra paciento būklė.",
+  "Vertinti operacinę žaizdą / įvedimo vietą, jei aktualu.":"Vertinama operacinės žaizdos / įvedimo vietos būklė, jei aktualu.",
+  "Laikytis aseptikos principų.":"Priežiūra atliekama laikantis aseptikos principų.",
+  "Dokumentuoti ir perduoti reikšmingus pokyčius.":"Reikšmingi būklės pokyčiai dokumentuojami ir perduodami atsakingam specialistui.",
+  "Stebėti diurezę.":"Diurezė stebima ir registruojama.",
+  "Stebėti diurezę ir šlapimo tekėjimą.":"Diurezė ir šlapimo nutekėjimas stebimi ir registruojami.",
+  "Vertinti retencijos / pūslės tempimo požymius.":"Vertinami šlapimo susilaikymo / pūslės tempimo požymiai.",
+  "Patikrinti drenavimo sistemos praeinamumą, jei ji yra.":"Tikrinamas drenavimo sistemos praeinamumas, jei sistema yra.",
+  "Apie staigius pokyčius informuoti atsakingą specialistą.":"Apie staigius būklės pokyčius informuojamas atsakingas specialistas.",
+  "Stebėti kvėpavimo dažnį ir SpO₂ pagal būklę.":"Matuojamas kvėpavimo dažnis ir SpO₂ pagal paciento būklę.",
+  "Stebėti kvėpavimą ir SpO₂ pagal būklę.":"Stebimas kvėpavimas ir matuojamas SpO₂ pagal paciento būklę.",
+  "Vertinti gyvybinius rodiklius pagal būklę.":"Matuojami ir vertinami gyvybiniai rodikliai pagal paciento būklę.",
+  "Stebėti sąmonės būklę, kraujospūdį, pulsą, kvėpavimą ir SpO₂ pagal klinikinę situaciją.":"Stebima sąmonės būklė; matuojami AKS, pulsas, kvėpavimo dažnis ir SpO₂ pagal klinikinę situaciją.",
+  "Stebėti sąmonę, kvėpavimo dažnį, SpO₂, kraujospūdį ir pulsą pagal vietinį protokolą.":"Stebima sąmonės būklė; matuojami kvėpavimo dažnis, SpO₂, AKS ir pulsas pagal vietinį protokolą.",
+  "Vykdyti paskirtą deguonies terapiją ir kitas kvėpavimo palaikymo priemones.":"Taikoma paskirta deguonies terapija ir kitos kvėpavimo palaikymo priemonės.",
+  "Vykdyti paskirtą gydymą.":"Vykdomas paskirtas gydymas.",
+  "Vykdyti paskirtą gydymą ir vertinti jo poveikį.":"Vykdomas paskirtas gydymas ir vertinamas jo poveikis.",
+  "Vykdyti paskirtą infuzinę terapiją.":"Taikoma paskirta infuzinė terapija.",
+  "Vykdyti paskirtą kraujo komponentų transfuziją ir stebėti paciento reakciją pagal įstaigos tvarką.":"Pagal paskyrimą atliekama kraujo komponentų transfuzija ir stebima paciento reakcija pagal įstaigos tvarką.",
+  "Stebėti operacinę sritį, drenų ar kitų išskyrų pobūdį.":"Stebima operacinė sritis ir vertinamas drenų ar kitų išskyrų pobūdis.",
+  "Stebėti ryškėjančius kraujavimo požymius.":"Stebimi kraujavimo požymiai ir jų dinamika.",
+  "Apie reikšmingus pokyčius informuoti atsakingą gydytoją.":"Apie reikšmingus būklės pokyčius informuojamas atsakingas gydytojas.",
+  "Stebėti šlapimo spalvą ir skaidrumą.":"Stebima šlapimo spalva ir skaidrumas.",
+  "Vertinti krešulių atsiradimą.":"Vertinamas krešulių atsiradimas.",
+  "Informuoti apie gausėjantį kraujavimą ar nutekėjimo sutrikimą.":"Apie gausėjantį kraujavimą ar šlapimo nutekėjimo sutrikimą informuojamas atsakingas specialistas.",
+  "Stebėti dreno fiksaciją ir neužlinkimą.":"Stebima dreno fiksacija ir tikrinama, ar drenas neužlinkęs.",
+  "Vertinti išskyrų kiekį, spalvą ir pobūdį.":"Vertinamas išskyrų kiekis, spalva ir pobūdis.",
+  "Vertinti įvedimo vietos būklę.":"Vertinama įvedimo vietos būklė.",
+  "Dokumentuoti dreno turinio pokyčius.":"Dreno turinio pokyčiai dokumentuojami.",
+  "Patikrinti sistemos fiksaciją ir neužlinkimą.":"Tikrinama sistemos fiksacija ir ar sistema neužlinkusi.",
+  "Stebėti įvedimo vietą, jei aktualu.":"Stebima įvedimo vietos būklė, jei aktualu.",
+  "Skatinti ankstyvą saugią mobilizaciją pagal būklę.":"Pacientas skatinamas saugiai mobilizuotis pagal būklę.",
+  "Stebėti silpnumą ir ortostatinę reakciją.":"Stebimas silpnumas ir ortostatinė reakcija.",
+  "Dokumentuoti mobilumo progresą.":"Mobilumo progresas dokumentuojamas.",
+  "Suteikti emocinį palaikymą.":"Pacientui teikiamas emocinis palaikymas.",
+  "Sudaryti galimybę užduoti klausimus.":"Pacientui sudaroma galimybė užduoti klausimus.",
+  "Paaiškinti procedūrų ir priežiūros eigą pagal kompetenciją.":"Pacientui paaiškinama procedūrų ir priežiūros eiga pagal slaugytojo kompetenciją.",
+  "Matuoti gliukozę pagal gydymo planą ir įstaigos tvarką.":"Gliukozės kiekis kraujyje matuojamas pagal gydymo planą ir įstaigos tvarką.",
+  "Stebėti gliukozę pagal paskyrimą.":"Gliukozės kiekis kraujyje stebimas pagal paskyrimą."
+ };
+ if(exact[a])return exact[a];
+
+ const rules=[
+  [/^Stebėti /,"Stebima: "],
+  [/^Vertinti /,"Vertinama: "],
+  [/^Įvertinti /,"Atliekamas vertinimas: "],
+  [/^Pakartotinai įvertinti /,"Pakartotinai vertinama: "],
+  [/^Vykdyti /,"Vykdoma: "],
+  [/^Dokumentuoti /,"Dokumentuojama: "],
+  [/^Registruoti /,"Registruojama: "],
+  [/^Skatinti /,"Skatinama: "],
+  [/^Užtikrinti /,"Užtikrinama: "],
+  [/^Paaiškinti /,"Paaiškinama pacientui: "],
+  [/^Aptarti /,"Su pacientu aptariama: "],
+  [/^Patikrinti /,"Tikrinama: "],
+  [/^Suteikti /,"Suteikiama: "],
+  [/^Mokyti /,"Pacientas mokomas: "],
+  [/^Laikytis /,"Laikomasi: "],
+  [/^Matuoti /,"Matuojama: "],
+  [/^Sekti /,"Stebima: "],
+  [/^Planuoti /,"Planuojama: "],
+  [/^Derinti /,"Derinama: "],
+  [/^Mobilizuoti /,"Pacientas mobilizuojamas: "],
+  [/^Padėti /,"Pacientui padedama: "]
+ ];
+ for(const [rx,repl] of rules){
+   if(rx.test(a))return a.replace(rx,repl);
+ }
+ return a;
+}
+
+
+function refreshOwnActionButton(problemIndex){
+ const box=el(`ownActions_${problemIndex}`),btn=el(`ownActionBtn_${problemIndex}`);
+ if(!box||!btn)return;
+ btn.textContent=box.children.length? "＋ Pridėti dar vieną veiksmą" : "＋ Pridėti savo veiksmą";
+}
+function removeOwnActionField(button,problemIndex){
+ button.parentElement.remove();
+ refreshOwnActionButton(problemIndex);
+}
+function addOwnActionField(problemIndex,value=""){
+ const box=el(`ownActions_${problemIndex}`); if(!box)return;
+ const row=document.createElement("div");
+ row.className="own-action-row";
+ row.innerHTML=`<input type="text" class="own-action-input" placeholder="Įrašykite savo slaugos veiksmą / vykdomą priežiūrą" value="${escapeHtml(value)}"><button type="button" class="remove-own-action" aria-label="Pašalinti" onclick="removeOwnActionField(this,${problemIndex})">×</button>`;
+ box.appendChild(row);
+ refreshOwnActionButton(problemIndex);
+ row.querySelector("input")?.focus();
+}
+function getOwnActionValues(problemIndex){
+ return [...document.querySelectorAll(`#ownActions_${problemIndex} .own-action-input`)]
+   .map(x=>x.value.trim()).filter(Boolean);
+}
+
 function prepareEditors(){
  selectedProblems=[];
  const activeKeys=getActiveProblemKeys();
@@ -1428,15 +2011,49 @@ function prepareEditors(){
  if(!selectedProblems.length){alert("Pasirinkite bent vieną slaugos problemos / diagnozės kryptį arba įrašykite savo.");return}
  el("editors").innerHTML=selectedProblems.map((p,i)=>`
    <div class="card editor">
-    <div class="tag">PROBLEMA / DIAGNOZĖ ${i+1}</div>
+    <div class="tag">SLAUGOS DIAGNOZĖ / PROBLEMA ${i+1}</div>
     <h3>${p.title}</h3>
+    <div class="date-grid">
+      <div class="date-field"><label>Diagnozės formulavimo data</label><input type="datetime-local" id="diagDate_${i}" value="${nowLocal()}"></div>
+    </div>
     <span class="field-label">Tikslas</span><textarea id="goal_${i}">${p.goal}</textarea>
-    <span class="field-label">Siūlomi slaugos veiksmai</span>
-    ${p.actions.map((a,j)=>`<div class="actionrow plan-action"><input type="checkbox" checked id="act_${i}_${j}"><label for="act_${i}_${j}">${a}</label></div>`).join("") || '<div class="callout">Iš anksto numatytų veiksmų nėra – įrašykite savo individualius veiksmus.</div>'}
-    <span class="field-label advanced-only">+ Papildomi jūsų veiksmai (po vieną eilutėje)</span>
-    <textarea class="advanced-only" id="extra_${i}" placeholder="Įrašykite savo veiksmus..."></textarea>
-    <div class="assist-wrap"><button class="ai-btn advanced-only" onclick="assistField('extra_${i}','actions',${i})">✨ Padėti suformuluoti veiksmus</button></div>
-    <span class="field-label">Įvertinimas / rezultatas</span><textarea id="eval_${i}">${p.evaluation}</textarea>
+    <span class="field-label">Slaugos veiksmai / vykdoma priežiūra</span>
+    ${p.actions.map((a,j)=>`<div class="actionrow plan-action"><input type="checkbox" checked id="act_${i}_${j}"><label for="act_${i}_${j}">${careActionText(a)}</label></div>`).join("") || '<div class="callout">Iš anksto numatytų veiksmų nėra – įrašykite savo individualius veiksmus.</div>'}
+    <div class="own-action-tools">
+      <div id="ownActions_${i}"></div>
+      <button type="button" class="btn btn-soft" id="ownActionBtn_${i}" onclick="addOwnActionField(${i})">＋ Pridėti savo veiksmą</button>
+      <div class="own-action-hint">Pridėjus vieną veiksmą, mygtukas lieka – galima pridėti dar vieną, dar vieną ir t. t.</div>
+    </div>
+    <div class="evaluation-box">
+      <div class="eval-date-row">
+        <div class="date-field"><label>Vertinimo data</label><input type="datetime-local" id="evalDate_${i}" value="${nowLocal()}"></div>
+      </div>
+      <label class="field-label">Vertinimo rezultatas</label>
+      <input type="hidden" id="evalStatus_${i}" value="">
+      <div class="binary-eval" id="evalBinary_${i}">
+        <button type="button" class="binary-btn" data-status="achieved" onclick="setEvalStatus(${i},'achieved')">✓ Pasiektas</button>
+        <button type="button" class="binary-btn negative" data-status="notachieved" onclick="setEvalStatus(${i},'notachieved')">✕ Nepasiektas</button>
+      </div>
+      <div class="eval-positive-preview hidden" id="evalPositivePreview_${i}">${escapeHtml(p.evaluation||"")}</div>
+
+      <div class="eval-followup hidden" id="evalFollowup_${i}">
+        <div class="eval-followup-title">Tikslas nepasiektas</div>
+        <div class="eval-followup-note">Tik tada atsidaro būklės aprašymas, papildomi veiksmai / intervencijos ir pakartotinis vertinimas.</div>
+        <span class="field-label">Kas pasikeitė / kodėl tikslas nepasiektas</span>
+        <textarea id="eval_${i}" placeholder="Trumpai aprašykite paciento būklę..."></textarea>
+        <div id="escalationList_${i}">${renderEscalationChoices(i,p.key||"")}</div>
+        <span class="field-label">Kiti papildomi veiksmai / intervencijos</span>
+        <textarea id="extraInterventions_${i}" placeholder="Įrašykite, kas papildomai atlikta..."></textarea>
+        <div class="plan-revision">
+          <label><input type="checkbox" id="planRevision_${i}" onchange="toggleRevisionField(${i})"> Atsirado nauja / aktuali problema – slaugos planą reikia koreguoti</label>
+          <div class="revision-field hidden" id="revisionField_${i}">
+            <input type="text" id="revisedProblem_${i}" placeholder="Įrašykite naują ar koreguotą slaugos problemą / diagnozę">
+          </div>
+        </div>
+      </div>
+
+      <div id="repeatEval_${i}" class="auto-repeat-wrap"></div>
+    </div>
    </div>`).join("");
  const activeEdu=getActiveEducation();
  el("educationList").innerHTML=activeEdu.map((e,i)=>`<div class="actionrow education-row"><input type="checkbox" checked id="edu_${i}"><label for="edu_${i}">${e}</label></div>`).join("");
@@ -1448,9 +2065,40 @@ function gather(){
  const ca=el("customAssessment").value.trim(), facts=el("patientFacts").value.trim();
  const importantInfo=el("importantInfo")?.value.trim()||"";
  const probs=selectedProblems.map((p,i)=>{
-   let actions=[];p.actions.forEach((a,j)=>{const cb=el(`act_${i}_${j}`);if(cb&&cb.checked)actions.push(a)});
-   const ex=el("extra_"+i).value.trim();if(ex)ex.split(/\n+/).map(x=>x.trim()).filter(Boolean).forEach(x=>actions.push(x));
-   return {title:p.title,diagnosis:p.title,goal:el("goal_"+i).value.trim(),actions,evaluation:el("eval_"+i).value.trim()};
+   let actions=[];p.actions.forEach((a,j)=>{const cb=el(`act_${i}_${j}`);if(cb&&cb.checked)actions.push(careActionText(a))});
+   getOwnActionValues(i).forEach(x=>actions.push(x));
+   const status=el("evalStatus_"+i)?.value||"";
+   const escalation=[...document.querySelectorAll(`#escalationList_${i} input:checked`)].map(x=>x.dataset.escalation).filter(Boolean);
+   const extraInt=el("extraInterventions_"+i)?.value.trim()||"";
+   if(extraInt)extraInt.split(/\n+/).map(x=>x.trim()).filter(Boolean).forEach(x=>escalation.push(x));
+   const revisionNeeded=!!el("planRevision_"+i)?.checked;
+   const revisedProblem=el("revisedProblem_"+i)?.value.trim()||"";
+   const repeats=[...document.querySelectorAll(`#repeatEval_${i} .repeat-evaluation`)].map(row=>{
+     const rStatus=row.querySelector(".repeat-eval-status")?.value||"";
+     const rActions=[...row.querySelectorAll(".repeat-escalation-list input:checked")].map(x=>x.dataset.escalation).filter(Boolean);
+     const rExtra=row.querySelector(".repeat-extra-actions")?.value.trim()||"";
+     if(rExtra)rExtra.split(/\n+/).map(x=>x.trim()).filter(Boolean).forEach(x=>rActions.push(x));
+     return {
+       date:row.querySelector(".repeat-eval-date")?.value||"",
+       status:rStatus,
+       statusLabel:evalStatusLabel(rStatus),
+       text:row.querySelector(".repeat-eval-text")?.value.trim()||"",
+       actions:rActions
+     };
+   }).filter(x=>x.status||x.text||x.actions.length);
+   return {
+     title:p.title,diagnosis:p.title,
+     diagnosisDate:el("diagDate_"+i)?.value||"",
+     goal:el("goal_"+i).value.trim(),actions,
+     evaluation:el("eval_"+i).value.trim(),
+     positiveEvaluation:p.evaluation||"",
+     evaluationDate:el("evalDate_"+i)?.value||"",
+     evaluationStatus:status,
+     evaluationStatusLabel:evalStatusLabel(status),
+     additionalInterventions:escalation,
+     revisionNeeded,revisedProblem,
+     repeatEvaluations:repeats
+   };
  });
  const activeEdu=getActiveEducation();
  const edu=activeEdu.filter((e,i)=>el("edu_"+i)?.checked);
@@ -1460,7 +2108,19 @@ function gather(){
  const sharedAssessments=[...new Set(selectedShared.flatMap(c=>Array.isArray(c.assessment)?c.assessment:[c.assessment]))];
  const periAssessments=getPeriAssessments();
  const periNames=getSelectedPeriModules().map(m=>m.name);
- return {assessed,ca,facts,importantInfo,probs,edu,sharedNames,sharedAssessments,periAssessments,periNames};
+ const supportTools=getSelectedSupportTools();
+ const overallOutcome=el("overallOutcome")?.value||"";
+ const overallOutcomeDate=el("overallOutcomeDate")?.value||"";
+ const overallOutcomeNote=el("overallOutcomeNote")?.value.trim()||"";
+ const overallOutcomeOther=el("overallOutcomeOther")?.value.trim()||"";
+ let outcomeLabel=overallOutcomeLabel(overallOutcome);
+ if(overallOutcome==="other"&&overallOutcomeOther)outcomeLabel=overallOutcomeOther;
+ return {
+   assessed,ca,facts,importantInfo,probs,edu,sharedNames,sharedAssessments,
+   periAssessments,periNames,supportTools,
+   overallOutcome,overallOutcomeLabel:outcomeLabel,
+   overallOutcomeDate,overallOutcomeNote
+ };
 }
 function getPrintFlag(id,fallback=true){
  const c=el(id); return c ? !!c.checked : fallback;
@@ -1472,8 +2132,10 @@ function composePlanOutput(){
  if(getPrintFlag("printAssessment",true) && planBlocks.assessment) plan+=planBlocks.assessment;
  if(getPrintFlag("printPeri",false) && planBlocks.peri) plan+=planBlocks.peri;
  if(getPrintFlag("printSharedAssessment",false) && planBlocks.sharedAssessment) plan+=planBlocks.sharedAssessment;
+ if(getPrintFlag("printSupport",false) && planBlocks.support) plan+=planBlocks.support;
  plan+=planBlocks.problems;
  if(planBlocks.importantInfo) plan+=planBlocks.importantInfo;
+ if(planBlocks.overallOutcome) plan+=planBlocks.overallOutcome;
  if(getPrintFlag("printEducation",false) && planBlocks.education) plan+=planBlocks.education;
  plan+=planBlocks.footer;
  return plan;
@@ -1484,11 +2146,11 @@ function refreshPlanOutput(){
  if(currentOutput==="plan") el("planOutput").innerHTML=formatOutput(outputs.plan);
 }
 function setPrintPreset(type){
- const ids=["printShared","printAssessment","printPeri","printSharedAssessment","printEducation"];
+ const ids=["printShared","printAssessment","printPeri","printSharedAssessment","printSupport","printEducation"];
  const state={
-   short:{printShared:false,printAssessment:false,printPeri:false,printSharedAssessment:false,printEducation:false},
-   standard:{printShared:true,printAssessment:true,printPeri:false,printSharedAssessment:false,printEducation:false},
-   full:{printShared:true,printAssessment:true,printPeri:true,printSharedAssessment:true,printEducation:true}
+   short:{printShared:false,printAssessment:false,printPeri:false,printSharedAssessment:false,printSupport:false,printEducation:false},
+   standard:{printShared:true,printAssessment:true,printPeri:false,printSharedAssessment:false,printSupport:false,printEducation:false},
+   full:{printShared:true,printAssessment:true,printPeri:true,printSharedAssessment:true,printSupport:true,printEducation:true}
  }[type]||{};
  ids.forEach(id=>{const c=el(id);if(c)c.checked=!!state[id]});
  refreshPlanOutput();
@@ -1523,14 +2185,56 @@ function generateOutputs(){
 
  let problems="";
  g.probs.forEach((p,i)=>{
-   problems+=`\n${i+1}. Slaugos diagnozė / problema: ${p.diagnosis||p.title}\nTikslas: ${p.goal||"—"}\nSlaugos veiksmai:\n`;
+   problems+=`\n${i+1}. Slaugos diagnozė / problema: ${p.diagnosis||p.title}\nFormulavimo data: ${formatDateLT(p.diagnosisDate)}\nTikslas: ${p.goal||"—"}\nSlaugos veiksmai / vykdoma priežiūra:\n`;
    (p.actions.length?p.actions:["—"]).forEach(a=>problems+=`• ${a}\n`);
-   problems+=`Įvertinimas: ${p.evaluation||"—"}\n`;
+   if(p.evaluationStatus==="achieved"){
+     problems+=`Įvertinimas (${formatDateLT(p.evaluationDate)}): ${p.positiveEvaluation||"Tikslas pasiektas."}\n`;
+   }else if(p.evaluationStatus==="notachieved"){
+     problems+=`Įvertinimas (${formatDateLT(p.evaluationDate)}): Tikslas nepasiektas.\n`;
+     if(p.evaluation)problems+=`Būklės aprašymas: ${p.evaluation}\n`;
+     if(p.additionalInterventions?.length){
+       problems+=`Papildomi veiksmai / intervencijos:\n`;
+       p.additionalInterventions.forEach(a=>problems+=`• ${a}\n`);
+     }
+     if(p.revisionNeeded){
+       problems+=`Plano korekcija: reikalinga`;
+       if(p.revisedProblem)problems+=` – ${p.revisedProblem}`;
+       problems+=`\n`;
+     }
+   }else{
+     problems+=`Įvertinimas (${formatDateLT(p.evaluationDate)}): —\n`;
+   }
+   (p.repeatEvaluations||[]).forEach(r=>{
+     if(r.status==="achieved"){
+       problems+=`Pakartotinis įvertinimas (${formatDateLT(r.date)}): ${p.positiveEvaluation||"Tikslas pasiektas."}\n`;
+     }else if(r.status==="notachieved"){
+       problems+=`Pakartotinis įvertinimas (${formatDateLT(r.date)}): Tikslas nepasiektas.\n`;
+       if(r.text)problems+=`Būklės aprašymas: ${r.text}\n`;
+       if(r.actions?.length){
+         problems+=`Papildomi veiksmai / intervencijos po pakartotinio vertinimo:\n`;
+         r.actions.forEach(a=>problems+=`• ${a}\n`);
+       }
+     }
+   });
  });
+
+ let support="";
+ if(g.supportTools.length){
+   support+="\nPAPILDOMA STEBĖSENA / SKALĖS / PRIEŽIŪROS MODULIAI:\n";
+   g.supportTools.forEach(x=>support+=`• ${x}\n`);
+ }
 
  let importantInfo="";
  if(g.importantInfo){
    importantInfo=`\nSVARBI PAPILDOMA INFORMACIJA:\n${g.importantInfo}\n`;
+ }
+
+ let overallOutcome="";
+ if(g.overallOutcome){
+   overallOutcome=`\nSLAUGOS PLANO UŽBAIGIMAS:\n${g.overallOutcomeLabel} (${formatDateLT(g.overallOutcomeDate)})\n`;
+   if(g.overallOutcomeNote)overallOutcome+=`${g.overallOutcomeNote}\n`;
+ }else{
+   overallOutcome=`\nSLAUGOS PLANO BŪSENA:\nPlanas tęsiamas.\n`;
  }
 
  let education="";
@@ -1541,16 +2245,26 @@ function generateOutputs(){
 
  const footer="\nPastaba: galutinį planą individualizuoja slaugytoja pagal realią paciento būklę ir įstaigos patvirtintą tvarką.";
 
- planBlocks={header,shared,assessment,peri,sharedAssessment,problems,importantInfo,education,footer};
+ planBlocks={header,shared,assessment,peri,sharedAssessment,support,problems,importantInfo,overallOutcome,education,footer};
 
  let note=`${dx.code} – ${dx.name}. Procedūra / klinikinis kelias: ${procedureName}. `;
  if(g.sharedNames.length)note+=`Gretutinės / papildomos būklės: ${g.sharedNames.join(", ")}. `;
  if(g.periNames.length)note+=`Periprocedūriniai moduliai: ${g.periNames.join(", ")}. `;
  if(g.facts)note+=g.facts.replace(/\s+/g," ").trim()+". ";
  if(g.importantInfo)note+=`Svarbi papildoma informacija: ${g.importantInfo.replace(/\s+/g," ").trim()}. `;
- note+=`Slaugos diagnozės / problemos: ${g.probs.map(p=>p.diagnosis||p.title).join("; ")}. `;
+ note+=`Slaugos diagnozės / problemos: ${g.probs.map(p=>`${p.diagnosis||p.title} [${formatDateLT(p.diagnosisDate)}]`).join("; ")}. `;
  const actions=g.probs.flatMap(p=>p.actions);if(actions.length)note+=`Slaugos veiksmai / planas: ${actions.join(" ")} `;
- const ev=g.probs.map(p=>p.evaluation).filter(Boolean);if(ev.length)note+=`Įvertinimas: ${ev.join(" ")} `;
+ const ev=g.probs.filter(p=>p.evaluationStatus||p.evaluation).map(p=>{
+   let s=`${p.evaluationStatusLabel||"Neįvertinta"} [${formatDateLT(p.evaluationDate)}]`;
+   if(p.evaluation)s+=`: ${p.evaluation}`;
+   return s;
+ });if(ev.length)note+=`Įvertinimas: ${ev.join(" ")} `;
+ if(g.overallOutcome){
+   note+=`Slaugos planas užbaigtas: ${g.overallOutcomeLabel} [${formatDateLT(g.overallOutcomeDate)}]. `;
+   if(g.overallOutcomeNote)note+=`${g.overallOutcomeNote} `;
+ }else{
+   note+=`Slaugos planas tęsiamas. `;
+ }
  if(g.edu.length)note+=`Paciento mokymas: ${g.edu.join(" ")}`;
  note=note.replace(/\s+/g," ").trim();
 
@@ -1624,7 +2338,7 @@ function formatOutput(text){
    if(/^[A-ZĄČĘĖĮŠŲŪŽ0-9 /–-]{5,}:?$/.test(line.trim()) || line.startsWith("NURSEPLAN LT")) return `<div class="output-heading">${e}</div>`;
    if(/^(Specialybė|TLK-10-AM|Procedūra \/ klinikinis kelias|Gretutinės \/ papildomos būklės|Paciento faktai):/.test(line)) return `<div class="output-meta-line">${e}</div>`;
    if(/^\d+\. Slaugos (diagnozė \/ problema|problema \/ kryptis):/.test(line)) return `<div class="output-problem">${e}</div>`;
-   if(/^(Tikslas|Įvertinimas):/.test(line)) return `<div class="output-keyline">${e}</div>`;
+   if(/^(Tikslas|Formulavimo data|Vertinimas|Būklės aprašymas|Papildomi veiksmai|Plano korekcija|Pakartotinis vertinimas|BENDRA SLAUGOS PLANO \/ EPIZODO BAIGTIS)(\s*\(|:|$)/.test(line)) return `<div class="output-keyline">${e}</div>`;
    if(line.startsWith("• ")) return `<div class="output-bullet"><span>•</span><div>${escapeHtml(line.slice(2))}</div></div>`;
    if(line.startsWith("Pastaba:")) return `<div class="output-note">${e}</div>`;
    return `<div class="output-line">${e}</div>`;
@@ -1657,18 +2371,25 @@ function quickStart(code,proc){
  el("procTitle").textContent=dx.code+" – "+dx.name;
  el("assessTitle").textContent=proc+" – ką įvertinti";
  el("assessmentList").innerHTML=procedure.assessment.map((a,i)=>`<div class="actionrow assessment-row"><input type="checkbox" id="as_${i}"><label for="as_${i}">${a}</label></div>`).join("");
- renderPeriModules();renderSharedConditions();renderProblems();go(4);
+ renderPeriModules();renderSharedConditions();renderSupportTools();renderProblems();go(4);
 }
 function resetAll(){
  specialty=dx=procedureName=procedure=null;selectedProblems=[];customProblems=[];outputs={plan:"",note:"",edu:""};planBlocks=null;
  el("dxSearch").value="";el("customAssessment").value="";el("patientFacts").value="";el("extraEducation").value="";
  if(el("importantInfo"))el("importantInfo").value="";
+ if(el("overallOutcome"))el("overallOutcome").value="";
+ if(el("overallOutcomeDate"))el("overallOutcomeDate").value="";
+ if(el("overallOutcomeNote"))el("overallOutcomeNote").value="";
+ if(el("overallOutcomeOther"))el("overallOutcomeOther").value="";
+ if(el("overallOutcomeOtherWrap"))el("overallOutcomeOtherWrap").classList.add("hidden");
+ if(el("deathOutcomeNote"))el("deathOutcomeNote").classList.add("hidden");
+ if(el("finishPlanPanel"))el("finishPlanPanel").classList.add("hidden");
  if(el("customProblemInputs"))el("customProblemInputs").innerHTML="";
  customProblemFieldSeq=0;
  go(1);
 }
 
-// V24: viešoje versijoje pacientų epizodai ir klinikiniai įrašai naršyklėje nesaugomi.
+// V33: viešoje versijoje pacientų epizodai ir klinikiniai įrašai naršyklėje nesaugomi.
 try{localStorage.removeItem("nurseplan_v16_demo_episodes");sessionStorage.removeItem("nurseplan_v16_current_episode");}catch(e){}
 init();
 </script>

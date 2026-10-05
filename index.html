@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b5964">
-<title>NursePlan LT V34</title>
+<title>NursePlan LT V35</title>
 <style>
 :root{
   --bg:#f3f7f8; --card:#ffffff; --ink:#173238; --muted:#688087; --line:#dce7e9;
@@ -161,7 +161,7 @@ main{padding-top:22px}
 }
 
 
-/* ===== V34 OUTPUT BLOCK SELECTOR ===== */
+/* ===== V35 OUTPUT BLOCK SELECTOR ===== */
 .print-options{border-left:4px solid #3d8fa0;background:linear-gradient(180deg,#fff,#f8fcfd);margin-bottom:10px}
 .print-presets{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
 .print-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:7px}
@@ -232,7 +232,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
 }
 
 
-/* ===== V34 STANDALONE NURSING SHEETS ===== */
+/* ===== V35 STANDALONE NURSING SHEETS ===== */
 .sheet-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 12px}
 .standalone-sheet{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow2)}
 .sheet-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;border-bottom:2px solid #dcebed;padding-bottom:10px;margin-bottom:10px}
@@ -269,7 +269,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
 }
 
 
-/* ===== V34 NURSING DIAGNOSIS FORMULATION ===== */
+/* ===== V35 NURSING DIAGNOSIS FORMULATION ===== */
 .diagnosis-formulation{
   margin-top:12px;padding:13px 14px;border:1px solid #cfe3e5;border-left:4px solid #1493a1;
   border-radius:14px;background:linear-gradient(135deg,#f4fafb,#fff)
@@ -289,7 +289,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
 }
 
 
-/* ===== V34 OPTIONAL CUSTOM ENTRIES ===== */
+/* ===== V35 OPTIONAL CUSTOM ENTRIES ===== */
 .custom-problem-tools{margin-top:10px}
 .custom-problem-row{
   display:grid;grid-template-columns:1fr auto;gap:7px;align-items:center;
@@ -306,7 +306,7 @@ body.simple-mode #screen7 .tab{font-size:13px;padding:10px}
 }
 
 
-/* ===== V34 CORE PLAN + DATES + SEPARATE MONITORING ===== */
+/* ===== V35 CORE PLAN + DATES + SEPARATE MONITORING ===== */
 input[type=date]{
   width:100%;border:1px solid var(--line);border-radius:11px;background:#fff;
   padding:10px 11px;color:var(--ink);outline:none
@@ -327,7 +327,7 @@ input[type=date]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(11,101,112
 }
 
 
-/* ===== V34 DYNAMIC EVALUATION / ESCALATION ===== */
+/* ===== V35 DYNAMIC EVALUATION / ESCALATION ===== */
 .eval-status{
   width:100%;border:1px solid var(--line);border-radius:11px;background:#fff;
   padding:10px 11px;color:var(--ink);outline:none
@@ -360,7 +360,7 @@ input[type=date]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(11,101,112
 }
 
 
-/* ===== V34 DATE+TIME + OVERALL OUTCOME ===== */
+/* ===== V35 DATE+TIME + OVERALL OUTCOME ===== */
 input[type=datetime-local]{
   width:100%;border:1px solid var(--line);border-radius:11px;background:#fff;
   padding:10px 11px;color:var(--ink);outline:none
@@ -373,7 +373,7 @@ input[type=datetime-local]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(
 @media(max-width:700px){.outcome-grid{grid-template-columns:1fr}}
 
 
-/* ===== V34 SIMPLE BINARY EVALUATION ===== */
+/* ===== V35 SIMPLE BINARY EVALUATION ===== */
 .binary-eval{
   display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 10px
 }
@@ -387,7 +387,7 @@ input[type=datetime-local]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(
 .auto-repeat-wrap{margin-top:11px}
 @media(max-width:540px){.binary-eval{grid-template-columns:1fr 1fr}}
 
-/* ===== V34 SIMPLE PLAN FLOW ===== */
+/* ===== V35 SIMPLE PLAN FLOW ===== */
 .eval-positive-preview{
   margin-top:7px;padding:9px 11px;border:1px solid #cfe5d8;border-radius:10px;
   background:#f5fbf7;color:#3f6750;font-size:12px;line-height:1.45
@@ -405,7 +405,7 @@ input[type=datetime-local]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(
 .finish-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 @media(max-width:700px){.finish-grid{grid-template-columns:1fr}}
 
-/* ===== V34 OWN NURSING ACTIONS ===== */
+/* ===== V35 OWN NURSING ACTIONS ===== */
 .own-action-tools{margin:9px 0 4px}
 .own-action-row{
   display:grid;grid-template-columns:1fr auto;gap:7px;align-items:center;
@@ -424,7 +424,7 @@ input[type=datetime-local]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(
 }
 .own-action-hint{font-size:10.5px;color:var(--muted);margin-top:5px;line-height:1.35}
 
-/* ===== V34 LANGUAGE CLEANUP + REMOVE ACTION ===== */
+/* ===== V35 LANGUAGE CLEANUP + REMOVE ACTION ===== */
 .plan-action{
   display:grid;grid-template-columns:auto 1fr auto;align-items:flex-start;gap:8px
 }
@@ -444,7 +444,7 @@ input[type=datetime-local]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(
         <button id="simpleModeBtn" class="mode-btn on" onclick="setMode('simple')">Paprastas</button>
         <button id="advancedModeBtn" class="mode-btn" onclick="setMode('advanced')">Išplėstinis</button>
       </div>
-      <div class="demo-badge" id="versionBadge">V34 • PAPRASTAS REŽIMAS</div>
+      <div class="demo-badge" id="versionBadge">V35 • PAPRASTAS REŽIMAS</div>
     </div>
   </div>
 </div>
@@ -649,7 +649,7 @@ input[type=datetime-local]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(
         <div class="card simple-optional" id="patientResourcesCard">
           <div class="tag">PACIENTO ATMINTINĖS / LANKSTINUKAI</div>
           <div class="simple-note simple-only">Pasirinktinai: jei pacientui tinka konkreti atmintinė, galite ją peržiūrėti ar atsispausdinti. Jei nereikia – šį žingsnį tiesiog praleiskite.</div>
-          <div class="callout advanced-only">Atmintinės kuriamos iš patvirtinto bazinio turinio ir gali būti pritaikomos įstaigos kontaktams bei vietinei tvarkai. V34 prototipe panaudotas jūsų Canva pacientų mokymo turinys.</div>
+          <div class="callout advanced-only">Atmintinės kuriamos iš patvirtinto bazinio turinio ir gali būti pritaikomos įstaigos kontaktams bei vietinei tvarkai. V35 prototipe panaudotas jūsų Canva pacientų mokymo turinys.</div>
           <div id="patientResources"></div>
         </div>
         <div class="btnrow"><button class="btn btn-secondary" onclick="go(5)">Atgal</button><button class="btn btn-primary" onclick="generateOutputs()">Generuoti planą</button></div>
@@ -713,7 +713,7 @@ input[type=datetime-local]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(
           <div class="card"><div class="iconbox">NV</div><div class="small-head">Galūnės neurovaskulinė stebėsena</div><div class="meta">Spalva, temperatūra, kapiliarų prisipildymas, jutimai, judesiai, pulsas ir skausmo dinamika pagal klinikinę situaciją.</div></div>
           <div class="card"><div class="iconbox">G</div><div class="small-head">Gipsas / įtvaras / ortozė</div><div class="meta">Spaudimo vietos, odos būklė, tinimas, galūnės padėtis, saugus naudojimas ir paciento mokymas.</div></div>
           <div class="card"><div class="iconbox">PP</div><div class="small-head">Peri- / poprocedūrinė slauga</div><div class="meta">Nerimas ir pasiruošimas prieš procedūrą, po nejautros / sedacijos stebėjimas, kraujavimas, mobilizacija, išrašymo kriterijai ir tolimesnis planas.</div></div>
-          <div class="card"><div class="iconbox">AI</div><div class="small-head">AI formulavimo pagalba</div><div class="meta">V34 demonstracinė funkcija padeda struktūruoti tuščius laukus; galutinį tekstą visada patvirtina ir redaguoja slaugytoja.</div></div>
+          <div class="card"><div class="iconbox">AI</div><div class="small-head">AI formulavimo pagalba</div><div class="meta">V35 demonstracinė funkcija padeda struktūruoti tuščius laukus; galutinį tekstą visada patvirtina ir redaguoja slaugytoja.</div></div>
           <div class="card"><div class="iconbox">PM</div><div class="small-head">Paciento mokymo biblioteka</div><div class="meta">Atmintinės apie nefrostomą, cistostomą ir vėliau kitus prietaisus / procedūras, pritaikomos konkrečiai įstaigai.</div></div>
           <div class="card"><div class="iconbox">T</div><div class="small-head">Terapijos branduolys</div><div class="meta">Kardiologija, pulmonologija, nefrologija, endokrinologija, hematologija, gastroenterologija, sepsis, VTE ir skysčių / elektrolitų būklės.</div></div>
           <div class="card"><div class="iconbox">+</div><div class="small-head">Gretutinės būklės</div><div class="meta">Anemija, diabetas, lėtinė inkstų liga, širdies nepakankamumas, LOPL, hipertenzija, prieširdžių virpėjimas, nutukimas, dehidratacija, elektrolitų sutrikimai ir antikoaguliacinis gydymas gali būti prijungiami prie bet kurios specialybės plano.</div></div>
@@ -839,30 +839,31 @@ input[type=datetime-local]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(
         <div class="card">
           <div class="tag">PRODUKTO KRYPTIS</div>
           <ul class="about-list">
-            <li>V34 pataisyta kritimo rizikos veiksmų kalba ir pridėtas aiškus „×“ prie kiekvieno siūlomo slaugos veiksmo – pašalintas veiksmas į galutinį planą nebepatenka.</li>
-            <li>V34 pridėjus savo slaugos veiksmą, mygtukas lieka po sąrašu ir pasikeičia į „Pridėti dar vieną veiksmą“, todėl galima pridėti tiek individualių veiksmų, kiek reikia.</li>
-            <li>V34 prie kiekvienos slaugos diagnozės / problemos galima vienu „+“ pridėti vieną ar kelis savo individualius slaugos veiksmus; papildomai jų pažymėti nereikia – jie automatiškai patenka į galutinį planą.</li>
-            <li>V34 „Pasiektas“ automatiškai paverčiamas konkrečiu klinikiniu rezultatu, planas pagal nutylėjimą tęsiamas, o jo užbaigimas atsidaro tik pasirinkus „Užbaigti slaugos planą“. Slaugos veiksmai pateikiami kaip vykdoma priežiūra, o ne kaip komandos slaugytojai.</li>
-            <li>V34 vertinimas supaprastintas iki dviejų pasirinkimų: „Pasiektas“ arba „Nepasiektas“. Tik pasirinkus „Nepasiektas“ atsiveria papildomi veiksmai, plano korekcija ir pakartotinis vertinimas.</li>
-            <li>V34 prie diagnozės formulavimo, vertinimų ir bendros slaugos plano / epizodo baigties fiksuojama data bei laikas. Bendra baigtis gali būti ir nepalanki: blogėjimas, eskalacija, perkėlimas ar plano užbaigimas dėl paciento mirties.</li>
-            <li>V34 vertinimas nebėra automatiškai „teigiamas“: pasirenkama, ar tikslas pasiektas, iš dalies pasiektas, nepasiektas ar būklė blogėja. Jei reikia, atsiveria papildomi veiksmai / paskirtos intervencijos, plano korekcija ir pakartotinis vertinimas.</li>
-            <li>V34 pagrindinis slaugos planas aiškiai atskirtas nuo stebėjimo priemonių: diagnozė / problema → formulavimo data → tikslas → veiksmai → vertinimas su data. Papildomi stebėjimai, skalės ir priežiūros moduliai pasirenkami atskirai.</li>
-            <li>V34 procedūrinėse specialybėse slaugos problemų priežastis formuluojama pagal slaugytojo vertinamą veiksnį (pvz., audinių pažeidimą, anestezijos poveikį, sumažėjusį mobilumą), o ne pagal medicininės procedūros pavadinimą.</li>
-            <li>V34 medicininė diagnozė ir procedūra paliekamos klinikiniame kontekste, o slaugos problemos formuluojamos kaip paciento reakcija, rizika ar priežiūros poreikis – liga nebenaudojama kaip automatinė slaugos problemos priežastis.</li>
-            <li>V34 visų penkių specialybių problemų formuluotės pririštos prie pasirinktos operacijos, procedūros arba terapinės diagnozės; bendriniai vieno žodžio pavadinimai neberodomi, kai klinikinis kontekstas jau žinomas.</li>
-            <li>V34 problemų formuluotės automatiškai pririšamos prie pasirinktos procedūros. Nebereikia spausti „Patikslinti“ – iškart rodoma plane tinkama kontekstinė formuluotė.</li>
-            <li>V34 leidžia vienu „+“ pridėti tiek individualių slaugos problemų / diagnozių, kiek reikia, ir turi atskirą pasirenkamą lauką svarbiai papildomai informacijai apie nestandartinius įvykius ar papildomas intervencijas.</li>
-            <li>V34 taiko „paprasta pirmiausia“ principą: trumpa formuluotė naudojama iškart, o patikslinimas ir AI atsidaro tik jei jų reikia.</li>
-            <li>V34 atskiria trumpą slaugos problemos / diagnozės kryptį nuo individualizuotos formuluotės. Esamai problemai siūloma „problema + susijęs veiksnys + požymiai“, o rizikos diagnozei – rizika + rizikos veiksniai be „pasireiškianti“.</li>
-            <li>V34 turi atskirai spausdinamus vieno puslapio slaugos lapus: poprocedūrinį vertinimą, stebėjimą po sedacijos / nejautros ir išvykimo kontrolinį lapą.</li>
+            <li>V35 urologijos pilotui papildyti dažni ūmūs klinikiniai keliai: ūminis prostatitas, pielonefritas / komplikuota ŠTI, epididimitas / orchitas, Fournier gangrena, makrohematurija / krešulių retencija, urosepsis ir kateterio / nefrostomos / cistostomos komplikacijos. TURB ir TURP papildyti kateterio, plovimo sistemos, krešulių ir retencijos stebėjimu.</li>
+            <li>V35 pataisyta kritimo rizikos veiksmų kalba ir pridėtas aiškus „×“ prie kiekvieno siūlomo slaugos veiksmo – pašalintas veiksmas į galutinį planą nebepatenka.</li>
+            <li>V35 pridėjus savo slaugos veiksmą, mygtukas lieka po sąrašu ir pasikeičia į „Pridėti dar vieną veiksmą“, todėl galima pridėti tiek individualių veiksmų, kiek reikia.</li>
+            <li>V35 prie kiekvienos slaugos diagnozės / problemos galima vienu „+“ pridėti vieną ar kelis savo individualius slaugos veiksmus; papildomai jų pažymėti nereikia – jie automatiškai patenka į galutinį planą.</li>
+            <li>V35 „Pasiektas“ automatiškai paverčiamas konkrečiu klinikiniu rezultatu, planas pagal nutylėjimą tęsiamas, o jo užbaigimas atsidaro tik pasirinkus „Užbaigti slaugos planą“. Slaugos veiksmai pateikiami kaip vykdoma priežiūra, o ne kaip komandos slaugytojai.</li>
+            <li>V35 vertinimas supaprastintas iki dviejų pasirinkimų: „Pasiektas“ arba „Nepasiektas“. Tik pasirinkus „Nepasiektas“ atsiveria papildomi veiksmai, plano korekcija ir pakartotinis vertinimas.</li>
+            <li>V35 prie diagnozės formulavimo, vertinimų ir bendros slaugos plano / epizodo baigties fiksuojama data bei laikas. Bendra baigtis gali būti ir nepalanki: blogėjimas, eskalacija, perkėlimas ar plano užbaigimas dėl paciento mirties.</li>
+            <li>V35 vertinimas nebėra automatiškai „teigiamas“: pasirenkama, ar tikslas pasiektas, iš dalies pasiektas, nepasiektas ar būklė blogėja. Jei reikia, atsiveria papildomi veiksmai / paskirtos intervencijos, plano korekcija ir pakartotinis vertinimas.</li>
+            <li>V35 pagrindinis slaugos planas aiškiai atskirtas nuo stebėjimo priemonių: diagnozė / problema → formulavimo data → tikslas → veiksmai → vertinimas su data. Papildomi stebėjimai, skalės ir priežiūros moduliai pasirenkami atskirai.</li>
+            <li>V35 procedūrinėse specialybėse slaugos problemų priežastis formuluojama pagal slaugytojo vertinamą veiksnį (pvz., audinių pažeidimą, anestezijos poveikį, sumažėjusį mobilumą), o ne pagal medicininės procedūros pavadinimą.</li>
+            <li>V35 medicininė diagnozė ir procedūra paliekamos klinikiniame kontekste, o slaugos problemos formuluojamos kaip paciento reakcija, rizika ar priežiūros poreikis – liga nebenaudojama kaip automatinė slaugos problemos priežastis.</li>
+            <li>V35 visų penkių specialybių problemų formuluotės pririštos prie pasirinktos operacijos, procedūros arba terapinės diagnozės; bendriniai vieno žodžio pavadinimai neberodomi, kai klinikinis kontekstas jau žinomas.</li>
+            <li>V35 problemų formuluotės automatiškai pririšamos prie pasirinktos procedūros. Nebereikia spausti „Patikslinti“ – iškart rodoma plane tinkama kontekstinė formuluotė.</li>
+            <li>V35 leidžia vienu „+“ pridėti tiek individualių slaugos problemų / diagnozių, kiek reikia, ir turi atskirą pasirenkamą lauką svarbiai papildomai informacijai apie nestandartinius įvykius ar papildomas intervencijas.</li>
+            <li>V35 taiko „paprasta pirmiausia“ principą: trumpa formuluotė naudojama iškart, o patikslinimas ir AI atsidaro tik jei jų reikia.</li>
+            <li>V35 atskiria trumpą slaugos problemos / diagnozės kryptį nuo individualizuotos formuluotės. Esamai problemai siūloma „problema + susijęs veiksnys + požymiai“, o rizikos diagnozei – rizika + rizikos veiksniai be „pasireiškianti“.</li>
+            <li>V35 turi atskirai spausdinamus vieno puslapio slaugos lapus: poprocedūrinį vertinimą, stebėjimą po sedacijos / nejautros ir išvykimo kontrolinį lapą.</li>
             <li>TLK-10-AM naudojamas diagnozės paieškai ir klinikiniam keliui pradėti.</li>
             <li>Procedūra arba klinikinis slaugos kelias pasirenkamas atskirai, nes vienas TLK kodas savaime nenustato gydymo.</li>
             <li>Slaugos problemos pateikiamos kaip siūlomos kryptys, o ne kaip automatinė diagnozė.</li>
             <li>Nenaudojami paciento vardas, asmens kodas ar ligos istorijos numeris.</li>
             <li>Prieš realų klinikinį naudojimą reikalinga turinio ekspertizė, validacija, duomenų apsaugos ir medicinos priemonės reguliacinė analizė.</li>
             <li>V15 išlaiko išplėstą vidaus ligų / terapijos kryptį iki dažniausių stacionaro būklių branduolio: kardiologija, pulmonologija, hematologija, endokrinologija, nefrologija, gastroenterologija, infekcijos, venų tromboembolija, skysčių ir elektrolitų pusiausvyra. Gretutinės būklės veikia skersai specialybių.</li>
-            <li>V34 dizainas vizualiai išryškina diagnozę, procedūrą, gretutines būkles, pasirinktas slaugos problemas, tikslus, veiksmus, vertinimą ir paciento mokymą.</li>
-            <li>V34 paprastame režime paciento atmintinės paliktos kaip pasirenkama funkcija – jos atsiveria tik paspaudus „Paciento atmintinės“.</li><li>V34 taiko „privacy-first“ principą: paciento identifikaciniai duomenys ir epizodų istorija viešame prototipe nesaugomi; sugeneruotas tekstas skirtas perkelti į įstaigos patvirtintą dokumentacijos formą.</li>
+            <li>V35 dizainas vizualiai išryškina diagnozę, procedūrą, gretutines būkles, pasirinktas slaugos problemas, tikslus, veiksmus, vertinimą ir paciento mokymą.</li>
+            <li>V35 paprastame režime paciento atmintinės paliktos kaip pasirenkama funkcija – jos atsiveria tik paspaudus „Paciento atmintinės“.</li><li>V35 taiko „privacy-first“ principą: paciento identifikaciniai duomenys ir epizodų istorija viešame prototipe nesaugomi; sugeneruotas tekstas skirtas perkelti į įstaigos patvirtintą dokumentacijos formą.</li>
             <li>V16 prideda universalų priešprocedūrinį / poprocedūrinį saugos sluoksnį, AI formulavimo pagalbos prototipą ir pacientų atmintines. AI prototipas nenaudoja realių pacientų duomenų ir nepriima klinikinio sprendimo už slaugytoją.</li>
             <li>ACHI procedūrų skaitmeniniai kodai į demo sąmoningai nedėti, kol nėra integruotas oficialus aktualus klasifikatorius.</li>
           </ul>
@@ -870,7 +871,7 @@ input[type=datetime-local]:focus{border-color:#8abec2;box-shadow:0 0 0 3px rgba(
         <div class="btnrow"><button class="btn btn-primary" onclick="startFlow()">Kurti planą</button><button class="btn btn-secondary" onclick="goHome()">Į pradžią</button></div>
       </section>
 
-      <div class="footer">NursePlan LT V34 • chirurgija, urologija, neurochirurgija, ortopedija-traumatologija ir vidaus ligų / terapijos branduolys • turinio struktūra skirta mokymui ir produkto testavimui. TLK grupės turi būti tikrinamos pagal aktualų oficialų Lietuvos TLK-10-AM / ACHI klasifikatorių prieš produkcinį naudojimą.</div>
+      <div class="footer">NursePlan LT V35 • chirurgija, urologija, neurochirurgija, ortopedija-traumatologija ir vidaus ligų / terapijos branduolys • turinio struktūra skirta mokymui ir produkto testavimui. TLK grupės turi būti tikrinamos pagal aktualų oficialų Lietuvos TLK-10-AM / ACHI klasifikatorių prieš produkcinį naudojimą.</div>
     </div>
   </div>
 </main>
@@ -922,7 +923,15 @@ const diagnoses = [
   {sp:"Urologija", group:"Šlaplės chirurgija", code:"N35", name:"Šlaplės striktūra", procedures:["Vidinė uretrotomija (DVIU)","Uretroplastika"]},
   {sp:"Urologija", group:"Skubi urologija", code:"N44", name:"Sėklidės užsisukimas", procedures:["Kapšelio revizija, detorsija ir orchidopeksija"]},
   {sp:"Urologija", group:"Kapšelio chirurgija", code:"I86.1", name:"Varikocelė", procedures:["Varikocelės operacija"]},
-  {sp:"Urologija", group:"Šlapimo nutekėjimas", code:"R33", name:"Šlapimo susilaikymas (retencija)", procedures:["Šlapimo pūslės kateterizacija","Cistostoma / suprapubinis kateteris","Protarpinės kateterizacijos mokymas"]}
+  {sp:"Urologija", group:"Šlapimo nutekėjimas", code:"R33", name:"Šlapimo susilaikymas (retencija)", procedures:["Šlapimo pūslės kateterizacija","Cistostoma / suprapubinis kateteris","Protarpinės kateterizacijos mokymas"]},
+  {sp:"Urologija", group:"Infekcijos / uždegimai", code:"N41.0", name:"Ūminis prostatitas", procedures:["Ūminio prostatito klinikinės slaugos kelias"]},
+  {sp:"Urologija", group:"Infekcijos / uždegimai", code:"N10", name:"Ūminis pielonefritas", procedures:["Ūminio pielonefrito / komplikuotos ŠTI klinikinės slaugos kelias"]},
+  {sp:"Urologija", group:"Infekcijos / uždegimai", code:"N39.0", name:"Šlapimo takų infekcija, vieta nepatikslinta", procedures:["Ūminio pielonefrito / komplikuotos ŠTI klinikinės slaugos kelias"]},
+  {sp:"Urologija", group:"Infekcijos / uždegimai", code:"N45", name:"Epididimitas / orchitas / epididimoorchitas", procedures:["Epididimito / orchito klinikinės slaugos kelias"]},
+  {sp:"Urologija", group:"Skubi urologija", code:"N49.3", name:"Fournier gangrena", procedures:["Fournier gangrenos klinikinės slaugos kelias"]},
+  {sp:"Urologija", group:"Skubi urologija", code:"R31", name:"Makrohematurija / hematurija", procedures:["Makrohematurijos / krešulių retencijos klinikinės slaugos kelias"]},
+  {sp:"Urologija", group:"Skubi urologija", code:"A41.9", name:"Sepsis, galima šlapimo takų kilmė", procedures:["Urosepsio klinikinės slaugos kelias"]},
+  {sp:"Urologija", group:"Kateteriai / drenažai", code:"T83.0", name:"Šlapimo kateterio / drenavimo sistemos mechaninė komplikacija", procedures:["Kateterio / nefrostomos / cistostomos komplikacijų klinikinės slaugos kelias"]}
 ,
   // NEUROCHIRURGIJA
   {sp:"Neurochirurgija", group:"Neuroonkologija", code:"C71", name:"Galvos smegenų piktybinis navikas", procedures:["Kraniotomija ir galvos smegenų naviko rezekcija"]},
@@ -980,6 +989,9 @@ const diagnoses = [
 const problemLibrary = {
  pain:{t:"Ūmus skausmas",g:"Skausmas sumažės iki pacientui toleruojamo lygio.",a:["Įvertinti skausmą pagal NRS.","Stebėti skausmo lokalizaciją, pobūdį ir dinamiką.","Vykdyti paskirtas skausmo mažinimo priemones.","Pakartotinai įvertinti poveikį po intervencijos."],e:"Skausmas sumažėjęs / toleruojamas."},
  infection:{t:"Infekcijos rizika",g:"Nebus naujų vietinių ar sisteminių infekcijos požymių.",a:["Stebėti temperatūrą ir bendrą būklę.","Vertinti operacinę žaizdą / įvedimo vietą, jei aktualu.","Laikytis aseptikos principų.","Dokumentuoti ir perduoti reikšmingus pokyčius."],e:"Naujų infekcijos požymių nenustatyta."},
+ acuteinfection:{t:"Aktyvios infekcijos / uždegiminės būklės priežiūros poreikis",g:"Kūno temperatūra ir bendra būklė stabilizuosis, infekcijos / uždegimo požymiai neprogresuos.",a:["Matuojama kūno temperatūra ir vertinami gyvybiniai rodikliai pagal paciento būklę.","Stebima bendra savijauta, šaltkrėtis, skausmas ir kiti infekcijos / uždegimo požymiai.","Vykdomas paskirtas antimikrobinis, infuzinis ir simptominis gydymas pagal gydytojo paskyrimą / įstaigos tvarką.","Apie būklės blogėjimą ar naujus sisteminius požymius informuojamas atsakingas gydytojas."],e:"Bendra būklė stabili / gerėja, infekcijos / uždegimo požymiai neprogresuoja."},
+ tissue:{t:"Odos ir minkštųjų audinių vientisumo pažeidimo priežiūros poreikis",g:"Pažeistos srities būklė bus sistemingai vertinama, o blogėjimo požymiai bus laiku atpažinti.",a:["Vertinama pažeistos srities oda ir audiniai, spalva, patinimas, eksudatas, kvapas ir pažeidimo ribų dinamika.","Žaizdos priežiūra atliekama laikantis aseptikos ir paskirto žaizdos gydymo plano.","Vertinamas skausmas ir audinių būklės pokyčiai.","Reikšmingi žaizdos ar audinių būklės pokyčiai dokumentuojami ir perduodami atsakingam specialistui."],e:"Pažeistos srities būklė įvertinta ir dokumentuota, reikšmingi pokyčiai laiku perduoti."},
+ devicecomp:{t:"Šlapimo drenavimo sistemos funkcijos sutrikimo priežiūros poreikis",g:"Bus atkurtas / palaikytas saugus šlapimo nutekėjimas, o sistemos komplikacijos bus laiku atpažintos.",a:["Vertinamas šlapimo nutekėjimas, kiekis ir pobūdis.","Tikrinama kateterio / nefrostomos / cistostomos padėtis, fiksacija, neužlinkimas ir matomos jungtys.","Vertinamas pratekėjimas šalia sistemos, skausmas, hematurija ir įvedimo vietos būklė.","Apie sistemos nepratekėjimą, iškritimą / pasislinkimą, gausėjantį kraujavimą ar kitą reikšmingą pokytį informuojamas atsakingas gydytojas."],e:"Šlapimo nutekėjimas pakankamas / sistemos sutrikimas atpažintas ir perduotas tolesniam sprendimui."},
  nausea:{t:"Pykinimas / vėmimas",g:"Pykinimas ir vėmimas sumažės, bus palaikomas skysčių balansas.",a:["Vertinti pykinimo intensyvumą.","Registruoti vėmimo epizodus ir pobūdį.","Stebėti skysčių balansą.","Vykdyti paskirtą gydymą ir vertinti jo poveikį."],e:"Pykinimas sumažėjęs, vėmimas nepasikartoja / retėja."},
  mobility:{t:"Sumažėjęs mobilumas",g:"Pacientas saugiai didins fizinį aktyvumą pagal būklę.",a:["Įvertinti mobilumo lygį ir pagalbos poreikį.","Skatinti ankstyvą saugią mobilizaciją.","Stebėti silpnumą ir ortostatinę reakciją.","Dokumentuoti mobilumo progresą."],e:"Pacientas mobilizuojasi saugiai pagal galimybes."},
  vte:{t:"Venų tromboembolinių komplikacijų rizikos stebėjimo poreikis",g:"Bus taikomos paskirtos VTE profilaktikos priemonės ir laiku atpažįstami įspėjamieji simptomai.",a:["Skatinti ankstyvą saugią mobilizaciją pagal būklę.","Vykdyti paskirtas mechanines ir (ar) medikamentines profilaktikos priemones.","Stebėti naują vienos kojos tinimą, skausmą ar staigų dusulį.","Apie įtartinus simptomus nedelsiant informuoti atsakingą specialistą."],e:"Paskirtos profilaktikos priemonės taikomos, naujų VTE požymių nenustatyta."},
@@ -1070,7 +1082,7 @@ const procedures = {
  "Žaizdos revizija / debridementas":{tag:"Chirurgija",problems:["pain","wound","infection","fluid","knowledge"],assessment:["Žaizdos vieta, dydis ir kraštų būklė pagal įstaigos dokumentavimo tvarką.","Eksudato kiekis, spalva, pobūdis ir kvapas.","Aplinkinių audinių paraudimas, patinimas ir maceracija.","Skausmas.","Temperatūra ir bendra savijauta.","Pasirinkto tvarsčio / terapijos toleravimas."],education:["Paaiškinti žaizdos ir tvarsčio priežiūrą pagal paskirtą planą.","Mokyti saugoti tvarstį ir žaizdą nuo užteršimo / traumavimo.","Paaiškinti, kada kreiptis dėl karščiavimo, didėjančio skausmo, kraujavimo ar ryškaus išskyrų pokyčio."]},
  "NPWT / VAC terapija":{tag:"Chirurgija",problems:["wound","pain","infection","fluid","knowledge"],assessment:["Sistemos sandarumas ir neigiamo slėgio veikimas.","Vamzdelio padėtis, fiksacija ir neužlinkimas.","Talpoje esančio turinio kiekis ir pobūdis.","Tvarsčio ir aplinkinės odos būklė.","Skausmas.","Signalai / aliarmų priežastys, jei sistema juos rodo."],education:["Paaiškinti, kad sistemos nustatymų pacientas nekeistų savarankiškai.","Mokyti saugoti vamzdelį nuo užlinkimo ir ištraukimo.","Paaiškinti, kada kreiptis dėl sistemos neveikimo, staigaus kraujavimo, karščiavimo ar didėjančio skausmo."]},
 
- "TURBT / TURB":{tag:"Urologija",problems:["pain","hematuria","urinary","infection","knowledge"],assessment:["Skausmas pagal NRS.","Šlapimo spalva, skaidrumas ir krešuliai.","Diurezė ir šlapimo nutekėjimas.","Kateterio praeinamumas ir fiksacija, jei jis yra.","Gyvybiniai rodikliai.","Paciento žinios apie režimą po procedūros."],education:["Paaiškinti tikėtinus trumpalaikius simptomus ir individualias rekomendacijas.","Aptarti fizinio krūvio ribojimus.","Paaiškinti, kada kreiptis dėl gausėjančio kraujavimo, krešulių, karščiavimo ar šlapimo susilaikymo."]},
+ "TURBT / TURB":{tag:"Urologija",problems:["pain","hematuria","urinary","catheter","infection","knowledge"],assessment:["Skausmas pagal NRS.","Šlapimo spalva, skaidrumas, hematurijos dinamika ir krešuliai.","Diurezė ir šlapimo nutekėjimas.","Kateterio praeinamumas ir fiksacija, jei jis yra.","Plovimo sistemos funkcija ir nutekėjimas, jei taikoma nuolatinė pūslės irigacija.","Pūslės tempimo / spazmų ir šlapimo susilaikymo požymiai.","Gyvybiniai rodikliai.","Paciento žinios apie režimą po procedūros."],education:["Paaiškinti tikėtinus trumpalaikius simptomus ir individualias rekomendacijas.","Aptarti fizinio krūvio ribojimus.","Paaiškinti, kada kreiptis dėl gausėjančio kraujavimo, krešulių, karščiavimo ar šlapimo susilaikymo."]},
  "Cistoskopija":{tag:"Urologija",problems:["anxiety","preknowledge","pain","hematuria","urinary","infection","postopobs","hypotension","followup"],assessment:["Paciento nerimas ir žinios apie procedūrą / pasiruošimą.","Taikytos vietinės nejautros, sedacijos ar kitos nejautros tipas – jei aktualu.","Gyvybiniai rodikliai ir bendra būklė pagal klinikinę situaciją.","Skausmas / deginimas šlapinantis.","Hematurija ir krešuliai.","Šlapimo nutekėjimas ir galimos retencijos požymiai.","Svaigimas, silpnumas, pykinimas ar ortostatiniai simptomai po procedūros.","Temperatūra ir infekcijos požymiai."],education:["Paaiškinti galimus trumpalaikius simptomus po procedūros ir individualias skysčių rekomendacijas.","Paaiškinti, kada kreiptis dėl gausėjančio / užsitęsusio kraujavimo, karščiavimo, stiprėjančio skausmo ar negalėjimo pasišlapinti.","Jei taikyta sedacija / nejautra – aptarti saugaus išvykimo, vairavimo ir priežiūros reikalavimus pagal vietinę tvarką.","Prieš išvykstant paaiškinti procedūros radinius, kontrolės / tyrimų atsakymo ir tolimesnio gydymo planą tiek, kiek jis jau nustatytas."]},
  "Intravezikinė BCG terapija":{tag:"Urologija",problems:["pain","hematuria","infection","knowledge"],assessment:["Šlapinimosi dažnis, skubumas ir skausmas.","Hematurija.","Kūno temperatūra ir šaltkrėtis.","Bendra savijauta ir sisteminės reakcijos požymiai."],education:["Paaiškinti gydymo tikslą ir galimus vietinius simptomus.","Aptarti saugaus elgesio rekomendacijas pagal įstaigos protokolą.","Paaiškinti, kada dėl karščiavimo ar ryškios bendros reakcijos būtina kreiptis skubiai."]},
  "Radikali prostatektomija":{tag:"Urologija",problems:["pain","catheter","mobility","bowel","anxiety","knowledge"],assessment:["Skausmas.","Foley kateterio praeinamumas ir fiksacija.","Diurezė ir šlapimo pobūdis.","Žaizda / drenai, jei yra.","Mobilumas.","Tuštinimasis.","Paciento klausimai dėl šlapimo nelaikymo ir lytinės funkcijos."],education:["Mokyti Foley kateterio priežiūros.","Aptarti mobilizaciją ir tuštinimosi svarbą.","Aptarti dubens dugno pratimų pradžios laiką pagal gydymo komandos rekomendacijas.","Paaiškinti kateterio pašalinimo / kontrolės planą."]},
@@ -1079,7 +1091,7 @@ const procedures = {
  "PCNL":{tag:"Urologija",problems:["pain","bleeding","infection","catheter","fluid","knowledge"],assessment:["Skausmas.","Nefrostomos / dreno turinio kiekis ir pobūdis.","Šlapimo spalva ir diurezė.","Punkcijos vieta.","Temperatūra.","Nefrostomos fiksacija, jei ji palikta."],education:["Mokyti nefrostomos priežiūros, jei pacientas išvyksta su nefrostoma.","Paaiškinti, kaip saugoti vamzdelį nuo tempimo ir užlinkimo.","Paaiškinti, kada kreiptis dėl iškritimo, nutekėjimo sustojimo, karščiavimo ar kraujavimo."]},
  "ESWL":{tag:"Urologija",problems:["pain","hematuria","urinary","knowledge"],assessment:["Skausmas.","Šlapimo spalva.","Diurezė.","Akmens fragmentų pasišalinimo simptomai.","Temperatūra."],education:["Aptarti individualų skysčių vartojimą.","Paaiškinti, kada kreiptis dėl stiprėjančio skausmo, karščiavimo ar šlapimo nutekėjimo sutrikimo."]},
  "JJ ureterinis stentas":{tag:"Urologija",problems:["pain","urinary","hematuria","infection","knowledge"],assessment:["Skausmas.","Šlapinimosi dažnis, skuba ir deginimas.","Hematurija.","Temperatūra.","Stento kontrolės / pašalinimo data."],education:["Paaiškinti dažniausius stento simptomus.","Aptarti kontrolės / pašalinimo planą.","Paaiškinti, kada kreiptis dėl karščiavimo, anūrijos ar stipraus skausmo."]},
- "TURP":{tag:"Urologija",problems:["pain","hematuria","urinary","infection","knowledge"],assessment:["Šlapimo spalva ir krešuliai.","Kateterio / drenavimo sistemos praeinamumas.","Diurezė.","Pūslės spazmų / tempimo požymiai.","Gyvybiniai rodikliai."],education:["Paaiškinti kateterio priežiūrą, jei pacientas išvyksta su kateteriu.","Aptarti šlapimo spalvos pokyčius ir kada kreiptis.","Paaiškinti šlapimo susilaikymo požymius."]},
+ "TURP":{tag:"Urologija",problems:["pain","hematuria","urinary","catheter","infection","knowledge"],assessment:["Šlapimo spalva, hematurijos dinamika ir krešuliai.","Kateterio / drenavimo sistemos praeinamumas ir fiksacija.","Plovimo sistemos funkcija ir nutekėjimas, jei taikoma nuolatinė pūslės irigacija.","Diurezė.","Pūslės spazmų / tempimo požymiai.","Šlapinimasis ir retencijos požymiai pašalinus kateterį, jei aktualu.","Gyvybiniai rodikliai."],education:["Paaiškinti kateterio priežiūrą, jei pacientas išvyksta su kateteriu.","Aptarti šlapimo spalvos pokyčius ir kada kreiptis.","Paaiškinti šlapimo susilaikymo požymius."]},
  "Cistostoma / suprapubinis kateteris":{tag:"Urologija",problems:["catheter","infection","urinary","knowledge"],assessment:["Kateterio padėtis ir fiksacija.","Šlapimo tekėjimas, kiekis ir spalva.","Oda aplink įvedimo vietą.","Pratekėjimas aplink kateterį.","Temperatūra.","Paskutinio / planuojamo keitimo data."],education:["Mokyti kasdienės cistostomos priežiūros.","Paaiškinti, kaip saugoti kateterį nuo tempimo ir užlinkimo.","Aptarti planuojamo keitimo datą.","Paaiškinti, kada kreiptis dėl iškritimo ar nepratekėjimo."]},
  "Nefrostoma":{tag:"Urologija",problems:["catheter","infection","urinary","fluid","knowledge"],assessment:["Nefrostomos vamzdelio padėtis ir fiksacija.","Šlapimo tekėjimas, kiekis ir spalva.","Įvedimo vietos oda.","Tvarsčio būklė.","Temperatūra.","Paciento / artimųjų gebėjimas prižiūrėti sistemą."],education:["Mokyti saugoti vamzdelį nuo tempimo ir užlinkimo.","Aptarti surinkimo sistemos ir įvedimo vietos priežiūrą.","Paaiškinti kontrolės / keitimo planą.","Paaiškinti, kada kreiptis dėl iškritimo ar staigaus nutekėjimo sustojimo."]},
  "Nefrektomija / dalinė nefrektomija":{tag:"Urologija",problems:["pain","bleeding","fluid","infection","mobility","knowledge"],assessment:["Skausmas.","Gyvybiniai rodikliai.","Žaizda ir drenai, jei yra.","Diurezė ir skysčių balansas.","Pykinimas / apetitas.","Mobilumas."],education:["Aptarti žaizdos priežiūrą ir fizinio aktyvumo ribojimus.","Paaiškinti individualias skysčių vartojimo rekomendacijas.","Paaiškinti, kada kreiptis dėl karščiavimo, kraujavimo, mažėjančios diurezės ar stiprėjančio skausmo."]},
@@ -1102,7 +1114,21 @@ const procedures = {
  "Kapšelio revizija, detorsija ir orchidopeksija":{tag:"Urologija",problems:["pain","bleeding","infection","anxiety","knowledge"],assessment:["Skausmas.","Kapšelio patinimas ir hematoma.","Žaizdos / tvarsčio būklė.","Temperatūra.","Pykinimas / bendra savijauta.","Paciento ir artimųjų klausimai apie tolesnę eigą."],education:["Aptarti operacinės srities priežiūrą.","Paaiškinti fizinio aktyvumo ribojimus pagal gydymo planą.","Paaiškinti, kada kreiptis dėl didėjančio skausmo, patinimo, karščiavimo ar kraujavimo."]},
  "Varikocelės operacija":{tag:"Urologija",problems:["pain","bleeding","infection","sexual","knowledge"],assessment:["Skausmas.","Kapšelio patinimas / hematoma.","Žaizda / tvarstis.","Temperatūra.","Paciento klausimai dėl vaisingumo ir lytinės sveikatos."],education:["Aptarti žaizdos ir kapšelio priežiūrą.","Paaiškinti fizinio aktyvumo ribojimus pagal gydytojo rekomendacijas.","Suteikti informaciją, kur kreiptis dėl vaisingumo ar lytinės sveikatos klausimų."]},
  "Šlapimo pūslės kateterizacija":{tag:"Urologija",problems:["urinary","catheter","infection","knowledge"],assessment:["Šlapimo susilaikymo simptomai ir pūslės tempimo pojūtis.","Šlapimo kiekis ir pobūdis po kateterizacijos.","Kateterio praeinamumas ir fiksacija.","Skausmas / diskomfortas.","Temperatūra, jei įtariama infekcija."],education:["Paaiškinti kateterio paskirtį ir saugią priežiūrą.","Mokyti saugoti sistemą nuo tempimo ir užlinkimo.","Paaiškinti, kada kreiptis dėl nepratekėjimo, karščiavimo, stipraus skausmo ar ryškaus kraujavimo."]},
- "Protarpinės kateterizacijos mokymas":{tag:"Urologija",problems:["urinary","continence","infection","knowledge"],assessment:["Paciento rankų funkcija ir gebėjimas atlikti procedūrą.","Regėjimas ir kognityvinis gebėjimas mokytis.","Šlapinimosi / retencijos pobūdis.","Odos ir šlaplės simptomai.","Paciento motyvacija ir galimybė laikytis režimo."],education:["Mokyti protarpinės kateterizacijos žingsnių pagal įstaigos patvirtintą metodiką.","Aptarti rankų higieną, priemonių laikymą ir kateterizacijos dažnį pagal paskyrimą.","Taikyti teach-back / demonstravimo metodą.","Paaiškinti, kada kreiptis dėl kraujavimo, skausmo, karščiavimo ar nepavykstančios kateterizacijos."]}
+ "Protarpinės kateterizacijos mokymas":{tag:"Urologija",problems:["urinary","continence","infection","knowledge"],assessment:["Paciento rankų funkcija ir gebėjimas atlikti procedūrą.","Regėjimas ir kognityvinis gebėjimas mokytis.","Šlapinimosi / retencijos pobūdis.","Odos ir šlaplės simptomai.","Paciento motyvacija ir galimybė laikytis režimo."],education:["Mokyti protarpinės kateterizacijos žingsnių pagal įstaigos patvirtintą metodiką.","Aptarti rankų higieną, priemonių laikymą ir kateterizacijos dažnį pagal paskyrimą.","Taikyti teach-back / demonstravimo metodą.","Paaiškinti, kada kreiptis dėl kraujavimo, skausmo, karščiavimo ar nepavykstančios kateterizacijos."]},
+
+ "Ūminio prostatito klinikinės slaugos kelias":{tag:"Urologija",problems:["pain","acuteinfection","urinary","fluid","knowledge"],assessment:["Kūno temperatūra, šaltkrėtis ir bendra savijauta.","Gyvybiniai rodikliai pagal paciento būklę.","Skausmo lokalizacija ir intensyvumas.","Dizurija, dažnas / skubus šlapinimasis ir šlapimo susilaikymo požymiai.","Diurezė ir skysčių balansas.","Atsakas į paskirtą gydymą ir būklės dinamika."],education:["Paaiškinti paskirto gydymo laikymosi svarbą.","Aptarti individualų skysčių vartojimą pagal gydymo planą.","Paaiškinti, kad dėl negalėjimo pasišlapinti, stiprėjančio skausmo, šaltkrėčio, aukštos temperatūros ar bendros būklės blogėjimo būtina kreiptis / pranešti nedelsiant."]},
+
+ "Ūminio pielonefrito / komplikuotos ŠTI klinikinės slaugos kelias":{tag:"Urologija",problems:["pain","acuteinfection","nausea","fluid","urinary","knowledge"],assessment:["Kūno temperatūra, šaltkrėtis ir bendra savijauta.","Gyvybiniai rodikliai pagal paciento būklę.","Šono / juosmens srities skausmas ir jo dinamika.","Pykinimas, vėmimas ir skysčių toleravimas.","Diurezė, šlapimo pobūdis ir šlapimo nutekėjimas.","Skysčių balansas ir atsakas į paskirtą gydymą."],education:["Paaiškinti paskirto gydymo laikymosi svarbą.","Aptarti individualų skysčių vartojimą pagal gydymo planą.","Paaiškinti, kada būtina nedelsiant pranešti apie šaltkrėtį, didėjantį skausmą, vėmimą, mažėjančią diurezę ar bendros būklės blogėjimą."]},
+
+ "Epididimito / orchito klinikinės slaugos kelias":{tag:"Urologija",problems:["pain","acuteinfection","anxiety","knowledge"],assessment:["Kapšelio skausmas, patinimas, paraudimas ir jų dinamika.","Kūno temperatūra ir šaltkrėtis.","Gyvybiniai rodikliai pagal paciento būklę.","Šlapinimosi simptomai, jei jie yra.","Mobilumo ir komforto poreikis.","Atsakas į paskirtą gydymą."],education:["Paaiškinti paskirto gydymo laikymosi svarbą.","Aptarti kapšelio srities tausojimą ir komforto priemones pagal gydymo planą.","Paaiškinti, kada pranešti dėl staiga stiprėjančio skausmo, didėjančio patinimo, karščiavimo ar bendros būklės blogėjimo."]},
+
+ "Fournier gangrenos klinikinės slaugos kelias":{tag:"Urologija",problems:["pain","acuteinfection","tissue","systemicinf","fluid","knowledge"],assessment:["ABCDE vertinimas pagal paciento būklę.","Kūno temperatūra, kraujospūdis, pulsas, kvėpavimo dažnis, SpO₂ ir sąmonės būklė pagal klinikinę situaciją.","Skausmas ir jo dinamika.","Pažeistos tarpvietės / lytinių organų srities odos ir minkštųjų audinių būklė, spalva, patinimas, eksudatas, kvapas ir pažeidimo ribų pokyčiai.","Žaizdos / po debridemento srities, tvarsčių ir drenų būklė, jei taikoma.","Diurezė, skysčių balansas ir periferinės perfuzijos požymiai.","Gliukozės rodmenys pagal paskyrimą, jei aktualu.","Atsakas į paskirtą gydymą ir sisteminės būklės dinamika."],education:["Paaiškinti pacientui ir (ar) artimiesiems pagrindinius gydymo ir žaizdos priežiūros etapus pagal kompetenciją.","Paaiškinti, kad apie stiprėjantį skausmą, didėjantį patinimą / paraudimą, šaltkrėtį ar kitą būklės blogėjimą būtina pranešti nedelsiant.","Stabilizavus būklę aptarti žaizdos, drenų ir kitų priemonių priežiūrą pagal individualų planą."]},
+
+ "Makrohematurijos / krešulių retencijos klinikinės slaugos kelias":{tag:"Urologija",problems:["hematuria","urinary","catheter","fluid","knowledge"],assessment:["Šlapimo spalva, kraujavimo intensyvumo dinamika ir krešuliai.","Diurezė ir šlapimo nutekėjimas.","Pūslės tempimo, spazmų ir retencijos požymiai.","Kateterio praeinamumas, fiksacija ir plovimo sistemos funkcija, jei taikoma.","Gyvybiniai rodikliai ir bendra paciento būklė.","Paskirtų laboratorinių tyrimų dinamika, jei aktualu.","Skausmas ir silpnumas / svaigimas."],education:["Paaiškinti, kodėl stebima šlapimo spalva, krešuliai ir nutekėjimas.","Paaiškinti, kad apie staigų nutekėjimo sustojimą, pūslės tempimą, gausėjantį kraujavimą, silpnumą ar svaigimą reikia pranešti nedelsiant.","Aptarti kateterio / surinkimo sistemos saugią priežiūrą, jei pacientas ją turi."]},
+
+ "Urosepsio klinikinės slaugos kelias":{tag:"Urologija",problems:["systemicinf","fluid","urinary","knowledge"],assessment:["Kūno temperatūra ir bendra būklė.","Kraujospūdis, pulsas, kvėpavimo dažnis, SpO₂ ir sąmonės būklė pagal paciento būklę.","Diurezė ir šlapimo nutekėjimas.","Periferinės perfuzijos požymiai ir skysčių balansas.","Skausmas / šlapimo takų infekcijos ar obstrukcijos simptomai.","Atsakas į paskirtą infuzinį, deguonies, antimikrobinį ir kitą gydymą."],education:["Stabilizavus būklę paaiškinti infekcijos gydymo ir kontrolės planą.","Paaiškinti pacientui / artimiesiems, kokius būklės blogėjimo požymius būtina pranešti nedelsiant.","Prieš išvykimą aptarti paskirtų vaistų, skysčių ir kontrolinių vizitų planą."]},
+
+ "Kateterio / nefrostomos / cistostomos komplikacijų klinikinės slaugos kelias":{tag:"Urologija",problems:["devicecomp","urinary","pain","hematuria","acuteinfection","knowledge"],assessment:["Kateterio / nefrostomos / cistostomos padėtis, fiksacija, neužlinkimas ir matomos jungtys.","Šlapimo nutekėjimas, kiekis, spalva ir krešuliai.","Pratekėjimas šalia kateterio / dreno.","Įvedimo vietos oda, paraudimas, patinimas, išskyros ir skausmas.","Kūno temperatūra ir bendra savijauta.","Pūslės tempimo / retencijos požymiai, jei aktualu.","Kada sistema keista / planuojamas keitimas, jei informacija žinoma."],education:["Mokyti saugoti sistemą nuo tempimo, užlinkimo ir atsitiktinio ištraukimo.","Paaiškinti, kada būtina skubiai kreiptis dėl iškritimo / pasislinkimo, nepratekėjimo, karščiavimo, gausaus kraujavimo ar stiprėjančio skausmo.","Aptarti individualų sistemos priežiūros ir keitimo / kontrolės planą."]}
 ,
  "Kraniotomija ir galvos smegenų naviko rezekcija":{tag:"Neurochirurgija",problems:["neuro","icp","pain","seizure","aspiration","infection","mobility","fall","knowledge"],assessment:["Sąmonės būklė ir jos dinamika.","Vyzdžių dydis ir reakcija.","Galūnių jėga, jutimai, kalba ir nauja asimetrija.","Galvos skausmas, pykinimas / vėmimas.","Gyvybiniai rodikliai ir SpO₂.","Operacinė žaizda / tvarstis ir drenas, jei yra.","Rijimo saugumas ir aspiracijos rizika, jei yra neurologinis deficitas.","Mobilumas ir kritimo rizika."],education:["Paaiškinti, kad apie naują stiprų galvos skausmą, silpnumą, kalbos ar regos pokytį, traukulius ar sąmonės blogėjimą būtina pranešti nedelsiant.","Aptarti žaizdos priežiūrą ir fizinio aktyvumo ribas pagal gydymo planą.","Aptarti paskirtų vaistų ir kontrolinių vizitų planą."]},
  "Meningiomos rezekcija":{tag:"Neurochirurgija",problems:["neuro","icp","pain","seizure","infection","mobility","fall","knowledge"],assessment:["Sąmonė, orientacija ir neurologinės būklės dinamika.","Vyzdžiai, galūnių jėga, kalba / rega pagal pažeidimo vietą.","Galvos skausmas ir pykinimas.","Traukulių požymiai.","Žaizda / tvarstis, drenas, jei yra.","Mobilumas ir saugumas."],education:["Aptarti neurologinių įspėjamųjų simptomų stebėjimą.","Paaiškinti žaizdos priežiūrą ir fizinio aktyvumo planą.","Aptarti paskirtų vaistų ir kontrolės planą."]},
@@ -1169,7 +1195,7 @@ const procedures = {
 
 const specialties = [
  {name:"Chirurgija",icon:"CH",desc:"Pilvo, kolorektalinė, anorektalinė, bariatrinė, hepatobiliarinė, krūties, endokrininė ir sudėtingų žaizdų chirurgija."},
- {name:"Urologija",icon:"UR",desc:"Onkourologija, akmenligė, prostata, šlaplės ir kapšelio chirurgija, šlapimo derivacijos, drenažai ir rekonstrukcinė urologija."},
+ {name:"Urologija",icon:"UR",desc:"Onkourologija, akmenligė, ūmios infekcijos ir skubi urologija, prostata, šlaplės ir kapšelio chirurgija, šlapimo derivacijos, kateteriai ir drenažai."},
  {name:"Neurochirurgija",icon:"NE",desc:"Neuroonkologija, hidrocefalija, kraujagyslinė neurochirurgija, neurotrauma ir stuburo chirurgija."},
  {name:"Ortopedija-traumatologija",icon:"OT",desc:"Galūnių ir dubens lūžiai, osteosintezė, endoprotezavimas, artroskopija, išorinė fiksacija ir neurovaskulinė stebėsena."},
  {name:"Vidaus ligos / terapija",icon:"VL",desc:"Kardiologija, pulmonologija, hematologija, endokrinologija, nefrologija, gastroenterologija, skysčių ir elektrolitų pusiausvyra."}
@@ -1212,7 +1238,7 @@ function setMode(mode){
  document.body.classList.toggle("simple-mode",uiMode==="simple");
  el("simpleModeBtn")?.classList.toggle("on",uiMode==="simple");
  el("advancedModeBtn")?.classList.toggle("on",uiMode==="advanced");
- if(el("versionBadge")) el("versionBadge").textContent=uiMode==="simple"?"V34 • PAPRASTAS REŽIMAS":"V34 • IŠPLĖSTINIS REŽIMAS";
+ if(el("versionBadge")) el("versionBadge").textContent=uiMode==="simple"?"V35 • PAPRASTAS REŽIMAS":"V35 • IŠPLĖSTINIS REŽIMAS";
  if(uiMode==="simple") document.querySelectorAll('.simple-optional').forEach(x=>x.classList.remove('simple-open'));
 }
 function toggleSimpleOptional(id,btn){
@@ -1240,7 +1266,7 @@ function getSelectedSharedConditions(){
  return sharedConditions.filter(c=>el("sc_"+c.id)?.checked);
 }
 
-/* V34: aiškiai atskiriame diagnozes nuo stebėjimo / priežiūros įrankių. */
+/* V35: aiškiai atskiriame diagnozes nuo stebėjimo / priežiūros įrankių. */
 const supportOnlyKeys=new Set([
  "wound","drain","catheter","hematuria","stoma","periskin",
  "preknowledge","postopobs","anesthesia","followup","cardiac","edema",
@@ -2417,7 +2443,7 @@ function resetAll(){
  go(1);
 }
 
-// V34: viešoje versijoje pacientų epizodai ir klinikiniai įrašai naršyklėje nesaugomi.
+// V35: viešoje versijoje pacientų epizodai ir klinikiniai įrašai naršyklėje nesaugomi.
 try{localStorage.removeItem("nurseplan_v16_demo_episodes");sessionStorage.removeItem("nurseplan_v16_current_episode");}catch(e){}
 init();
 </script>
